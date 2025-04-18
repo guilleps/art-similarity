@@ -2,7 +2,11 @@ from pinecone import Pinecone
 from pinecone import ServerlessSpec
 import os
 
-pc = Pinecone(api_key=os.environ.get("PINECONE_API_KEY"))
+api_key = os.environ.get("PINECONE_API_KEY")
+if not api_key:
+    raise ValueError("PINECONE_API_KEY no está definido en .env")
+
+pc = Pinecone(api_key=api_key)
 
 PINECONE_DIMENSION = 156
 
