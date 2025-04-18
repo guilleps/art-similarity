@@ -17,8 +17,8 @@ if index_name not in [index.name for index in pc.list_indexes()]:
         dimension=PINECONE_DIMENSION,
         metric='cosine',
         spec=ServerlessSpec(
-            cloud=os.environ.get("PINECONE_CLOUD"),
-            region=os.environ.get("PINECONE_REGION"),
+            cloud="aws",
+            region=os.environ.get("PINECONE_ENV_REGION"),
         )
     )
 
@@ -29,5 +29,5 @@ def store_embedding(image_id, embbeding, image_url):
         vectors=[
             (image_id, embbeding, { 'image_url': image_url })
         ],
-        namespace=os.environ.get("PINECONE_NAMESPACE")
+        namespace="workspacemoon"
     )

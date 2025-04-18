@@ -1,23 +1,20 @@
-# imagen oficial de python
-FROM python:3.13 
-
-# establecer el directio app (aqui se almacena todo)
-RUN mkdir /app
-
-# insertamos el directorio dentro del contenedor
-WORKDIR /app
+FROM python:3.13-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-RUN pip install --upgrade pip
+WORKDIR /app
 
-COPY requirements.txt /app/
-
-RUN pip install --no-cache-dir -r requirements.txt
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY . /app/
 
-EXPOSE 8080
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+EXPOSE 8000
+
+CMD ["gunicorn", "backend.wsgi:application", "--bind", "0.0.0.0:8000"]
