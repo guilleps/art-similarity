@@ -3,8 +3,8 @@ import { API_ROUTES } from '../constants/apiRoutes'
 import client from './client'
 
 export interface UploadReponse {
-  message: string
-  url: string
+  secure_url: string
+  similarities: string[]
 }
 
 export const uploadImage = async (file: File): Promise<UploadReponse> => {

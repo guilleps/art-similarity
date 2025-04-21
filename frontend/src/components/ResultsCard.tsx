@@ -3,21 +3,13 @@ import { AspectRatio } from '@/components/ui/aspect-ratio'
 
 interface ResultsCardProps {
   imagePreview: string | null
-  influences: {
-    percentage: number
-    color: string
-    url: string
-  }[]
-  styleAnalysis: {
-    percentage: number
-    color: string
-  }[]
+  similarities: string[]
 }
 
 // FC -> Componente funcional que recibe props explicitos
 const ResultsCard: React.FC<ResultsCardProps> = ({
   imagePreview,
-  influences
+  similarities
 }) => {
   return (
     <div className="mx-auto mb-8 w-full max-w-4xl space-y-6">
@@ -46,20 +38,17 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
         </h3>
 
         <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-          {influences.map((influence, index) => (
+          {similarities.map((url, index) => (
             <div key={index} className="w-full max-w-[250px] md:w-1/3">
               <div className="group relative w-full">
                 <AspectRatio ratio={1 / 1}>
                   <div className="h-full w-full bg-[#1a2342]">
-                    <img
-                      src={influence.url}
-                      className="h-full w-full object-cover"
-                    />
+                    <img src={url} className="h-full w-full object-cover" />
                   </div>
                 </AspectRatio>
-                <p className="mt-2 text-center text-base font-medium text-white">
+                {/* <p className="mt-2 text-center text-base font-medium text-white">
                   {influence.percentage} %
-                </p>
+                </p> */}
               </div>
             </div>
           ))}
