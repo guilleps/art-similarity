@@ -5,14 +5,15 @@ import ScanningAnimation from '@/components/ScanningAnimation'
 import ResultsCard from '@/components/ResultsCard'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
-import { influenceDict, stylePorcentage } from '@/lib/utils'
 import { applyBodyGradient, resetBodyGradient } from '@/lib/body-analysis'
+import { uploadImage } from '@/infrastructure/api/uploadService'
 
 const Analysis = () => {
   const [currentStep, setCurrentStep] = useState<
     'upload' | 'scanning' | 'results'
   >('upload')
   const [imagePreview, setImagePreview] = useState<string | null>(null)
+  const [similarities, setSimilarities] = useState<string[]>([])
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -44,10 +45,29 @@ const Analysis = () => {
     setImagePreview(null)
   }
 
+  const handleImageUpload = async (file: File) => {
+    try {
+      const response = await uploadImage(file) // Llamada a la API de subida de imagen
+      if (response) {
+        // Actualizar el estado de similitudes con la respuesta de la API
+        setSimilarities(response.similarities)
+        setCurrentStep('scanning') // Cambiar al paso de escaneo
+        setTimeout(() => setCurrentStep('results'), 6000)
+      }
+    } catch (error) {
+      console.error('Error al cargar la imagen:', error)
+    }
+  }
+
   const renderStepContent = () => {
     switch (currentStep) {
       case 'upload':
-        return <UploadArea onBack={() => navigate('/')} />
+        return (
+          <UploadArea
+            onBack={() => navigate('/')}
+            onUpload={handleImageUpload}
+          />
+        )
       case 'scanning':
         return (
           <ScanningAnimation
@@ -60,8 +80,7 @@ const Analysis = () => {
         return (
           <ResultsCard
             imagePreview={imagePreview}
-            influences={influenceDict}
-            styleAnalysis={stylePorcentage}
+            similarities={similarities}
           />
         )
     }

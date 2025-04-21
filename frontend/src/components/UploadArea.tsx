@@ -5,10 +5,11 @@ import { uploadImage } from '@/infrastructure/api/uploadService'
 
 interface UploadAreaProps {
   onBack?: () => void
+  onUpload?: (file: File) => Promise<void>
 }
 
 // FC -> Componente funcional que recibe props explicitos
-const UploadArea: React.FC<UploadAreaProps> = ({ onBack }) => {
+const UploadArea: React.FC<UploadAreaProps> = ({ onBack, onUpload }) => {
   const [dragging, setDragging] = useState(false)
   const [file, setFile] = useState<File | null>(null)
   const [preview, setPreview] = useState<string | null>(null)
@@ -65,12 +66,13 @@ const UploadArea: React.FC<UploadAreaProps> = ({ onBack }) => {
         setPreview(e.target.result as string)
 
         try {
-          const res = await uploadImage(file)
-          toast.success('Imagen subida con éxito')
-
-          navigate('/analysis?from=upload', {
-            state: { imagePreview: res.url }
-          })
+          if (onUpload) {
+            await onUpload(file) // Llamar al prop onUpload cuando la imagen se haya cargado
+            toast.success('Imagen subida con éxito')
+            navigate('/analysis?from=upload', {
+              state: { imagePreview: e.target.result as string }
+            })
+          }
         } catch (err: any) {
           toast.error('Error al subir la imagen. Inténtalo de nuevo.')
           console.error(err)
