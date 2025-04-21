@@ -12,8 +12,7 @@ class UploadImageAPI(APIView):
         if not image_file:
             return Response({'error': 'No image provided'}, status=status.HTTP_400_BAD_REQUEST)
         
-        # ✅ Guardamos el contenido en memoria para que se pueda reutilizar
-        image_bytes = image_file.read()
+        image_bytes = image_file.read() # guardamos el contenido en memoria
         image_file.seek(0)  # Reset el puntero para que Cloudinary también lo lea correctamente
         
         try:
@@ -30,7 +29,7 @@ class UploadImageAPI(APIView):
             return Response({'error': f'Pinecone error: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         return Response({
-            'url': cloudinary_result['url'],
             'secure_url': cloudinary_result['secure_url'],
+            'embedding': embedding
             # faltan porcentaje calculado, obtener de los response embeddings de la bd vectorial
         }, status=status.HTTP_201_CREATED)
