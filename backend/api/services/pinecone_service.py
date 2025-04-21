@@ -8,10 +8,13 @@ if not api_key:
 
 pc = Pinecone(api_key=api_key)
 
-PINECONE_DIMENSION = 156
+PINECONE_DIMENSION = 1280 
 
 index_name = os.environ.get('INDEX_NAME')
+
+# Verifica si el índice ya existe antes de crear uno nuevo
 if index_name not in [index.name for index in pc.list_indexes()]:
+    print(f"Índice '{index_name}' no encontrado. Creando nuevo índice...")
     pc.create_index(
         name=index_name,
         dimension=PINECONE_DIMENSION,
@@ -21,6 +24,8 @@ if index_name not in [index.name for index in pc.list_indexes()]:
             region=os.environ.get("PINECONE_ENV_REGION"),
         )
     )
+else:
+    print(f"Índice '{index_name}' ya existe. Usando índice existente.")
 
 index = pc.Index(index_name)
 

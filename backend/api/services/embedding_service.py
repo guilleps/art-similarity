@@ -1,13 +1,26 @@
 import uuid
-import base64
-import random
-
-PINECONE_DIMENSION = 156
+import tensorflow as tf
+import numpy as np
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.applications.efficientnet import EfficientNetB0, preprocess_input
+from tensorflow.keras.models import Model
+import io
 
 def generate_id_for_image():
     return str(uuid.uuid4())
 
+def load_efficientnet_model():
+    base_model = EfficientNetB0(weights='imagenet', include_top=False, pooling='avg')
+    model = Model(inputs=base_model.input, outputs=base_model.output)
+    return model
+
+efficientnet_model = load_efficientnet_model()
+
 def generate_embbeding(img_bytes):
-    img_base64 = base64.b64encode(img_bytes).decode("utf-8")
-    random.seed(len(img_base64))
-    return [random.random() for _ in range(PINECONE_DIMENSION)]
+    img = image.load_img(io.BytesIO(img_bytes), target_size=(224, 224))
+    img_array = image.img_to_array(img)
+    img_array = np.expand_dims(img_array, axis=0)
+    img_array = preprocess_input(img_array)
+
+    embedding = efficientnet_model.predict(img_array)
+    return embedding.flatten().tolist() 
