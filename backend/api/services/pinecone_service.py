@@ -12,7 +12,7 @@ PINECONE_DIMENSION = 1280
 
 index_name = os.environ.get('INDEX_NAME')
 
-# Verifica si el índice ya existe antes de crear uno nuevo
+# evalua si el indice existe, sino crea uno neuvo
 if index_name not in [index.name for index in pc.list_indexes()]:
     print(f"Index '{index_name}' not found. Creating new index...")
     pc.create_index(
@@ -30,7 +30,7 @@ else:
 index = pc.Index(index_name)
 
 def store_embedding(image_id, embedding, image_url):
-    print(f"Uploading embedding for image: {image_id}")
+    # print(f"Uploading embedding for image: {image_id}")
     query = {
         'vector': embedding,
         'top_k': 1,
