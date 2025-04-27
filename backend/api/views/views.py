@@ -13,7 +13,7 @@ class UploadImageAPI(APIView):
             return Response({'error': 'No image provided'}, status=status.HTTP_400_BAD_REQUEST)
         
         image_bytes = image_file.read() # guardamos el contenido en memoria
-        image_file.seek(0)  # Reset el puntero para que Cloudinary también lo lea correctamente
+        image_file.seek(0)
         
         try:
             cloudinary_result = upload_image_to_cloudinary(image_file)
@@ -25,10 +25,7 @@ class UploadImageAPI(APIView):
 
         try:
             store_embedding(image_id, embedding, cloudinary_result['secure_url'])
-            
             similar_images = search_similar_images(embedding)
-
-
         except Exception as e:
             return Response({'error': f'Pinecone error: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
@@ -61,9 +58,8 @@ class UploadImageBatchAPI(APIView):
 
             try:
                 store_embedding(image_id, embedding, cloudinary_result['secure_url'])
-                image_name = image_file.name 
-                extension = image_name.split('.')[-1]  
-                results.append({"image": image_name, "extension": extension, "secure_url": cloudinary_result['secure_url']})
+                image_name = image_file.name
+                results.append({"image": image_name, "secure_url": cloudinary_result['secure_url']})
             except Exception as e:
                 return Response({'error': f'Pinecone error: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
