@@ -5,6 +5,16 @@ import numpy as np
 from scipy.spatial.distance import mahalanobis
 from numpy.linalg import inv
 import datetime
+import wandb
+
+wandb.init(
+    project="art-similarity-metrics",
+    name="experiment_mahalanobis_similarity",
+    config={
+        "metric": "mahalanobis",
+        "top_k": 3
+    }
+)
 
 def load_embeddings(directory):
     embeddings = {}
@@ -61,5 +71,23 @@ def run_mahalanobis_experiment(embeddings):
     top_similar_images = find_similar_images(embeddings, reference_image_name, reference_embedding)
     save_results("mahalanobis_distance", reference_image_name, top_similar_images)
 
+    return reference_image_name, top_similar_images
+
 embeddings = load_embeddings('../output_data')
-run_mahalanobis_experiment(embeddings)
+reference_image_name, top_similar_images = run_mahalanobis_experiment(embeddings)
+
+
+wandb.log({
+    "reference_image": reference_image_name,
+    "top1_score": top_similar_images[0][1],
+    "top2_score": top_similar_images[1][1],
+    "top3_score": top_similar_images[2][1],
+})
+
+table = wandb.Table(columns=["Imagen", "Similitud"])
+for image_name, score in top_similar_images:
+    table.add_data(image_name, score)
+
+wandb.log({"Top similitud": table})
+
+wandb.finish()

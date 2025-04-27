@@ -2,6 +2,8 @@ import os
 import json
 import numpy as np
 import tensorflow as tf
+import time
+import wandb
 from tensorflow.keras.applications import (
     ResNet50, DenseNet121, EfficientNetV2B0, EfficientNetV2B1
 )
@@ -45,6 +47,16 @@ def process_images():
     for model_name, (base_model, preprocess_func) in MODELS.items():
         print(f"\nProcesando modelo: {model_name}")
 
+        wandb.init(
+            project="art-similarity",
+            name=f"experiment_{model_name}",
+            config={
+                "model": model_name,
+                "img_size": IMG_SIZE,
+                "dataset": DATA_DIR
+            }
+        )
+
         output_path = os.path.join(OUTPUT_DIR, f'arq_{model_name}')
         os.makedirs(output_path, exist_ok=True)
 
@@ -52,17 +64,30 @@ def process_images():
             estilo_path = os.path.join(DATA_DIR, estilo)
             if not os.path.isdir(estilo_path): continue
 
-            image_files = os.listdir(estilo_path)[:10] 
+            image_files = os.listdir(estilo_path)[:20] 
 
             for filename in tqdm(image_files, desc=f"Procesando estilo - {estilo}"):
                 img_path = os.path.join(estilo_path, filename)
 
                 try:
                     img_tensor = preprocess_image(img_path, preprocess_func)
+
+                    start = time.time()
+
                     embedding = base_model.predict(img_tensor, verbose=0).flatten().tolist()
+
+                    wandb.log({
+                        "embedding_mean": np.mean(embedding),
+                        "embedding_std": np.std(embedding),
+                        "style": estilo,
+                        "time": time.time() - start,
+                    })
+
                     save_embedding(embedding, output_path, filename)
                 except Exception as e:
                     print(f"Error procesando {filename}: {e}")
+
+        wandb.finish()
 
 if __name__ == "__main__":
     process_images()

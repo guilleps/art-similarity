@@ -1,4 +1,71 @@
-# Uso de Python 3.12 en este Proyecto
+# Experimentos de Comparación de Similitud Compositiva de Obras de Arte
+
+Este proyecto tiene como objetivo evaluar arquitecturas CNN (ResNet50, EfficientNetV2B0/B1, DenseNet121) para medir la **similitud compositiva** entre obras de arte a través de embeddings visuales.
+
+## 🔧 Estructura de carpetas
+
+```
+└── 📁experimentation
+    └── 📁data
+    └── 📁output_data
+    └── 📁similarity_calculation
+        └── 📁logs
+        └── cosine_similarity_metric.py
+        └── euclidean_distance_metric.py
+        └── mahalanobis_distance.py
+    └── .gitignore
+    └── architectures_cnn.py
+    └── README.md
+    └── requirements.txt
+```
+
+
+## 🚀 Cómo ejecutar los experimentos
+
+### 1. Generar embeddings
+```bash
+python architectures_cnn.py
+```
+
+Esto extraerá embeddings de las imágenes en ./data/train usando las arquitecturas CNN seleccionadas. Los resultados se almacenan en ./output_data/arq_<model> y se registran automáticamente en W&B.
+
+### 2. Calcular similitud entre obras
+
+```bash
+python similarity_calculation/cosine_similarity_metric.py
+python similarity_calculation/euclidean_distance_metric.py
+python similarity_calculation/mahalanobis_distance.py
+```
+
+Cada script:
+
+* Selecciona una imagen aleatoria
+
+* Calcula los top 3 más similares según la métrica especificada
+
+* Guarda los resultados en logs/
+
+* Reporta los datos automáticamente a W&B
+
+## 📈 Resultados con Weights & Biases (wandb)
+
+Cada experimento crea un log accesible en tu cuenta de wandb. Se registra:
+
+* Modelo usado
+
+* Métrica de similitud
+
+* Imagen de referencia
+
+* Top 3 similares
+
+* Tiempo de procesamiento
+
+* Desviación estándar de embeddings
+
+Puedes visualizar tus resultados en línea, compartir reportes, o exportarlos como gráficos para tus presentaciones o tesis.
+
+## 📦 Requisitos
 
 Este proyecto utiliza **Python 3.12**. Puedes verificar la versión instalada ejecutando:
 
@@ -34,4 +101,10 @@ Este proyecto utiliza **Python 3.12**. Puedes verificar la versión instalada ej
 4. Verifica que las dependencias se hayan instalado correctamente:
     ```bash
     pip list
+    ```
+
+5. Iniciar sesión en wandb:
+
+    ```bash
+    wandb login
     ```
