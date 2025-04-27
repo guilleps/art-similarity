@@ -4,8 +4,18 @@ import random
 import numpy as np
 from scipy.spatial.distance import euclidean
 import datetime
+import wandb
 
-def load_all_embeddings(directory):
+wandb.init(
+    project="art-similarity-metrics",
+    name="experiment_euclidean_similarity",
+    config={
+        "metric": "euclidean",
+        "top_k": 3
+    }
+)
+
+def load_embeddings(directory):
     embeddings = {}
     for model_dir in os.listdir(directory):
         model_path = os.path.join(directory, model_dir)
@@ -59,5 +69,22 @@ def run_euclidean_experiment(embeddings):
     top_similar_images = find_most_similar_images(embeddings, reference_image_name, reference_embedding, top_n=3)
     save_comparison_result("euclidean_distance", reference_image_name, top_similar_images)
 
-embeddings = load_all_embeddings('../output_data')
-run_euclidean_experiment(embeddings)
+    return reference_image_name, top_similar_images
+
+embeddings = load_embeddings('../output_data')
+reference_image_name, top_similar_images = run_euclidean_experiment(embeddings)
+
+wandb.log({
+    "reference_image": reference_image_name,
+    "top1_score": top_similar_images[0][1],
+    "top2_score": top_similar_images[1][1],
+    "top3_score": top_similar_images[2][1],
+})
+
+table = wandb.Table(columns=["Imagen", "Similitud"])
+for image_name, score in top_similar_images:
+    table.add_data(image_name, score)
+
+wandb.log({"Top similitud": table})
+
+wandb.finish()
