@@ -6,14 +6,14 @@ import ResultsCard from '@/components/ResultsCard'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import { applyBodyGradient, resetBodyGradient } from '@/lib/body-analysis'
-import { uploadImage } from '@/infrastructure/api/uploadService'
+import { SimilarityResult, uploadImage } from '@/infrastructure/api/uploadService'
 
 const Analysis = () => {
   const [currentStep, setCurrentStep] = useState<
     'upload' | 'scanning' | 'results'
   >('upload')
   const [imagePreview, setImagePreview] = useState<string | null>(null)
-  const [similarities, setSimilarities] = useState<string[]>([])
+  const [similarities, setSimilarities] = useState<SimilarityResult[]>([])
   const location = useLocation()
   const navigate = useNavigate()
 
