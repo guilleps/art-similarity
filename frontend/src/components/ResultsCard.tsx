@@ -1,9 +1,10 @@
 import React from 'react'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
+import { SimilarityResult } from '@/infrastructure/api/uploadService'
 
 interface ResultsCardProps {
   imagePreview: string | null
-  similarities: string[]
+  similarities: SimilarityResult[]
 }
 
 // FC -> Componente funcional que recibe props explicitos
@@ -38,17 +39,17 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
         </h3>
 
         <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-          {similarities.map((url, index) => (
-            <div key={index} className="w-full max-w-[250px] md:w-1/3">
+          {similarities.map((similarity) => (
+            <div key={similarity.similar_image_id} className="w-full max-w-[250px] md:w-1/3">
               <div className="group relative w-full">
                 <AspectRatio ratio={1 / 1}>
                   <div className="h-full w-full bg-[#1a2342]">
-                    <img src={url} className="h-full w-full object-cover" />
+                    <img src={similarity.similar_image_url} className="h-full w-full object-cover" />
                   </div>
                 </AspectRatio>
-                {/* <p className="mt-2 text-center text-base font-medium text-white">
-                  {influence.percentage} %
-                </p> */}
+                <p className="mt-2 text-center text-base font-medium text-white">
+                  {similarity.similarity_percentage} %
+                </p>
               </div>
             </div>
           ))}

@@ -119,10 +119,6 @@ const UploadArea: React.FC<UploadAreaProps> = ({ onBack, onUpload }) => {
         onDrop={handleDrop}
       >
         <div className="flex flex-col items-center justify-center gap-4">
-          {/* <div className="mb-2 flex h-16 w-16 items-center justify-center rounded-full bg-blue-500/10">
-            <Upload className="h-8 w-8 text-blue-400" />
-          </div> */}
-
           <h3 className="text-xl font-medium text-white">Arrastre y suelte</h3>
 
           <p className="my-8 max-w-md text-sm text-white/60">
