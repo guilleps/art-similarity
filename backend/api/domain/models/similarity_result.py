@@ -1,13 +1,5 @@
 from django.db import models
-
-# Create your models here.
-class ImageAnalyzed(models.Model):
-    id = models.CharField(max_length=255, primary_key=True)
-    url = models.URLField()
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"Analyzed Image {self.id}"
+from .image_analyzed import ImageAnalyzed
 
 class SimilarityResult(models.Model):
     analyzed_image = models.ForeignKey(ImageAnalyzed, related_name='similarities', on_delete=models.CASCADE)
@@ -17,4 +9,3 @@ class SimilarityResult(models.Model):
 
     def __str__(self):
         return f"Similarity {self.similarity_percentage} to {self.analyzed_image.id}"
-
