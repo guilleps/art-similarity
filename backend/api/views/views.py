@@ -1,6 +1,9 @@
+from concurrent.futures import ThreadPoolExecutor
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+
+from api.models import ImageAnalyzed, SimilarityResult
 
 from ..services.cloudinary_service import upload_image_to_cloudinary
 from ..services.embedding_service import generate_embbeding, generate_id_for_image
@@ -16,21 +19,41 @@ class UploadImageAPI(APIView):
         image_file.seek(0)
         
         try:
-            cloudinary_result = upload_image_to_cloudinary(image_file)
+            with ThreadPoolExecutor() as executor:
+                future_cloudinary = executor.submit(upload_image_to_cloudinary, image_file)
+                future_embedding = executor.submit(generate_embbeding, image_bytes)
+                
+                cloudinary_result = future_cloudinary.result()
+                embedding = future_embedding.result()
         except Exception as e:
-            return Response({'error': f'Cloudinary error: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'error': f'Error during processing parallel: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         image_id = generate_id_for_image()
-        embedding = generate_embbeding(image_bytes)
 
         try:
             store_embedding(image_id, embedding, cloudinary_result['secure_url'])
             similar_images = search_similar_images(embedding)
         except Exception as e:
             return Response({'error': f'Pinecone error: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        analyzed_image = ImageAnalyzed.objects.create(
+            id=image_id,
+            url=cloudinary_result['secure_url']
+        )
+
+        for sim in similar_images:
+            SimilarityResult.objects.create(
+                analyzed_image=analyzed_image,
+                similar_image_id=sim.get('id'),
+                similar_image_url=sim.get('image_url'),
+                similarity_percentage=sim.get('similarity_percentage')
+            )   
 
         return Response({
-            'secure_url': cloudinary_result['secure_url'],
+            'image_analize': {
+                'id': analyzed_image.id,
+                'url': analyzed_image.url
+            },
             'similarities': similar_images
         }, status=status.HTTP_201_CREATED)
 
