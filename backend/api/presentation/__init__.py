@@ -1,0 +1,2 @@
+from .upload_image_view import UploadImageAPI
+from .upload_batch_view import UploadBatchAPI

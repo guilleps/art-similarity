@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ImageAnalyzed, SimilarityResult
+from api.domain.models import ImageAnalyzed, SimilarityResult
 
 # Register your models here.
 admin.site.register(ImageAnalyzed)

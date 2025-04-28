@@ -1,13 +1,9 @@
-import uuid
 import tensorflow as tf
 import numpy as np
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.efficientnet import EfficientNetB0, preprocess_input
 from tensorflow.keras.models import Model
 import io
-
-def generate_id_for_image():
-    return str(uuid.uuid4())
 
 def load_efficientnet_model():
     base_model = EfficientNetB0(weights='imagenet', include_top=False, pooling='avg')
