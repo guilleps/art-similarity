@@ -67,8 +67,16 @@ def search_similar_images(query_embedding, top_k=3, image_id=None):
     if 'matches' in result and result['matches']:
         for match in result['matches']:
             if match['id'] != image_id:
+                id = match['id']
                 image_url = match['metadata'].get('image_url')
-                similar_images.append(image_url)
+                score = match['score']
+                similarity_percentage = round(score * 100)
+
+                similar_images.append({
+                    'id': id,
+                    'image_url': image_url, 
+                    'similarity_percentage': similarity_percentage
+                })
     else:
         print("No similar images found.")
 
