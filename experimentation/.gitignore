@@ -176,3 +176,5 @@ logs/
 
 # wand: https://community.wandb.ai/t/what-should-the-gitignore-file-be-when-using-wandb/756/2
 wandb/
+
+storage/

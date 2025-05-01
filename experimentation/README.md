@@ -24,46 +24,26 @@ Este proyecto tiene como objetivo evaluar arquitecturas CNN (ResNet50, Efficient
 
 ### 1. Generar embeddings
 ```bash
-python architectures_cnn.py
+python architectures_cnn_efficientnetb7.py
+python architectures_cnn_resnet50.py
 ```
 
 Esto extraerá embeddings de las imágenes en ./data/train usando las arquitecturas CNN seleccionadas. Los resultados se almacenan en ./output_data/arq_<model> y se registran automáticamente en W&B.
 
 ### 2. Calcular similitud entre obras
 
+Mediante embeddings:
+
 ```bash
-python similarity_calculation/cosine_similarity_metric.py
-python similarity_calculation/euclidean_distance_metric.py
-python similarity_calculation/mahalanobis_distance.py
+python similarity_calculation/cosine_vs_euclidean.py
 ```
 
-Cada script:
+Mediante pixels:
 
-* Selecciona una imagen aleatoria
-
-* Calcula los top 3 más similares según la métrica especificada
-
-* Guarda los resultados en logs/
-
-* Reporta los datos automáticamente a W&B
-
-## 📈 Resultados con Weights & Biases (wandb)
-
-Cada experimento crea un log accesible en tu cuenta de wandb. Se registra:
-
-* Modelo usado
-
-* Métrica de similitud
-
-* Imagen de referencia
-
-* Top 3 similares
-
-* Tiempo de procesamiento
-
-* Desviación estándar de embeddings
-
-Puedes visualizar tus resultados en línea, compartir reportes, o exportarlos como gráficos para tus presentaciones o tesis.
+```bash
+python similarity_calculation/lpips_metric.py
+python similarity_calculation/ssim_metric.py
+```
 
 ## 📦 Requisitos
 
