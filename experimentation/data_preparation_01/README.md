@@ -101,7 +101,3 @@
 - **Cantidad de imágenes:** Más de 480,000  
 - **Tipo de contenido:** Obras de arte de la colección del Louvre  
 - **Notas:** Acceso a imágenes y descripciones detalladas
-
----
-
-#### 12. **Nombre del dataset o fuente:** *The Museum of Modern Art (MoMA) 

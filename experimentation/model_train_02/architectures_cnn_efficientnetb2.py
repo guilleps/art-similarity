@@ -3,15 +3,15 @@ import json
 import numpy as np
 import tensorflow as tf
 import time
-import wandb
+# import wandb
 from tensorflow.keras.applications import EfficientNetB2
 from tensorflow.keras.applications.efficientnet import preprocess_input as preprocess_efficientnet
 from tensorflow.keras.utils import load_img, img_to_array
 from tqdm import tqdm
 
-DATA_DIR = './data/train'
-OUTPUT_DIR = './output_data'
-IMG_SIZE = (260, 260)
+DATA_DIR = 'C:/workspace/data/train'
+OUTPUT_DIR = 'C:/workspace/output_data'
+IMG_SIZE = (224, 224)
 
 # carga y preprocesamiento
 def preprocess_image(img_path):
@@ -29,15 +29,15 @@ def process_images():
     base_model = EfficientNetB2(weights='imagenet', include_top=False, pooling='avg')
     print(f"\nModelo EfficientNetB2")
 
-    wandb.init(
-        project="art-similarity",
-        name=f"experiment_efficientnetb2",
-        config={
-            "model": "efficientnetb2",
-            "img_size": IMG_SIZE,
-            "dataset": DATA_DIR
-        }
-    )
+    # wandb.init(
+    #     project="art-similarity",
+    #     name=f"experiment_efficientnetb2",
+    #     config={
+    #         "model": "efficientnetb2",
+    #         "img_size": IMG_SIZE,
+    #         "dataset": DATA_DIR
+    #     }
+    # )
 
     output_path = os.path.join(OUTPUT_DIR, f'arq_efficientnetb2')
     os.makedirs(output_path, exist_ok=True)
@@ -58,17 +58,17 @@ def process_images():
 
                 embedding = base_model.predict(img_conv, verbose=0).flatten().tolist()
 
-                wandb.log({
-                    "embedding_mean": np.mean(embedding),
-                    "embedding_std": np.std(embedding),
-                    "time": time.time() - start
-                    })
+                # wandb.log({
+                #     "embedding_mean": np.mean(embedding),
+                #     "embedding_std": np.std(embedding),
+                #     "time": time.time() - start
+                #     })
 
                 save_embedding(embedding, output_path, filename)
             except Exception as e:
                 print(f"Error procesando {filename}: {e}")
 
-    wandb.finish()
+    # wandb.finish()
 
 if __name__ == "__main__":
     process_images()
