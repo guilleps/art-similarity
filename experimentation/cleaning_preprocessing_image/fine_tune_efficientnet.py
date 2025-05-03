@@ -44,13 +44,14 @@ base_model = EfficientNetB0(
 # extractor de características, sin modificar su conocimiento original
 base_model.trainable = False 
 
-model = models.Sequential([
-    base_model,
-    layers.GlobalAveragePooling2D(),
-    layers.Dense(256, activation='relu'),
-    layers.Dropout(0.5),
-    layers.Dense(num_classes, activation='softmax')
-])
+inputs = tf.keras.Input(shape=(224, 224, 3))
+x = base_model(inputs, training=False)
+x = layers.GlobalAveragePooling2D()(x)
+x = layers.Dense(256, activation='relu')(x)
+x = layers.Dropout(0.5)(x)
+outputs = layers.Dense(num_classes, activation='softmax')(x)
+
+model = tf.keras.Model(inputs, outputs)
 
 model.summary()
 
