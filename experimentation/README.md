@@ -82,9 +82,3 @@ Este proyecto utiliza **Python 3.12**. Puedes verificar la versión instalada ej
     ```bash
     pip list
     ```
-
-5. Iniciar sesión en wandb:
-
-    ```bash
-    wandb login
-    ```
