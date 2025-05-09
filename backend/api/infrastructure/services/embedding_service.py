@@ -1,22 +1,23 @@
-import tensorflow as tf
 import numpy as np
-from tensorflow.keras.preprocessing import image
-from tensorflow.keras.applications.efficientnet import EfficientNetB0, preprocess_input
-from tensorflow.keras.models import Model
+import requests
+from PIL import Image
 import io
 
-def load_efficientnet_model():
-    base_model = EfficientNetB0(weights='imagenet', include_top=False, pooling='avg')
-    model = Model(inputs=base_model.input, outputs=base_model.output)
-    return model
-
-efficientnet_model = load_efficientnet_model()
+from api.infrastructure.exceptions import EmbeddingModelError
 
 def generate_embbeding(img_bytes):
-    img = image.load_img(io.BytesIO(img_bytes), target_size=(224, 224))
-    img_array = image.img_to_array(img)
-    img_array = np.expand_dims(img_array, axis=0)
-    img_array = preprocess_input(img_array)
+    img = Image.open(io.BytesIO(img_bytes)).resize((224, 224)).convert("RGB")
+    img_array = np.array(img).astype("float32")
 
-    embedding = efficientnet_model.predict(img_array)
-    return embedding.flatten().tolist() 
+    payload = { "instances": [img_array.tolist()] }
+
+    try:
+        print("📤 Enviando imagen a TensorFlow Serving...")
+        response = requests.post("http://localhost:8501/v1/models/efficientnet:predict", json=payload)
+        response.raise_for_status()
+        embedding = response.json()['predictions'][0]
+        print("✅ Embedding generado (primeros 5 valores):", embedding[:5])
+        return embedding
+    except Exception as e:
+        print("❌ Error al generar embedding:", e)
+        raise EmbeddingModelError() from e

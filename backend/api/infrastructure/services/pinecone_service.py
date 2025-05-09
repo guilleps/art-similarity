@@ -2,6 +2,8 @@ from pinecone import Pinecone
 from pinecone import ServerlessSpec
 import os
 
+from api.infrastructure.exceptions import PineconeQueryError, PineconeUpsertError
+
 api_key = os.environ.get("PINECONE_API_KEY")
 if not api_key:
     raise ValueError("PINECONE_API_KEY is not defined in .env")
@@ -30,37 +32,28 @@ else:
 index = pc.Index(index_name)
 
 def store_embedding(image_id, embedding, image_url):
-    # print(f"Uploading embedding for image: {image_id}")
-    query = {
-        'vector': embedding,
-        'top_k': 1,
-        'include_values': True,
-        'include_metadata': True,
-        'namespace': "workspacemoon"
-    }
-
-    result = index.query(**query)
-    if result['matches']:
-        print("Image already exists in Pinecone. It is not uploaded again.")
-    else:
+    try:
         index.upsert(
-            vectors=[(image_id, embedding, { 'image_url': image_url })],
+            vectors=[(image_id, embedding, {'image_url': image_url})],
             namespace="workspacemoon"
         )
-        # print("Embedding successfully uploaded.")
+    except Exception as e:
+        raise PineconeUpsertError() from e
 
 
 def search_similar_images(query_embedding, top_k=3, image_id=None):
-    query = {
-        'vector': query_embedding,
-        'top_k': top_k,
-        'include_values': True,
-        'include_metadata': True,
-        'namespace': "workspacemoon"
-    }
+    try:
+        query = {
+            'vector': query_embedding,
+            'top_k': top_k,
+            'include_values': True,
+            'include_metadata': True,
+            'namespace': "workspacemoon"
+        }
 
-    result = index.query(**query)
-    # print(f"Search results: {result}")
+        result = index.query(**query)
+    except Exception as e:
+        raise PineconeQueryError() from e
 
     similar_images = []
 
@@ -78,6 +71,6 @@ def search_similar_images(query_embedding, top_k=3, image_id=None):
                     'similarity_percentage': similarity_percentage
                 })
     else:
-        print("No similar images found.")
+        print("No se encontraron imágenes similares.")
 
     return similar_images
