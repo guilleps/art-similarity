@@ -8,5 +8,3 @@ __pycache__/
 .env
 .git/
 .gitignore
-export_model.py
-requirements.txt
