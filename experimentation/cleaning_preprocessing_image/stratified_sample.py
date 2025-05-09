@@ -1,45 +1,33 @@
 import os
-import pandas as pd
-import tensorflow as tf
-from sklearn.model_selection import train_test_split
-from tensorflow.keras.applications.efficientnet import preprocess_input 
+import random
+import shutil
+from pathlib import Path
 
-TRAIN_DIR = 'C:/workspace/data/train' 
-IMG_SIZE = (224, 224)            
-BATCH_SIZE = 32
+ORIG_DATASET_DIR = "C:/workspace/data/train"
+DEST_DATASET_DIR = "C:/workspace/data/train_sampled" 
+SAMPLES_PER_CLASS = 500 # num de imágenes por clase a copiar
+RANDOM_SEED = 42 # Reproducibilidad
 
-def build_dataframe(dataset_dir):
-    data = []
-    for label in os.listdir(dataset_dir):
-        label_dir = os.path.join(dataset_dir, label)
-        if os.path.isdir(label_dir):
-            for fname in os.listdir(label_dir):
-                if fname.endswith(('.jpg', '.png', '.jpeg')):
-                    data.append({'path': os.path.join(label_dir, fname), 'label': label})
-    return pd.DataFrame(data)
+random.seed(RANDOM_SEED)
 
-df = build_dataframe(TRAIN_DIR)
+# DIRECTORIO DESTINO
+Path(DEST_DATASET_DIR).mkdir(parents=True, exist_ok=True)
 
-df_sampled, _ = train_test_split(df, train_size=0.2, stratify=df['label'], random_state=42)  # Ej: 20% del total
+# RECORRER CADA CLASE (ESTRATO)
+for class_name in os.listdir(ORIG_DATASET_DIR):
+    class_path = os.path.join(ORIG_DATASET_DIR, class_name)
+    if not os.path.isdir(class_path):
+        continue  # ignorar archivos sueltos
 
-num_classes = df_sampled['label'].nunique()
+    dest_class_path = os.path.join(DEST_DATASET_DIR, class_name)
+    Path(dest_class_path).mkdir(parents=True, exist_ok=True)
 
-# Resto del pipeline
-paths = df_sampled['path'].tolist()
-labels = df_sampled['label'].astype('category').cat.codes.tolist()
+    all_images = [f for f in os.listdir(class_path) if f.lower().endswith(('.png', '.jpg', '.jpeg'))]
+    selected_images = random.sample(all_images, min(SAMPLES_PER_CLASS, len(all_images)))
 
-def load_and_preprocess(path, label):
-    image = tf.io.read_file(path)
-    image = tf.image.decode_jpeg(image, channels=3)
-    image = tf.image.resize(image, IMG_SIZE)
-    image = preprocess_input(image)
-    return image, tf.one_hot(label, depth=num_classes)
+    for img_name in selected_images:
+        src_path = os.path.join(class_path, img_name)
+        dst_path = os.path.join(dest_class_path, img_name)
+        shutil.copy2(src_path, dst_path)
 
-ds = tf.data.Dataset.from_tensor_slices((paths, labels))
-ds = ds.map(load_and_preprocess).batch(BATCH_SIZE).prefetch(tf.data.AUTOTUNE)
-
-import matplotlib.pyplot as plt
-
-df_sampled['label'].value_counts().plot(kind='bar')
-plt.title("Distribución de clases en el submuestreo estratificado")
-plt.show()
+print(f"✅ Muestreo estratificado completado en '{DEST_DATASET_DIR}' con {SAMPLES_PER_CLASS} imágenes por clase.")

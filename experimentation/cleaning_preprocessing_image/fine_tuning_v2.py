@@ -6,7 +6,6 @@ from tensorflow.keras.utils import image_dataset_from_directory
 from sklearn.metrics import silhouette_score
 from sklearn.neighbors import NearestNeighbors
 import numpy as np
-import os
 
 tf.config.threading.set_intra_op_parallelism_threads(4)
 tf.config.threading.set_inter_op_parallelism_threads(2)
@@ -37,36 +36,27 @@ def load_datasets():
         shuffle=False
     )
 
-    return train_ds.prefetch(tf.data.AUTOTUNE), test_ds.prefetch(tf.data.AUTOTUNE)
+    train_ds = train_ds.map(lambda x, y: (preprocess_input(x), y)).prefetch(tf.data.AUTOTUNE)
+    test_ds = test_ds.map(lambda x, y: (preprocess_input(x), y)).prefetch(tf.data.AUTOTUNE)
+    return train_ds, test_ds
 
-# AUGMENTACIÓN
+# AUGMENTACIÓN SOLO PARA ENTRENAMIENTO
 data_augmentation = tf.keras.Sequential([
     layers.RandomFlip("horizontal"),
     layers.RandomRotation(0.05),
     layers.RandomZoom(height_factor=0.1, width_factor=0.1),
-    layers.Lambda(preprocess_input)
 ], name="data_augmentation")
 
 # MODELO BASE
-def build_model(trainable_layers=None):
-    base_model = EfficientNetB2(include_top=False, weights='imagenet', input_shape=(*IMG_SIZE, 3))
-    base_model.trainable = trainable_layers is not None
-
-    if trainable_layers:
-        for layer in base_model.layers[:-trainable_layers]:
-            layer.trainable = False
-
+def build_model(base_model):
     inputs = layers.Input(shape=(*IMG_SIZE, 3))
     x = data_augmentation(inputs)
-    x = base_model(x, training=False)
+    x = base_model(x, training=True)
     x = layers.GlobalAveragePooling2D()(x)
     x = layers.Dropout(0.3)(x)
     embeddings = layers.Dense(EMBEDDING_DIM, activation=None, name="embedding")(x)
     outputs = layers.Dense(10, activation='softmax')(embeddings)
-
-    model = models.Model(inputs, outputs)
-    model.summary()
-    return model
+    return models.Model(inputs, outputs)
 
 # CALLBACKS
 def get_callbacks(phase):
@@ -91,14 +81,19 @@ def train_model():
     train_ds, test_ds = load_datasets()
 
     # FASE 1: Feature Extraction
-    model = build_model(trainable_layers=None)
+    base_model = EfficientNetB2(include_top=False, weights='imagenet', input_shape=(*IMG_SIZE, 3))
+    base_model.trainable = False
+    model = build_model(base_model)
+    model.summary()
     model.compile(optimizer=tf.keras.optimizers.Adam(1e-3),
                   loss='sparse_categorical_crossentropy',
                   metrics=['accuracy'])
     model.fit(train_ds, validation_data=test_ds, epochs=EPOCHS_PHASE1, callbacks=get_callbacks(1), verbose=1)
 
     # FASE 2: Gradual Unfreezing desde block6 (estimado: 50 últimas capas)
-    model = build_model(trainable_layers=50)
+    for layer in base_model.layers[-50:]:
+        layer.trainable = True
+    model.summary()
     model.compile(optimizer=tf.keras.optimizers.Adam(),
                   loss='sparse_categorical_crossentropy',
                   metrics=['accuracy'])
@@ -106,7 +101,9 @@ def train_model():
     model.fit(train_ds, validation_data=test_ds, epochs=EPOCHS_PHASE2, callbacks=[lr_scheduler] + get_callbacks(2), verbose=1)
 
     # FASE 3: Full Fine-Tuning
-    model = build_model(trainable_layers=len(EfficientNetB2(weights='imagenet', include_top=False).layers))
+    # activamos TODO el modelo base (esto sobrescribe el gradual unfreezing de la fase 2)
+    base_model.trainable = True
+    model.summary()
     model.compile(optimizer=tf.keras.optimizers.Adam(1e-5),
                   loss='sparse_categorical_crossentropy',
                   metrics=['accuracy'])
@@ -118,8 +115,16 @@ def train_model():
 def evaluate_embeddings(model, dataset):
     try:
         feature_model = models.Model(inputs=model.input, outputs=model.get_layer("embedding").output)
-        embeddings = feature_model.predict(dataset, verbose=0)
-        labels = np.concatenate([y.numpy() for _, y in dataset])
+        embeddings = []
+        labels = []
+        for batch in dataset:
+            imgs, lbls = batch
+            emb = feature_model(imgs, training=False)
+            embeddings.append(emb.numpy())
+            labels.append(lbls.numpy())
+
+        embeddings = np.concatenate(embeddings)
+        labels = np.concatenate(labels)
 
         # Silhouette
         sil_score = silhouette_score(embeddings, labels)
