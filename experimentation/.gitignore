@@ -178,3 +178,5 @@ logs/
 wandb/
 
 storage/
+
+**.keras
