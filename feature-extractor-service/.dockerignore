@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.swp
+.venv/
+.env
+.git/
+.gitignore
+export_model.py
+requirements.txt
