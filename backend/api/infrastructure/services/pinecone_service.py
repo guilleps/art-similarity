@@ -71,6 +71,6 @@ def search_similar_images(query_embedding, top_k=3, image_id=None):
                     'similarity_percentage': similarity_percentage
                 })
     else:
-        print("No similar images found.")
+        print("No se encontraron imágenes similares.")
 
     return similar_images

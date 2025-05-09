@@ -1,4 +1,4 @@
-from api.infrastructure.services import upload_image_to_cloudinary, generate_embbeding, generate_id_for_image, store_embedding, search_similar_images
+from api.infrastructure.services import upload_image_to_cloudinary, generate_embbeding, generate_id_for_image, search_similar_images
 from api.domain.models import ImageAnalyzed, SimilarityResult
 
 class UploadImageUseCase:
@@ -9,8 +9,7 @@ class UploadImageUseCase:
         cloudinary_result = upload_image_to_cloudinary(image_bytes)
         embedding = generate_embbeding(image_bytes)
 
-        image_id = generate_id_for_image()
-        store_embedding(image_id, embedding, cloudinary_result['secure_url'])
+        image_id = generate_id_for_image() # no se almacena en pinecone
         similar_images = search_similar_images(embedding)
 
         analyzed_image = ImageAnalyzed.objects.create(
