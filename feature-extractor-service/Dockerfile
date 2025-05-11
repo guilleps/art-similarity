@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY export_model.py .
 
 # Ejecuta el script para exportar el modelo
-RUN python export_model.py && mv model /models/${MODEL_NAME}
+RUN mkdir -p /models/efficientnet/1 && python export_model.py
 
 # Etapa 2: Runtime con TensorFlow Serving
 FROM tensorflow/serving:2.19.0
