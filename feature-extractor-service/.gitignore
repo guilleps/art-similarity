@@ -9,10 +9,10 @@ venv*/
 env*/
 
 # TensorFlow SavedModel
-model/1/assets/
-model/1/fingerprint.pb
-model/1/saved_model.pb
-model/1/variables/
+**/model/**/assets/
+**/model/**/fingerprint.pb
+**/model/**/saved_model.pb
+**/model/**/variables/
 
 # Editor/IDE
 .vscode/
@@ -25,3 +25,6 @@ model/1/variables/
 # Jupyter or temp
 .ipynb_checkpoints/
 .DS_Store
+
+# Binaries
+**.keras
