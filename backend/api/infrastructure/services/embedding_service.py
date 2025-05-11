@@ -17,7 +17,7 @@ def generate_embbeding(img_bytes):
     try:
         print("📤 Enviando imagen a TensorFlow Serving...")
         # response = requests.post("http://localhost:8501/v1/models/efficientnet:predict", json=payload) # cnn externalizado
-        response = requests.post(f"{api_url}:predict", json=payload) # cnn externalizado
+        response = requests.post(f"{api_url}/v1/models/efficientnet:predict", json=payload) # cnn externalizado
         response.raise_for_status()
         embedding = response.json()['predictions'][0]
         print("✅ Embedding generado (primeros 5 valores):", embedding[:5])
