@@ -40,11 +40,17 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
 
         <div className="flex flex-wrap justify-center gap-4 md:gap-6">
           {similarities.map((similarity) => (
-            <div key={similarity.similar_image_id} className="w-full max-w-[250px] md:w-1/3">
+            <div
+              key={similarity.similar_image_id}
+              className="w-full max-w-[250px] md:w-1/3"
+            >
               <div className="group relative w-full">
                 <AspectRatio ratio={1 / 1}>
                   <div className="h-full w-full bg-[#1a2342]">
-                    <img src={similarity.similar_image_url} className="h-full w-full object-cover" />
+                    <img
+                      src={similarity.similar_image_url}
+                      className="h-full w-full object-cover"
+                    />
                   </div>
                 </AspectRatio>
                 <p className="mt-2 text-center text-base font-medium text-white">
