@@ -6,7 +6,10 @@ import ResultsCard from '@/components/ResultsCard'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import { applyBodyGradient, resetBodyGradient } from '@/lib/body-analysis'
-import { SimilarityResult, uploadImage } from '@/infrastructure/api/uploadService'
+import {
+  SimilarityResult,
+  uploadImage
+} from '@/infrastructure/api/uploadService'
 
 const Analysis = () => {
   const [currentStep, setCurrentStep] = useState<
