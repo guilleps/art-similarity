@@ -1,15 +1,13 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import UploadArea from '@/components/UploadArea'
-import ScanningAnimation from '@/components/ScanningAnimation'
-import ResultsCard from '@/components/ResultsCard'
-import Footer from '@/components/Footer'
-import Header from '@/components/Header'
+import UploadArea from '@/components/analysis/UploadArea'
+import ScanningAnimation from '@/components/analysis/ScanningAnimation'
+import ResultsCard from '@/components/analysis/ResultsCard'
+import Footer from '@/components/layout/Footer'
+import Header from '@/components/layout/Header'
 import { applyBodyGradient, resetBodyGradient } from '@/lib/body-analysis'
-import {
-  SimilarityResult,
-  uploadImage
-} from '@/infrastructure/api/uploadService'
+import { uploadImage } from '@/infrastructure/api/uploadService'
+import { SimilarityResult } from '@/domain/models'
 
 const Analysis = () => {
   const [currentStep, setCurrentStep] = useState<
@@ -30,14 +28,16 @@ const Analysis = () => {
     const state = location.state as { imagePreview?: string } | null
 
     if (params.get('from') === 'upload') {
-      if (state?.imagePreview) {
-        setImagePreview(state.imagePreview)
+      if (!state?.imagePreview) {
+        navigate('/')
+        return
       }
 
+      setImagePreview(state.imagePreview)
       setCurrentStep('scanning')
       setTimeout(() => setCurrentStep('results'), 6000)
     }
-  }, [location])
+  }, [location.state, navigate])
 
   useEffect(() => {
     handleNavigationFromUpload()
@@ -48,17 +48,22 @@ const Analysis = () => {
     setImagePreview(null)
   }
 
-  const handleImageUpload = async (file: File) => {
+  const handleImageUpload = async (file: File): Promise<boolean> => {
     try {
       const response = await uploadImage(file) // Llamada a la API de subida de imagen
-      if (response) {
+      if (response && response.similarities.length > 0) {
         // Actualizar el estado de similitudes con la respuesta de la API
         setSimilarities(response.similarities)
+        setImagePreview(URL.createObjectURL(file))
         setCurrentStep('scanning') // Cambiar al paso de escaneo
         setTimeout(() => setCurrentStep('results'), 6000)
+        return true
+      } else {
+        return false
       }
     } catch (error) {
-      console.error('Error al cargar la imagen:', error)
+      console.error(error)
+      return false
     }
   }
 

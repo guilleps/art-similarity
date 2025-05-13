@@ -1,5 +1,5 @@
-import LinkButton from './LinkButton'
-import Logo from './Logo'
+import LinkButton from '../shared/LinkButton'
+import Logo from '../shared/Logo'
 
 const Header = ({ completed }) => {
   return (

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Index from './pages/Index'
 import Analysis from './pages/Analysis'
 import NotFound from './pages/NotFound'
+import ToastProvider from './components/shared/ui/ToastProvider'
 
 const queryClient = new QueryClient()
 
@@ -17,6 +18,7 @@ const App = () => (
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
+    <ToastProvider />
   </QueryClientProvider>
 )
 
