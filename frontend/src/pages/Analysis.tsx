@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useState, useEffect, useCallback } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import UploadArea from '@/components/analysis/UploadArea'
@@ -8,6 +9,8 @@ import Header from '@/components/layout/Header'
 import { applyBodyGradient, resetBodyGradient } from '@/lib/body-analysis'
 import { uploadImage } from '@/infrastructure/api/uploadService'
 import { SimilarityResult } from '@/domain/models'
+import { toast } from "sonner";
+import React from 'react'
 
 const Analysis = () => {
   const [currentStep, setCurrentStep] = useState<
@@ -49,20 +52,41 @@ const Analysis = () => {
   }
 
   const handleImageUpload = async (file: File): Promise<boolean> => {
+    setImagePreview(URL.createObjectURL(file))
+    setCurrentStep('scanning')
+
     try {
-      const response = await uploadImage(file) // Llamada a la API de subida de imagen
+      const response = await uploadImage(file)
       if (response && response.similarities.length > 0) {
-        // Actualizar el estado de similitudes con la respuesta de la API
         setSimilarities(response.similarities)
-        setImagePreview(URL.createObjectURL(file))
-        setCurrentStep('scanning') // Cambiar al paso de escaneo
-        setTimeout(() => setCurrentStep('results'), 6000)
+        setCurrentStep('results')
         return true
       } else {
+        toast.custom(
+          (t) => (
+            React.createElement(
+              'div',
+              { className: 'bg-red-600 text-white px-4 py-2 rounded-md border' },
+              'No se encontraron similitudes'
+            )
+          ),
+          { duration: 6000 }
+        )
+        setCurrentStep('upload')
         return false
       }
     } catch (error) {
-      console.error(error)
+      toast.custom(
+        (t) => (
+          React.createElement(
+            'div',
+            { className: 'bg-red-600 text-white px-4 py-2 rounded-md border' },
+            'Error al analizar la imagen'
+          )
+        ),
+        { duration: 6000 }
+      )
+      setCurrentStep('upload')
       return false
     }
   }

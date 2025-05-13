@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react'
 
 interface ScanningAnimationProps {
@@ -19,29 +20,7 @@ const ScanningAnimation: React.FC<ScanningAnimationProps> = ({
   useEffect(() => {
     if (isComplete && onComplete) {
       onComplete()
-      return
     }
-
-    const totalDuration = 6000 // 6 segundos
-    const interval = 100 // intervalo 100ms
-    const totalSteps = totalDuration / interval
-    let currentStep = 0
-
-    const timer = setInterval(() => {
-      currentStep++
-      const newProgress = Math.min(
-        100,
-        Math.floor((currentStep / totalSteps) * 100)
-      )
-      setProgress(newProgress)
-
-      if (currentStep >= totalSteps) {
-        clearInterval(timer)
-        if (onComplete) onComplete()
-      }
-    }, interval)
-
-    return () => clearInterval(timer)
   }, [isComplete, onComplete])
 
   return (
@@ -66,26 +45,21 @@ const ScanningAnimation: React.FC<ScanningAnimationProps> = ({
 
         <div className="relative mx-auto mb-8 w-full max-w-md">
           {imagePreview && (
-            <div className="flex justify-center">
+            <div className="relative flex justify-center items-center">
               <img
                 src={imagePreview}
                 alt="Obra de arte cargada"
                 className="max-h-80 object-contain"
               />
+              
+              <div className="absolute inset-0 flex justify-center items-center">
+                <div className="w-12 h-12 border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+              </div>
             </div>
           )}
         </div>
 
-        {/* Barra de progreso */}
-        <div className="relative h-2 w-full max-w-md overflow-hidden rounded-full bg-[#1a2342]">
-          <div
-            className="h-full bg-gradient-to-r from-purple-500 to-blue-400"
-            style={{ width: `${progress}%`, transition: 'width 0.3s ease-out' }}
-          ></div>
-        </div>
-        <div className="mt-1 flex w-full max-w-md justify-end">
-          <span className="text-sm text-blue-400">{progress}%</span>
-        </div>
+        
       </div>
     </div>
   )

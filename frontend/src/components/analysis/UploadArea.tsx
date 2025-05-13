@@ -9,10 +9,9 @@ interface UploadAreaProps {
 
 // FC -> Componente funcional que recibe props explicitos
 const UploadArea: React.FC<UploadAreaProps> = ({ onBack, onUpload }) => {
+  const [processing, setProcessing] = useState(false)
   const [dragging, setDragging] = useState(false)
-  const [file, setFile] = useState<File | null>(null)
   const [preview, setPreview] = useState<string | null>(null)
-  const [loading, setLoading] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const navigate = useNavigate()
 
@@ -31,21 +30,16 @@ const UploadArea: React.FC<UploadAreaProps> = ({ onBack, onUpload }) => {
   }
 
   const handleFile = (file: File) => {
-    setFile(file)
-    const reader = new FileReader()
-
-    reader.onload = async (e) => {
-      if (!e.target?.result) return
-
-      const previewUrl = e.target.result as string
-      setPreview(previewUrl)
-
-      navigate('/analysis?from=upload', {
-        state: { imagePreview: previewUrl, file }
-      })
-    }
-
-    reader.readAsDataURL(file)
+    processFile(
+      file,
+      setProcessing,
+      setPreview,
+      (previewUrl) => {
+        navigate('/analysis', {
+          state: { imagePreview: previewUrl }
+        })
+      }
+    )
   }
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
