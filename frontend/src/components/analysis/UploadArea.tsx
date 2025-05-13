@@ -1,11 +1,10 @@
+import { useUploadHandler } from '@/hooks/useUploadHandler'
 import React, { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { toast } from 'sonner'
-import { uploadImage } from '@/infrastructure/api/uploadService'
 
 interface UploadAreaProps {
   onBack?: () => void
-  onUpload?: (file: File) => Promise<void>
+  onUpload?: (file: File) => Promise<boolean>
 }
 
 // FC -> Componente funcional que recibe props explicitos
@@ -16,6 +15,8 @@ const UploadArea: React.FC<UploadAreaProps> = ({ onBack, onUpload }) => {
   const [loading, setLoading] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const navigate = useNavigate()
+
+  const { processFile } = useUploadHandler(onUpload)
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault()
@@ -29,59 +30,33 @@ const UploadArea: React.FC<UploadAreaProps> = ({ onBack, onUpload }) => {
     setDragging(false)
   }
 
+  const handleFile = (file: File) => {
+    setFile(file)
+    const reader = new FileReader()
+
+    reader.onload = async (e) => {
+      if (!e.target?.result) return
+
+      const previewUrl = e.target.result as string
+      setPreview(previewUrl)
+
+      navigate('/analysis?from=upload', {
+        state: { imagePreview: previewUrl, file }
+      })
+    }
+
+    reader.readAsDataURL(file)
+  }
+
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files?.[0]) handleFile(e.target.files[0])
+  }
+
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault()
     e.stopPropagation()
     setDragging(false)
-
-    const files = e.dataTransfer.files
-    if (files.length > 0) {
-      processFile(files[0])
-    }
-  }
-
-  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      processFile(e.target.files[0])
-    }
-  }
-
-  const processFile = (file: File) => {
-    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png']
-    if (!allowedTypes.includes(file.type)) {
-      toast.error('Solo se permiten imágenes JPEG o PNG')
-      return
-    }
-
-    setFile(file)
-    setLoading(true)
-
-    const fileSizeMB = file.size / (1024 * 1024) // tamaño en MB
-    const simulatedDelay = Math.min(3000, 500 + fileSizeMB * 1000)
-
-    // Create a preview URL
-    const reader = new FileReader()
-    reader.onload = async (e) => {
-      if (e.target?.result) {
-        setPreview(e.target.result as string)
-
-        try {
-          if (onUpload) {
-            await onUpload(file) // Llamar al prop onUpload cuando la imagen se haya cargado
-            toast.success('Imagen subida con éxito')
-            navigate('/analysis?from=upload', {
-              state: { imagePreview: e.target.result as string }
-            })
-          }
-        } catch (err: any) {
-          toast.error('Error al subir la imagen. Inténtalo de nuevo.')
-          console.error(err)
-        } finally {
-          setLoading(false)
-        }
-      }
-    }
-    reader.readAsDataURL(file)
+    if (e.dataTransfer.files?.[0]) handleFile(e.dataTransfer.files[0])
   }
 
   const openFileDialog = () => {

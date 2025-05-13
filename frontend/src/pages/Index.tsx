@@ -1,6 +1,6 @@
-import Footer from '@/components/Footer'
-import Header from '@/components/Header'
-import LinkButton from '@/components/LinkButton'
+import Footer from '@/components/layout/Footer'
+import Header from '@/components/layout/Header'
+import LinkButton from '@/components/shared/LinkButton'
 
 const Index = () => {
   return (

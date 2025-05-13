@@ -1,6 +1,6 @@
 import React from 'react'
-import { AspectRatio } from '@/components/ui/aspect-ratio'
-import { SimilarityResult } from '@/infrastructure/api/uploadService'
+import { AspectRatio } from '@/components/shared/ui/aspect-ratio'
+import { SimilarityResult } from '@/domain/models'
 
 interface ResultsCardProps {
   imagePreview: string | null
