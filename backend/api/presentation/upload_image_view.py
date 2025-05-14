@@ -21,7 +21,7 @@ class UploadImageAPI(APIView):
         except EmbeddingModelError as e:
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         except Exception as e:
-            return Response({'error': 'Error interno inesperado'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'error': 'Error interno inesperado', 'context': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
         analyzed_image_serializer = ImageAnalyzedSerializer(analyzed_image)
         similarities_serializer = SimilarityResultSerializer(similarity_results, many=True)

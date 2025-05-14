@@ -1,23 +1,14 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Index from './pages/Index'
-import Analysis from './pages/Analysis'
-import NotFound from './pages/NotFound'
+import { QueryClient } from '@tanstack/react-query'
+import ToastProvider from './components/ui/ToastProvider'
+import AppProviders from './app/providers'
+import AppRouter from './app/router'
 
 const queryClient = new QueryClient()
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <BrowserRouter
-      future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
-    >
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/analysis" element={<Analysis />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
-  </QueryClientProvider>
+  <AppProviders>
+    <AppRouter />
+  </AppProviders>
 )
 
 export default App

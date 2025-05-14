@@ -16,4 +16,4 @@ model = Model(inputs=input_tensor, outputs=embedding_output, name="efficientnet_
 _ = model(tf.zeros((1, 224, 224, 3), dtype=tf.float32))
 
 # Guardar en formato SavedModel directamente con .save()
-model.export("model/1")
+model.export("/models/efficientnet/1")

@@ -112,7 +112,17 @@ export default {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' }
-        }
+        },
+        pixelBlink: {
+          '0%, 100%': { opacity: '0.05' },
+          '50%': { opacity: '0.3' },
+        },
+      },
+      gridTemplateColumns: {
+        20: 'repeat(20, 1fr)',
+      },
+      gridTemplateRows: {
+        20: 'repeat(20, 1fr)',
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -122,7 +132,8 @@ export default {
         'fade-in': 'fade-in 0.7s ease-out forwards',
         'fade-in-left': 'fade-in-left 0.7s ease-out forwards',
         'fade-in-right': 'fade-in-right 0.7s ease-out forwards',
-        float: 'float 6s ease-in-out infinite'
+        float: 'float 6s ease-in-out infinite',
+        pixelBlink: 'pixelBlink 1.5s ease-in-out infinite',
       },
       backgroundImage: {
         'hero-pattern':
