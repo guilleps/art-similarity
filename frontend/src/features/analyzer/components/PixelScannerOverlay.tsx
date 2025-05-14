@@ -1,5 +1,3 @@
-import React from "react";
-
 const PixelScannerOverlay = () => {
     const rows = 20
     const cols = 20

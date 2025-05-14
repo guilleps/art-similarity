@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { AspectRatio } from '@/components/shared/ui/aspect-ratio'
-import { SimilarityResult } from '@/domain/models'
+import { AspectRatio } from '@/components/ui/aspect-ratio'
+import type { Similarity } from '@/features/analyzer'
 
 interface ResultsCardProps {
   imagePreview: string | null
-  similarities: SimilarityResult[]
+  similarities: Similarity[]
 }
 
 // FC -> Componente funcional que recibe props explicitos
