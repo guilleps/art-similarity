@@ -8,3 +8,7 @@ __pycache__/
 .env
 .git/
 .gitignore
+
+# Directories
+b0/
+b2/

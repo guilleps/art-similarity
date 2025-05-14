@@ -1,19 +1,20 @@
+/* eslint-disable prettier/prettier */
 import { useState, useEffect, useCallback } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import UploadArea from '@/components/UploadArea'
-import ScanningAnimation from '@/components/ScanningAnimation'
-import ResultsCard from '@/components/ResultsCard'
-import Footer from '@/components/Footer'
-import Header from '@/components/Header'
+import Footer from '@/components/layout/Footer'
+import Header from '@/components/layout/Header'
 import { applyBodyGradient, resetBodyGradient } from '@/lib/body-analysis'
-import { SimilarityResult, uploadImage } from '@/infrastructure/api/uploadService'
+import { toast } from "sonner";
+import React from 'react'
+import { ResultsCard, ScanningAnimation, UploadArea, uploadImage } from '@/features/analyzer'
+import type { Similarity } from '@/features/analyzer'
 
 const Analysis = () => {
   const [currentStep, setCurrentStep] = useState<
     'upload' | 'scanning' | 'results'
   >('upload')
   const [imagePreview, setImagePreview] = useState<string | null>(null)
-  const [similarities, setSimilarities] = useState<SimilarityResult[]>([])
+  const [similarities, setSimilarities] = useState<Similarity[]>([])
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -27,14 +28,16 @@ const Analysis = () => {
     const state = location.state as { imagePreview?: string } | null
 
     if (params.get('from') === 'upload') {
-      if (state?.imagePreview) {
-        setImagePreview(state.imagePreview)
+      if (!state?.imagePreview) {
+        navigate('/')
+        return
       }
 
+      setImagePreview(state.imagePreview)
       setCurrentStep('scanning')
       setTimeout(() => setCurrentStep('results'), 6000)
     }
-  }, [location])
+  }, [location.state, navigate])
 
   useEffect(() => {
     handleNavigationFromUpload()
@@ -45,17 +48,43 @@ const Analysis = () => {
     setImagePreview(null)
   }
 
-  const handleImageUpload = async (file: File) => {
+  const handleImageUpload = async (file: File): Promise<boolean> => {
+    setImagePreview(URL.createObjectURL(file))
+    setCurrentStep('scanning')
+
     try {
-      const response = await uploadImage(file) // Llamada a la API de subida de imagen
-      if (response) {
-        // Actualizar el estado de similitudes con la respuesta de la API
+      const response = await uploadImage(file)
+      if (response && response.similarities.length > 0) {
         setSimilarities(response.similarities)
-        setCurrentStep('scanning') // Cambiar al paso de escaneo
-        setTimeout(() => setCurrentStep('results'), 6000)
+        setCurrentStep('results')
+        return true
+      } else {
+        toast.custom(
+          (t) => (
+            React.createElement(
+              'div',
+              { className: 'bg-red-600 text-white px-4 py-2 rounded-md border' },
+              'No se encontraron similitudes'
+            )
+          ),
+          { duration: 6000 }
+        )
+        setCurrentStep('upload')
+        return false
       }
     } catch (error) {
-      console.error('Error al cargar la imagen:', error)
+      toast.custom(
+        (t) => (
+          React.createElement(
+            'div',
+            { className: 'bg-red-600 text-white px-4 py-2 rounded-md border' },
+            'Error al analizar la imagen'
+          )
+        ),
+        { duration: 6000 }
+      )
+      setCurrentStep('upload')
+      return false
     }
   }
 
