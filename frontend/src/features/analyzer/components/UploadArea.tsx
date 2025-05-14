@@ -1,4 +1,4 @@
-import { useUploadHandler } from '@/hooks/useUploadHandler'
+import { useUploadHandler } from '@/features/analyzer/hooks/useUploadHandler'
 import React, { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 

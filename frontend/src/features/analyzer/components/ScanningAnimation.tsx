@@ -16,8 +16,6 @@ const ScanningAnimation: React.FC<ScanningAnimationProps> = ({
   imagePreview,
   onBack
 }) => {
-  const [progress, setProgress] = useState(0)
-
   useEffect(() => {
     if (isComplete && onComplete) {
       onComplete()

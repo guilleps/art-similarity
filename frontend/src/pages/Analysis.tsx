@@ -1,23 +1,20 @@
 /* eslint-disable prettier/prettier */
 import { useState, useEffect, useCallback } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import UploadArea from '@/components/analysis/UploadArea'
-import ScanningAnimation from '@/components/analysis/ScanningAnimation'
-import ResultsCard from '@/components/analysis/ResultsCard'
 import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
 import { applyBodyGradient, resetBodyGradient } from '@/lib/body-analysis'
-import { uploadImage } from '@/infrastructure/api/uploadService'
-import { SimilarityResult } from '@/domain/models'
 import { toast } from "sonner";
 import React from 'react'
+import { ResultsCard, ScanningAnimation, UploadArea, uploadImage } from '@/features/analyzer'
+import type { Similarity } from '@/features/analyzer'
 
 const Analysis = () => {
   const [currentStep, setCurrentStep] = useState<
     'upload' | 'scanning' | 'results'
   >('upload')
   const [imagePreview, setImagePreview] = useState<string | null>(null)
-  const [similarities, setSimilarities] = useState<SimilarityResult[]>([])
+  const [similarities, setSimilarities] = useState<Similarity[]>([])
   const location = useLocation()
   const navigate = useNavigate()
 

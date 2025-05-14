@@ -12,24 +12,27 @@ type ProcessFileFn = (
 export const useUploadHandler = (
   onUpload?: (file: File) => Promise<boolean>
 ): { processFile: ProcessFileFn } => {
-  const processFile: ProcessFileFn = async (file, setProcessing, setPreview, onSuccess) => {
+  const processFile: ProcessFileFn = async (
+    file,
+    setProcessing,
+    setPreview,
+    onSuccess
+  ) => {
     const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png']
     if (!allowedTypes.includes(file.type)) {
-      toast.custom(
-        (t) => (
-          React.createElement(
-            'div',
-            { className: 'bg-red-600 text-white px-4 py-2 rounded-md border' },
-            'Fomato inválido. Vuelva a intentarlo'
-          )
-        ),
+      toast.custom((t) => (
+        React.createElement(
+          'div',
+          { className: 'bg-red-600 text-white px-4 py-2 rounded-md border' },
+          'Fomato inválido. Vuelva a intentarlo'
+        )
+      ),
         { duration: 6000 }
       )
       return
     }
 
     const reader = new FileReader()
-
     reader.onload = async (e) => {
       if (!e.target?.result) return
 
@@ -43,19 +46,26 @@ export const useUploadHandler = (
           onSuccess(previewUrl)
         } else {
           setProcessing(false)
-          toast.custom(
-            (t) => (
-              React.createElement(
-                'div',
-                { className: 'bg-red-600 text-white px-4 py-2 rounded-md border' },
-                'Hubo un error crítico al subir tu imagen. Intenta nuevamente.'
-              )
-            ),
+          toast.custom((t) => (
+            React.createElement(
+              'div',
+              { className: 'bg-red-600 text-white px-4 py-2 rounded-md border' },
+              'Hubo un error crítico al subir tu imagen. Intenta nuevamente.'
+            )
+          ),
             { duration: 6000 }
           )
         }
       } catch {
-        toast.error('Error inesperado.')
+        toast.custom((t) => (
+          React.createElement(
+            'div',
+            { className: 'bg-red-600 text-white px-4 py-2 rounded-md border' },
+            'Hubo un error crítico al subir tu imagen. Intenta nuevamente.'
+          )
+        ),
+          { duration: 6000 }
+        )
       }
     }
 
