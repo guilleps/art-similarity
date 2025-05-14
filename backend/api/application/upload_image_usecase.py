@@ -6,8 +6,8 @@ class UploadImageUseCase:
         image_bytes = image_file.read()
         image_file.seek(0)
 
-        cloudinary_result = upload_image_to_cloudinary(image_bytes)
         embedding = generate_embbeding(image_bytes)
+        cloudinary_result = upload_image_to_cloudinary(image_bytes)
 
         image_id = generate_id_for_image() # no se almacena en pinecone
         similar_images = search_similar_images(embedding)
