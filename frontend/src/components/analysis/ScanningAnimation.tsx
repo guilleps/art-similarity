@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react'
+import PixelScannerOverlay from './PixelScannerOverlay'
 
 interface ScanningAnimationProps {
   isComplete?: boolean
@@ -43,17 +44,16 @@ const ScanningAnimation: React.FC<ScanningAnimationProps> = ({
           busca de similitudes con otras obras.
         </p>
 
-        <div className="relative mx-auto mb-8 w-full max-w-md">
+        <div className="relative flex justify-center items-center">
           {imagePreview && (
-            <div className="relative flex justify-center items-center">
+            <div className="relative max-h-80 w-auto">
               <img
                 src={imagePreview}
                 alt="Obra de arte cargada"
-                className="max-h-80 object-contain"
+                className="block max-h-80 object-contain"
               />
-              
-              <div className="absolute inset-0 flex justify-center items-center">
-                <div className="w-12 h-12 border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+              <div className="absolute inset-0">
+                <PixelScannerOverlay />
               </div>
             </div>
           )}
