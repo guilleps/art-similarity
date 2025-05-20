@@ -2,7 +2,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from api.application import UploadBatchUseCase
-from api.domain.serializers import BatchResultSerializer
 
 class UploadBatchAPI(APIView):
     def post(self, request, *args, **kwargs):
@@ -12,17 +11,11 @@ class UploadBatchAPI(APIView):
 
         try:
             use_case = UploadBatchUseCase()
-            analyzed_images = use_case.execute(image_files)
-            structured_data = [
-                { "analyzed_image": img, "similarities": sims }
-                for img, sims in analyzed_images
-            ]
+            results = use_case.execute(image_files)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-        serializer = BatchResultSerializer(structured_data, many=True)
-
         return Response({
-            'results': serializer.data
+            'results': results
         }, status=status.HTTP_201_CREATED)
     
