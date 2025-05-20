@@ -9,29 +9,17 @@ class UploadBatchUseCase:
             image_bytes = image_file.read()
             image_file.seek(0)
 
-            cloudinary_result = upload_image_to_cloudinary(image_bytes)
             embedding = generate_embbeding(image_bytes)
+            cloudinary_result = upload_image_to_cloudinary(image_bytes)
 
             image_id = generate_id_for_image()
             store_embedding(image_id, embedding, cloudinary_result['secure_url'])
-            similar_images = search_similar_images(embedding)
 
-            analyzed_image = ImageAnalyzed.objects.create(
-                id=image_id,
-                url=cloudinary_result['secure_url']
-            )
-
-            similarity_results = []
-            for sim in similar_images:
-                similarity = SimilarityResult(
-                    analyzed_image=analyzed_image,
-                    similar_image_id=sim.get('id'),
-                    similar_image_url=sim.get('image_url'),
-                    similarity_percentage=sim.get('similarity_percentage')
-                )
-                similarity_results.append(similarity)
-
-            SimilarityResult.objects.bulk_create(similarity_results)
-            results.append((analyzed_image, similarity_results))
+            results.append({
+                "analyzed_image": {
+                    "id": image_id,
+                    "url": cloudinary_result['secure_url']
+                }
+            })
 
         return results
