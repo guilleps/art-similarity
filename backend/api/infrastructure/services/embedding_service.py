@@ -15,12 +15,12 @@ def generate_embbeding(img_bytes):
     payload = { "instances": [img_array.tolist()] }
 
     try:
-        # print("📤 Enviando imagen a TensorFlow Serving...")
+        print("📤 Enviando imagen a TensorFlow Serving...")
         # response = requests.post("http://localhost:8501/v1/models/efficientnet:predict", json=payload) # cnn externalizado
         response = requests.post(f"{api_url}/v1/models/efficientnet:predict", json=payload) # cnn externalizado
         response.raise_for_status()
         embedding = response.json()['predictions'][0]
-        # print("✅ Embedding generado (primeros 5 valores):", embedding[:5])
+        print("✅ Embedding generado (primeros 5 valores):", embedding[:5])
         return embedding
     except Exception as e:
         print("❌ Error al generar embedding:", e)
