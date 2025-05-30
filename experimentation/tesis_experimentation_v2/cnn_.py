@@ -14,9 +14,9 @@ from utils_transformations import (
     apply_hsv_channels
 )
 
-INPUT_DIR = "images/1"
-TRANSFORMED_DIR = "images/1/transformed_images"
-EMBEDDINGS_DIR = "images/1/embeddings"
+INPUT_DIR = "images/5"
+TRANSFORMED_DIR = "images/5/transformed_images"
+EMBEDDINGS_DIR = "images/5/embeddings"
 
 def save_transformed_images(image_path, output_base_dir):
     image = cv2.imread(image_path)

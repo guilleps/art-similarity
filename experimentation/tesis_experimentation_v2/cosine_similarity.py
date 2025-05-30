@@ -1,11 +1,8 @@
 import os
 import json
-import torch
 from sklearn.metrics.pairwise import cosine_similarity
-from transformers import CLIPProcessor, CLIPModel
-from tqdm import tqdm
 
-# Función para cargar embeddings de los archivos JSON
+# Cargar todos los embeddings de una carpeta
 def load_embeddings_from_folder(folder_path):
     embeddings = {}
     for filename in os.listdir(folder_path):
@@ -14,39 +11,54 @@ def load_embeddings_from_folder(folder_path):
                 embeddings[filename] = json.load(f)
     return embeddings
 
-# Función para comparar similitud coseno entre dos embeddings
+# Calcular similitud coseno entre dos vectores
 def compare_embeddings(embedding1, embedding2):
     return cosine_similarity([embedding1], [embedding2])[0][0]
 
-# Función para comparar los embeddings 'heatmap' de dos imágenes
-def compare_heatmap_embeddings(image1_folder, image2_folder, embeddings_base_folder):
-    # Cargar los embeddings de los filtros
+# Extraer la clave de transformación a partir del nombre de archivo
+def get_transform_key(filename):
+    parts = filename.split("_embedding")[0].split("_")
+    if "hsv" in filename:
+        return f"hsv_{parts[-1]}"
+    elif "color_map" in filename:
+        return "heat_color_map"
+    elif "contrast" in filename:
+        return "contrast"
+    elif "texture" in filename:
+        return "texture"
+    else:
+        return "unknown"
+
+# Comparar todos los embeddings entre dos carpetas
+def compare_all_embeddings(image1_folder, image2_folder, output_json_path):
     image1_embeddings = load_embeddings_from_folder(image1_folder)
     image2_embeddings = load_embeddings_from_folder(image2_folder)
 
-    # Asegúrate de que el nombre del filtro sea "color_map_embedding.json"
-    image1_heatmap = image1_embeddings.get("antoine-blanchard_boulevard-de-la-madeleine-2_color_map_embedding.json")
-    image2_heatmap = image2_embeddings.get("antoine-blanchard_boulevard-de-la-madeleine-9_color_map_embedding.json")
+    results = {}
 
-    if not image1_heatmap or not image2_heatmap:
-        print("No se encontraron los embeddings de heatmap para alguna de las imágenes.")
-        return
+    for key1, emb1 in image1_embeddings.items():
+        transform_key = get_transform_key(key1)
 
-    # Calcular similitud coseno entre los embeddings de heatmap
-    similarity = compare_embeddings(image1_heatmap, image2_heatmap)
-    print(f"Similitud coseno entre 'heatmap' de imagen 1 y imagen 2: {similarity:.4f}")
-    return similarity
+        for key2, emb2 in image2_embeddings.items():
+            if get_transform_key(key2) == transform_key:
+                similarity = compare_embeddings(emb1, emb2)
+                results[transform_key] = {
+                    "files": [key1, key2],
+                    "similarity": round(similarity, 4)
+                }
 
-# Función principal para realizar la comparación entre las dos carpetas de imágenes
-def run_comparisons():    
-    # Ubicaciones de los embeddings de las dos imágenes (las rutas completas)
-    image1_folder = "C:/workspace/deep_learning/filters/images/1/embeddings/antoine-blanchard_boulevard-de-la-madeleine-2"
-    image2_folder = "C:/workspace/deep_learning/filters/images/1/embeddings/antoine-blanchard_boulevard-de-la-madeleine-9"
+    with open(output_json_path, "w") as f:
+        json.dump(results, f, indent=4)
 
-    # Comparar los embeddings de heatmap entre las dos imágenes
-    compare_heatmap_embeddings(image1_folder, image2_folder, "C:/workspace/deep_learning/filters/images/1/embeddings")
+    print(f"\n✅ Comparaciones guardadas en: {output_json_path}")
+
+# Ejecutar comparación
+def run_comparisons():
+    image1_folder = r"C:\workspace\tesis_project\experimentation\tesis_experimentation_v2\images\5\embeddings\albert-julius-olsson_a-song-of-the-sea"
+    image2_folder = r"C:\workspace\tesis_project\experimentation\tesis_experimentation_v2\images\5\embeddings\albert-julius-olsson_storm-cloud"
+    output_json_path = r"C:\workspace\tesis_project\experimentation\tesis_experimentation_v2\images\5\embeddings\resultados_similitud.json"
+
+    compare_all_embeddings(image1_folder, image2_folder, output_json_path)
 
 if __name__ == "__main__":
     run_comparisons()
-
-
