@@ -1,0 +1,44 @@
+{
+    "heat_color_map": {
+        "files": [
+            "albert-julius-olsson_rum-from-eigg-inner-hebrides_color_map_embedding.json",
+            "arkhip-kuindzhi_red-sunset-1_color_map_embedding.json"
+        ],
+        "similarity": 0.8568
+    },
+    "contrast": {
+        "files": [
+            "albert-julius-olsson_rum-from-eigg-inner-hebrides_contrast_embedding.json",
+            "arkhip-kuindzhi_red-sunset-1_contrast_embedding.json"
+        ],
+        "similarity": 0.6928
+    },
+    "hsv_hue": {
+        "files": [
+            "albert-julius-olsson_rum-from-eigg-inner-hebrides_hsv_hue_embedding.json",
+            "arkhip-kuindzhi_red-sunset-1_hsv_hue_embedding.json"
+        ],
+        "similarity": 0.8546
+    },
+    "hsv_saturation": {
+        "files": [
+            "albert-julius-olsson_rum-from-eigg-inner-hebrides_hsv_saturation_embedding.json",
+            "arkhip-kuindzhi_red-sunset-1_hsv_saturation_embedding.json"
+        ],
+        "similarity": 0.8358
+    },
+    "hsv_value": {
+        "files": [
+            "albert-julius-olsson_rum-from-eigg-inner-hebrides_hsv_value_embedding.json",
+            "arkhip-kuindzhi_red-sunset-1_hsv_value_embedding.json"
+        ],
+        "similarity": 0.8579
+    },
+    "texture": {
+        "files": [
+            "albert-julius-olsson_rum-from-eigg-inner-hebrides_texture_embedding.json",
+            "arkhip-kuindzhi_red-sunset-1_texture_embedding.json"
+        ],
+        "similarity": 0.9146
+    }
+}
