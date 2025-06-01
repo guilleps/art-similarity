@@ -4,4 +4,4 @@ from api.domain.models import ImageAnalyzed
 class ImageAnalyzedSerializer(serializers.ModelSerializer):
     class Meta:
         model = ImageAnalyzed
-        fields = ['id', 'url', 'created_at']
+        fields = ['id', 'url', 'created_at', 'processing_time']
