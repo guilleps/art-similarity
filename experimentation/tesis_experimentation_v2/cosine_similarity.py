@@ -1,14 +1,23 @@
 import os
 import json
 from sklearn.metrics.pairwise import cosine_similarity
+import logging
+from logger_config import setup_logging
+
+setup_logging()
+logger = logging.getLogger(__name__)
 
 # Cargar todos los embeddings de una carpeta
 def load_embeddings_from_folder(folder_path):
     embeddings = {}
-    for filename in os.listdir(folder_path):
-        if filename.endswith("_embedding.json"):
-            with open(os.path.join(folder_path, filename), "r") as f:
-                embeddings[filename] = json.load(f)
+    try:
+        for filename in os.listdir(folder_path):
+            if filename.endswith("_embedding.json"):
+                with open(os.path.join(folder_path, filename), "r") as f:
+                    embeddings[filename] = json.load(f)
+        logger.info(f"Cargados {len(embeddings)} embeddings desde {folder_path}")
+    except Exception as e:
+        logger.error(f"Error al cargar embeddings desde {folder_path}: {e}")
     return embeddings
 
 # Calcular similitud coseno entre dos vectores
@@ -42,6 +51,7 @@ def compare_all_embeddings(image1_folder, image2_folder, output_json_path):
         for key2, emb2 in image2_embeddings.items():
             if get_transform_key(key2) == transform_key:
                 similarity = compare_embeddings(emb1, emb2)
+                logger.info(f"Similitud coseno entre '{transform_key}' de imagen 1 y 2: {similarity:.4f}")
                 results[transform_key] = {
                     "files": [key1, key2],
                     "similarity": round(similarity, 4)
@@ -50,15 +60,15 @@ def compare_all_embeddings(image1_folder, image2_folder, output_json_path):
     with open(output_json_path, "w") as f:
         json.dump(results, f, indent=4)
 
-    print(f"\n✅ Comparaciones guardadas en: {output_json_path}")
+    logger.info(f"\nComparaciones guardadas en: {output_json_path}")
 
 # Ejecutar comparación
-def run_comparisons():
-    image1_folder = r"C:\workspace\tesis_project\experimentation\tesis_experimentation_v2\images\5\embeddings\albert-julius-olsson_a-song-of-the-sea"
-    image2_folder = r"C:\workspace\tesis_project\experimentation\tesis_experimentation_v2\images\5\embeddings\albert-julius-olsson_storm-cloud"
-    output_json_path = r"C:\workspace\tesis_project\experimentation\tesis_experimentation_v2\images\5\embeddings\resultados_similitud.json"
+# def run_comparisons():
+#     image1_folder = r"C:\workspace\tesis_project\experimentation\tesis_experimentation_v2\images\5\embeddings\albert-julius-olsson_a-song-of-the-sea"
+#     image2_folder = r"C:\workspace\tesis_project\experimentation\tesis_experimentation_v2\images\5\embeddings\albert-julius-olsson_storm-cloud"
+#     output_json_path = r"C:\workspace\tesis_project\experimentation\tesis_experimentation_v2\images\5\embeddings\resultados_similitud.json"
 
-    compare_all_embeddings(image1_folder, image2_folder, output_json_path)
+#     compare_all_embeddings(image1_folder, image2_folder, output_json_path)
 
-if __name__ == "__main__":
-    run_comparisons()
+# if __name__ == "__main__":
+#     run_comparisons()

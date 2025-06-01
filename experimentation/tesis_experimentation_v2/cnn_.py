@@ -13,10 +13,11 @@ from utils_transformations import (
     apply_color_distribution_map,
     apply_hsv_channels
 )
+import logging
+from logger_config import setup_logging
 
-INPUT_DIR = "images/5"
-TRANSFORMED_DIR = "images/5/transformed_images"
-EMBEDDINGS_DIR = "images/5/embeddings"
+setup_logging()
+logger = logging.getLogger(__name__)
 
 def save_transformed_images(image_path, output_base_dir):
     image = cv2.imread(image_path)
@@ -63,14 +64,14 @@ def process_transformed_folder(transformed_dir, embeddings_output_dir, model, pr
         with open(os.path.join(embeddings_output_dir, f"{name_wo_ext}_embedding.json"), "w") as f:
             json.dump(embedding, f)
 
-def run_pipeline():
+def run_pipeline(input_dir, transformed_dir, embeddings_dir):
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32").to(device)
     processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
 
     image_paths = [
-        os.path.join(INPUT_DIR, f)
-        for f in os.listdir(INPUT_DIR)
+        os.path.join(input_dir, f)
+        for f in os.listdir(input_dir)
         if f.lower().endswith((".jpg", ".jpeg", ".png"))
     ]
 
@@ -78,12 +79,12 @@ def run_pipeline():
         name = os.path.splitext(os.path.basename(image_path))[0]
 
         # Paso 1: Transformar
-        transformed_subfolder = save_transformed_images(image_path, TRANSFORMED_DIR)
+        transformed_subfolder = save_transformed_images(image_path, transformed_dir)
 
         # Paso 2: Extraer embeddings
-        embedding_subfolder = os.path.join(EMBEDDINGS_DIR, name)
+        embedding_subfolder = os.path.join(embeddings_dir, name)
         process_transformed_folder(transformed_subfolder, embedding_subfolder, model, processor, device)
 
 
-if __name__ == "__main__":
-    run_pipeline()
+# if __name__ == "__main__":
+#     run_pipeline()
