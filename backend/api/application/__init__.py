@@ -1,2 +1,2 @@
-from .upload_image_usecase import UploadImageUseCase
-from .upload_batch_usecase import UploadBatchUseCase
+from .upload_transformed_images_usecase import UploadTransformedImagesUseCase
+from .get_similarity_result_usecase import GetSimilarityResultUseCase
