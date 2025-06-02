@@ -1,2 +1,2 @@
-from .upload_image_view import UploadImageAPI
-from .upload_batch_view import UploadBatchAPI
+from .upload_transform_view import UploadTransformedImagesAPI
+from .get_similarity_view import GetSimilarityResultAPI
