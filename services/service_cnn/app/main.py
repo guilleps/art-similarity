@@ -6,6 +6,7 @@ from app.model_clip import generate_embedding
 from app.cloudinary_config import upload_file_to_cloudinary
 from io import BytesIO
 from PIL import Image
+import uuid
 
 class SimpleHandler(BaseHTTPRequestHandler):
     def do_POST(self):
@@ -26,12 +27,13 @@ class SimpleHandler(BaseHTTPRequestHandler):
         embedding = generate_embedding(temp_image_path)
 
         # Guardar embedding en JSON
-        json_path = "/tmp/uploaded_embedding.json"
+        embedding_id = str(uuid.uuid4())
+        json_path = f"/tmp/embedding_{embedding_id}.json"
         with open(json_path, "w") as f:
             json.dump(embedding, f)
 
         # Subir JSON a Cloudinary
-        secure_url = upload_file_to_cloudinary(json_path)
+        secure_url = upload_file_to_cloudinary(json_path, f"embedding_{embedding_id}.json")
 
         # Responder con URL del embedding
         self.send_response(200)
