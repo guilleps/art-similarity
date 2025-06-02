@@ -3,11 +3,9 @@ import os
 
 from api.infrastructure.exceptions import EmbeddingModelError
 
-api_url = os.environ.get("CNN_URL")
-
 def generate_embbeding(img_bytes):
     try:
-        response = requests.post(f"{api_url}/embed", data=img_bytes, headers={"Content-Type": "application/octet-stream"})
+        response = requests.post(f"http://localhost:8002/embed", data=img_bytes, headers={"Content-Type": "image/jpeg"})
         response.raise_for_status()
         return response.json()["embedding_url"]
     except Exception as e:

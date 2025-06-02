@@ -14,6 +14,7 @@ class TransformedImageEmbedding(models.Model):
     comparison = models.ForeignKey(ImageComparisonSession, on_delete=models.CASCADE, related_name="embeddings")
     image_index = models.IntegerField()  # 1 o 2
     transform_type = models.CharField(max_length=20, choices=TRANSFORM_CHOICES)
+    image_url = models.URLField()
     embedding_url = models.URLField()
     filename = models.CharField(max_length=255)
 

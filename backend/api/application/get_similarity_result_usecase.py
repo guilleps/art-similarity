@@ -8,24 +8,39 @@ class GetSimilarityResultUseCase:
         except ObjectDoesNotExist:
             raise ValueError(f"No se encontró la sesión de comparación con ID: {comparison_id}")
 
-        # Embeddings: Agrupar por image_index y transform_type
         embeddings = TransformedImageEmbedding.objects.filter(comparison=session)
         image_dict = {1: {}, 2: {}}
 
+        # 1. Agrupar transformaciones por imagen
         for emb in embeddings:
-            image_dict[emb.image_index][emb.transform_type] = emb.filename
+            if emb.transform_type == "original_image":
+                image_dict[emb.image_index]["original_image"] = emb.embedding_url
+            else:
+                image_dict[emb.image_index][emb.transform_type] = {
+                    "image_transformed": emb.image_url,
+                    # "embedding": emb.embedding_url
+                }
 
-        # Similarities: Agrupar por transform_type
+        # 2. Agrupar similitudes
         similarities = SimilarityMetricResult.objects.filter(comparison=session)
         similarity_block = {}
 
         for sim in similarities:
+            emb1 = TransformedImageEmbedding.objects.filter(
+                comparison=session, embedding_url=sim.file_1
+            ).first()
+            emb2 = TransformedImageEmbedding.objects.filter(
+                comparison=session, embedding_url=sim.file_2
+            ).first()
+
             similarity_block[sim.transform_type] = {
-                "files": [sim.file_1, sim.file_2],
+                "files": [
+                    emb1.image_url if emb1 else "",
+                    emb2.image_url if emb2 else ""
+                ],
                 "similarity": round(sim.similarity_score, 4)
             }
 
-        # Armar respuesta
         return {
             "imagen_1": image_dict[1],
             "imagen_2": image_dict[2],
