@@ -1,2 +1,3 @@
 from .upload_transform_view import UploadTransformedImagesAPI
 from .get_similarity_view import GetSimilarityResultAPI
+from .random_comparison_view import RandomComparisonSessionAPI

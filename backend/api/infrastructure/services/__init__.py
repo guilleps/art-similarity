@@ -1,3 +1,2 @@
 from .cloudinary_service import upload_image_to_cloudinary, upload_file_to_cloudinary
-from .embedding_service import generate_embbeding
-from .pinecone_service import store_embedding, search_similar_images
+from .embedding_service import generate_embedding

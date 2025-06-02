@@ -1,13 +1,11 @@
 import os
 import requests
-import logging
 from sklearn.metrics.pairwise import cosine_similarity
 import json
 from api.domain.models import ImageComparisonSession, TransformedImageEmbedding, SimilarityMetricResult
-from api.infrastructure.services import upload_image_to_cloudinary, generate_embbeding
+from api.infrastructure.services import upload_image_to_cloudinary, generate_embedding
 
-logger = logging.getLogger(__name__)
-
+TRANSFORM_SERVICE_URL = os.environ.get("TRANSFORM_SERVICE_URL")
 
 class UploadTransformedImagesUseCase:
     def execute(self, local_path: str) -> str:
@@ -18,7 +16,7 @@ class UploadTransformedImagesUseCase:
                 raise ValueError("La carpeta debe contener exactamente 2 imágenes")
             image_files.sort()
         except Exception as e:
-            logger.exception("Error al buscar imágenes en la carpeta local")
+            print("Error al buscar imágenes en la carpeta local")
             raise
 
         image_files.sort()  # orden alfabético para tener imagen_1 e imagen_2
@@ -31,14 +29,14 @@ class UploadTransformedImagesUseCase:
                 result = upload_image_to_cloudinary(full_path)
                 original_urls.append(result["secure_url"])
         except Exception as e:
-            logger.exception("Error al subir imágenes originales a Cloudinary")
+            print("Error al subir imágenes originales a Cloudinary")
             raise
 
         try:
             # 3. Crear sesión de comparación
             session = ImageComparisonSession.objects.create()
         except Exception as e:
-            logger.exception("Error al crear la sesión de comparación")
+            print("Error al crear la sesión de comparación")
             raise
 
         try:
@@ -52,19 +50,19 @@ class UploadTransformedImagesUseCase:
                     embedding_url=url
                 )
         except Exception as e:
-            logger.exception("Error al guardar las imágenes originales en la BD")
+            print("Error al guardar las imágenes originales en la BD")
             raise
 
         try:
-            # 5. Llamar al microservicio externo
-            response = requests.post("http://localhost:8001/transform", json={
+            # 5. Llamar al servicio de transformacion
+            response = requests.post(f"{TRANSFORM_SERVICE_URL}/transform", json={
                 "image_1_url": original_urls[0],
                 "image_2_url": original_urls[1]
             })
             response.raise_for_status()
             data = response.json()
         except Exception as e:
-            logger.exception("Error en la llamada al microservicio de transformaciones")
+            print("Error en la llamada al microservicio de transformaciones")
             raise
 
         embedding_lookup = {1: {}, 2: {}}  # image_index => {transform_type: embedding_url}
@@ -75,7 +73,7 @@ class UploadTransformedImagesUseCase:
                     continue
 
                 image_bytes = requests.get(image_url).content
-                embedding_url = generate_embbeding(image_bytes)  # microservicio CNN CLIP
+                embedding_url = generate_embedding(image_bytes)  # microservicio CNN CLIP
 
                 TransformedImageEmbedding.objects.create(
                     comparison=session,
@@ -114,8 +112,8 @@ class UploadTransformedImagesUseCase:
                     file_2=url_2
                 )
         except Exception as e:
-            logger.exception("Error al calcular o guardar la similitud de transformaciones")
+            print("Error al calcular o guardar la similitud de transformaciones")
             raise
 
-        logger.info(f"Sesión completada correctamente: {session.id}")
+        print(f"Sesión completada correctamente: {session.id}")
         return str(session.id)

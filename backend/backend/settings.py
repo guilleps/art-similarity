@@ -129,4 +129,3 @@ cloudinary.config(
     secure=True
 )
 
-PINECONE_API_KEY = os.environ.get("PINECONE_API_KEY")
