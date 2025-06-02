@@ -9,16 +9,13 @@ cloudinary.config(
     secure=True
 )
 
-def upload_image(image_path):
-    result = cloudinary.uploader.upload(image_path)
-    return result["secure_url"]
-
-def upload_file_to_cloudinary(file_path):
+def upload_file_to_cloudinary(file_path, public_id):
     result = cloudinary.uploader.upload(
         file_path,
+        public_id=public_id,
         resource_type="raw", #  .json
-        use_filename=True,
+        use_filename=False,
         unique_filename=False,
-        overwrite=True
+        overwrite=False
     )
     return result["secure_url"]
