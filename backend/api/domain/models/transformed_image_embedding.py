@@ -1,19 +1,30 @@
 from django.db import models
 from .comparison_session import ImageComparisonSession
 
-class TransformedImageEmbedding(models.Model):
-    TRANSFORM_CHOICES = [
-        ('contrast', 'Contrast'),
-        ('texture', 'Texture'),
-        ('heat_color_map', 'Heat Color Map'),
-        ('hsv_hue', 'HSV Hue'),
-        ('hsv_saturation', 'HSV Saturation'),
-        ('hsv_value', 'HSV Value'),
-    ]
+class TransformType(models.TextChoices):
+    ORIGINAL = "original_image", "Original"
+    COLOR = "color", "Color"
+    CONTRAST = "contrast", "Contraste"
+    TEXTURE = "texture", "Textura"
+    BRUSH = "brush", "Pincel"
+    HEATMAP = "heatmap", "Mapa de calor"
 
-    comparison = models.ForeignKey(ImageComparisonSession, on_delete=models.CASCADE, related_name="embeddings")
-    image_index = models.IntegerField()  # 1 o 2
-    transform_type = models.CharField(max_length=20, choices=TRANSFORM_CHOICES)
+class TransformedImageEmbedding(models.Model):
+    comparison = models.ForeignKey(
+        ImageComparisonSession, 
+        on_delete=models.CASCADE,
+        verbose_name="Comparison Session",
+        help_text="The comparison session this transformed image embedding belongs to."
+    )
+    image_index = models.PositiveIntegerField(
+        verbose_name="Image Index",
+        help_text="1 for the first image, 2 for the second image."
+    )  # 1 o 2
+    transform_type = models.CharField(
+        max_length=50, 
+        choices=TransformType.choices,
+        default=TransformType.ORIGINAL
+    )
     image_url = models.URLField()
     embedding_url = models.URLField()
     filename = models.CharField(max_length=255)
