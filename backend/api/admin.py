@@ -1,6 +1,7 @@
 from django.contrib import admin
-from api.domain.models import ImageAnalyzed, SimilarityResult
+from api.domain.models import ImageComparisonSession,TransformedImageEmbedding, SimilarityMetricResult
 
 # Register your models here.
-admin.site.register(ImageAnalyzed)
-admin.site.register(SimilarityResult)
+admin.site.register(ImageComparisonSession)
+admin.site.register(TransformedImageEmbedding)
+admin.site.register(SimilarityMetricResult)

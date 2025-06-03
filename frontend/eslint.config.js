@@ -1,59 +1,29 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import prettier from 'eslint-config-prettier'
-import prettierPlugin from 'eslint-plugin-prettier'
-import parser from '@typescript-eslint/parser'
+import js from "@eslint/js";
+import globals from "globals";
+import reactHooks from "eslint-plugin-react-hooks";
+import reactRefresh from "eslint-plugin-react-refresh";
+import tseslint from "typescript-eslint";
 
-export default [
-  // Configuración de ESLint para JavaScript y reglas comunes
+export default tseslint.config(
+  { ignores: ["dist"] },
   {
-    files: ['**/*.js'],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    files: ["**/*.{ts,tsx}"],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser
+      globals: globals.browser,
     },
     plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh
+      "react-hooks": reactHooks,
+      "react-refresh": reactRefresh,
     },
     rules: {
-      'react/prop-types': 'off',
       ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true }
+      "react-refresh/only-export-components": [
+        "warn",
+        { allowConstantExport: true },
       ],
-      '@typescript-eslint/no-unused-vars': 'off'
-    }
-  },
-
-  // Configuración de ESLint para TypeScript
-  {
-    files: ['**/*.{ts,tsx}'],
-    languageOptions: {
-      parser: parser,
-      ecmaVersion: 2020,
-      globals: globals.browser
+      "@typescript-eslint/no-unused-vars": "off",
     },
-    plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
-      prettier: prettierPlugin // Configuración de Prettier
-    },
-    rules: {
-      'react/prop-types': 'off',
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true }
-      ],
-      '@typescript-eslint/no-unused-vars': 'off',
-      'prettier/prettier': ['error']
-    }
-  },
-
-  // Configuración de Prettier
-  prettier
-]
+  }
+);

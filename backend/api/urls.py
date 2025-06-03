@@ -1,9 +1,8 @@
-
 from django.urls import path
-from api.presentation import UploadImageAPI, UploadBatchAPI
+from api.presentation import UploadTransformedImagesAPI, GetSimilarityResultAPI, RandomComparisonSessionAPI
 
 urlpatterns = [
-    path('api/upload/', UploadImageAPI.as_view(), name='upload_image'),
-    path('api/upload-batch/', UploadBatchAPI.as_view(), name='upload_image_batch'),
+    path('api/internal/upload-transform/', UploadTransformedImagesAPI.as_view(), name='upload_transform'),
+    path('api/get-similarity/<uuid:comparison_id>/', GetSimilarityResultAPI.as_view(), name='get_similarity_result'),
+    path('api/random-session/', RandomComparisonSessionAPI.as_view(), name='random_session'),
 ]
-

@@ -1,0 +1,18 @@
+export interface PaintingImage {
+    original_image: string;
+    transformations: {
+        [transformation: string]: { image_transformed: string };
+    };
+}
+
+export interface PaintingSimilarity {
+    [transformation: string]: {
+        similarity: number;
+    };
+}
+
+export default interface PaintingData {
+    imagen_1: PaintingImage;
+    imagen_2: PaintingImage;
+    similitud: PaintingSimilarity;
+}

@@ -3,6 +3,8 @@
 import os
 import sys
 
+from api.infrastructure.config.logging_config import setup_logging
+setup_logging()
 
 def main():
     """Run administrative tasks."""
