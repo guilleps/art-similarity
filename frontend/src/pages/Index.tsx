@@ -1,41 +1,198 @@
-import Footer from '@/components/layout/Footer'
-import Header from '@/components/layout/Header'
-import LinkButton from '@/components/shared/LinkButton'
+import { useState, useEffect, useMemo } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Play, RefreshCw, Award } from 'lucide-react';
+import Image from './Image';
+import Header from './Header';
+import PaintingData from '@/types/painting';
+import { formatSimilarity, getHighestSimilarity, getHighestTransformation } from '@/utils/similarity';
+import { fetchSimilarityData } from "@/services/similarityService";
 
 const Index = () => {
-  return (
-    <div className="flex h-screen flex-col overflow-hidden bg-[#080e24] bg-gradient-radial from-[#10183d] to-[#080e24]">
-      <Header completed={true} />
+  const [currentStep, setCurrentStep] = useState<'intro' | 'analysis'>('intro');
+  const [currentPairIndex, setCurrentPairIndex] = useState(0);
+  const [showTransformations, setShowTransformations] = useState(false);
+  const [showResults, setShowResults] = useState(false);
+  const [data, setData] = useState<PaintingData | null>(null);
 
-      <section className="flex flex-1 flex-col items-center justify-center px-4 py-8 md:px-8 md:py-12">
-        <div className="container mx-auto max-w-4xl text-center">
-          <div className="mb-4 inline-block rounded-full border border-purple-500/30 bg-gradient-to-r from-purple-500/20 to-blue-500/20 px-6 py-2">
-            <p className="bg-gradient-to-r to-white bg-clip-text text-sm">
-              Explora las similitudes ocultas en la composición artística
-            </p>
-          </div>
+  useEffect(() => {
+    const fetchInitial = async () => {
+      try {
+        const result = await fetchSimilarityData();
+        setData(result);
+      } catch (err) {
+        console.error('Error al cargar datos:', err);
+      }
+    };
 
-          <h1 className="heading-gradient mb-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:mb-6 md:text-6xl lg:text-7xl">
-            Descubra las similitudes en la esencia compositiva del arte
+    fetchInitial();
+  }, []);
+
+  const paintingPairs = useMemo(() => {
+    if (!data || !data.similitud || !data.imagen_1 || !data.imagen_2) return [];
+
+    const transformations = Object.keys(data.similitud).map((key) => ({
+      name: {
+        contrast: "Contraste",
+        texture: "Textura",
+        heat_color_map: "Mapa de Calor",
+        hsv_hue: "Tono",
+        hsv_saturation: "Saturación",
+        hsv_value: "Brillo",
+      }[key] || key,
+      similarity: data.similitud[key].similarity,
+      leftImage: data.imagen_1[key].image_transformed,
+      rightImage: data.imagen_2[key].image_transformed,
+    }));
+
+    return [
+      {
+        id: 1,
+        leftPainting: { image: data.imagen_1.original_image },
+        rightPainting: { image: data.imagen_2.original_image },
+        transformations,
+      },
+    ];
+  }, [data]);
+  console.log(paintingPairs);
+
+  const currentPair = paintingPairs.length > 0 ? paintingPairs[currentPairIndex] : null;
+
+  const handleStart = () => {
+    setCurrentStep('analysis');
+    setTimeout(() => setShowTransformations(true), 500);
+    setTimeout(() => setShowResults(true), 1500);
+  };
+
+  const handleNextPair = async () => {
+    try {
+      const result = await fetchSimilarityData();
+      setData(result);
+    } catch (err) {
+      console.error("Error al obtener comparación aleatoria", err);
+    }
+  };
+
+  if (currentStep === 'intro') {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gallery-50 to-academic-100 flex items-center justify-center p-8">
+        <div className="text-center max-w-4xl mx-auto animate-fade-in">
+          {/* Title */}
+          <h1 className="text-5xl md:text-6xl font-serif font-bold text-gallery-800 mb-6 leading-tight">
+            Análisis de Similitud Composicional
+            <span className="text-academic-600 block">en Pinturas Impresionistas</span>
           </h1>
 
-          <p className="mx-auto mb-8 max-w-2xl text-base text-white/60 md:text-lg">
-            Deje que nuestro sofisticado algoritmo analice tu obra y detecte
-            similitudes visuales en la composición.
+          {/* Subtitle */}
+          <p className="text-xl md:text-2xl text-gallery-600 mb-12 leading-relaxed max-w-3xl mx-auto">
+            Resultados de la comparación de transformaciones aplicadas según características visuales de bajo nivel
           </p>
 
-          <LinkButton
-            to="/analysis"
-            className="mx-auto flex w-fit items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-500 to-blue-500/55 px-6 py-3 text-base font-medium text-white shadow-lg shadow-purple-500/20 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-purple-500/30"
+          {/* Start Button */}
+          <Button
+            onClick={handleStart}
+            size="lg"
+            className="bg-academic-600 hover:bg-academic-700 text-white px-8 py-4 text-lg font-medium rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
           >
-            Cargar y analizar
-          </LinkButton>
+            <Play className="mr-2 h-5 w-5" />
+            Comenzar
+          </Button>
         </div>
-      </section>
+      </div>
+    );
+  }
 
-      <Footer />
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gallery-50 to-academic-50 p-8">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <Header currentPairIndex={currentPairIndex + 1} paintingPairs={paintingPairs.length} ></Header>
+
+        {/* Main Images */}
+        <div className={`grid md:grid-cols-2 gap-12 mb-12 transition-all duration-1000 ${showTransformations ? 'animate-fade-in-up' : 'opacity-0'}`}>
+          {/* Left Main Image */}
+          <Image image={currentPair.leftPainting.image} ></Image>
+
+          {/* Right Main Image */}
+          <Image image={currentPair.rightPainting.image} ></Image>
+        </div>
+
+        {/* Transformations Grid */}
+        <div className={`grid grid-cols-2 md:grid-cols-3 gap-6 mb-12 transition-all duration-1000 ${showTransformations ? 'animate-fade-in-up' : 'opacity-0'}`}>
+          {currentPair.transformations.map((transformation, index) => {
+            const isHighest = transformation.similarity === getHighestSimilarity(currentPair.transformations);
+            return (
+              <Card
+                key={index}
+                className={`p-4 transition-all duration-500 ${showResults
+                  ? isHighest
+                    ? 'animate-highlight border-academic-500 border-2 bg-academic-50'
+                    : 'animate-scale-in'
+                  : 'opacity-0'
+                  }`}
+                style={{ animationDelay: `${index * 200}ms` }}
+              >
+                <div className="grid grid-cols-2 gap-2 mb-3">
+                  <img
+                    src={transformation.leftImage}
+                    alt={`${transformation.name} izquierda`}
+                    className="w-full h-20 object-cover rounded aspect-square"
+                  />
+                  <img
+                    src={transformation.rightImage}
+                    alt={`${transformation.name} derecha`}
+                    className="w-full h-20 object-cover rounded aspect-square"
+                  />
+                </div>
+                <p className="text-sm font-medium text-gallery-700 mb-2 text-center">{transformation.name}</p>
+                <div className="flex justify-center">
+                  <Badge
+                    variant={isHighest && showResults ? "default" : "secondary"}
+                    className={isHighest && showResults ? "bg-academic-600 text-white" : ""}
+                  >
+                    {formatSimilarity(transformation.similarity)}
+                  </Badge>
+                  {isHighest && showResults && (
+                    <Award className="h-4 w-4 text-academic-600 ml-2" />
+                  )}
+                </div>
+              </Card>
+            );
+          })}
+        </div>
+
+        {/* Summary and Controls */}
+        {showResults && (
+          <div className="text-center animate-fade-in-up">
+            <Card className="p-8 max-w-2xl mx-auto mb-8 shadow-lg">
+              <h3 className="text-xl font-serif font-bold text-gallery-800 mb-4">Resumen del Análisis</h3>
+              <p className="text-gallery-600 mb-4">
+                Mayor similitud composicional obtenida:
+              </p>
+              <div className="flex justify-center items-center space-x-4">
+                <span className="text-lg font-medium text-gallery-700">
+                  {getHighestTransformation(currentPair.transformations)?.name}
+                </span>
+                <Badge className="bg-academic-600 text-white text-lg px-3 py-1">
+                  {formatSimilarity(getHighestSimilarity(currentPair.transformations))}
+                </Badge>
+              </div>
+            </Card>
+
+            <Button
+              onClick={handleNextPair}
+              size="lg"
+              className="bg-gallery-700 hover:bg-gallery-800 text-white px-6 py-3 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105"
+            >
+              <RefreshCw className="mr-2 h-5 w-5" />
+              Siguiente Par de Pinturas
+            </Button>
+          </div>
+        )}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;
