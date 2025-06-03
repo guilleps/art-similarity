@@ -1,18 +1,17 @@
 from django.db import models
 from .comparison_session import ImageComparisonSession
 
-class SimilarityMetricResult(models.Model):
-    TRANSFORM_CHOICES = [
-        ('contrast', 'Contrast'),
-        ('texture', 'Texture'),
-        ('heat_color_map', 'Heat Color Map'),
-        ('hsv_hue', 'HSV Hue'),
-        ('hsv_saturation', 'HSV Saturation'),
-        ('hsv_value', 'HSV Value'),
-    ]
+class TransformType(models.TextChoices):
+    CONTRAST = "contrast", "Contrast"
+    TEXTURE = "texture", "Texture"
+    HEATMAP = "heat_color_map", "Heat Color Map"
+    HSV_HUE = "hsv_hue", "HSV Hue"
+    HSV_SATURATION = "hsv_saturation", "HSV Saturation"
+    HSV_VALUE = "hsv_value", "HSV Value"
 
+class SimilarityMetricResult(models.Model):
     comparison = models.ForeignKey(ImageComparisonSession, on_delete=models.CASCADE, related_name="similarities")
-    transform_type = models.CharField(max_length=20, choices=TRANSFORM_CHOICES)
+    transform_type = models.CharField(max_length=20, choices=TransformType.choices)
     similarity_score = models.FloatField()
     file_1 = models.CharField(max_length=255)
     file_2 = models.CharField(max_length=255)
