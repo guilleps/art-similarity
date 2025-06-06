@@ -12,6 +12,7 @@ export interface PaintingSimilarity {
 }
 
 export default interface PaintingData {
+    comparison_id: string;
     imagen_1: PaintingImage;
     imagen_2: PaintingImage;
     similitud: PaintingSimilarity;

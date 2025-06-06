@@ -18,7 +18,7 @@ const SimilarityViewer = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await fetchSimilarityData();
+        const result = await fetchSimilarityData(data?.comparison_id);
         setData(result);
         setShowTransformations(true);
         setTimeout(() => setShowResults(true), 1000);
@@ -61,7 +61,7 @@ const SimilarityViewer = () => {
 
   const handleNextPair = async () => {
     try {
-      const result = await fetchSimilarityData();
+      const result = await fetchSimilarityData(data?.comparison_id);
       setData(result);
       setShowTransformations(false);
       setShowResults(false);
