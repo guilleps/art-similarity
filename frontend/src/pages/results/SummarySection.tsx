@@ -7,9 +7,10 @@ import { Button } from "@/components/ui/button";
 interface SummarySectionProps {
   transformations: { similarity: number; name: string }[];
   onNext: () => void;
+  isLoading: boolean;
 }
 
-const SummarySection = ({ transformations, onNext }: SummarySectionProps) => {
+const SummarySection = ({ transformations, onNext, isLoading }: SummarySectionProps) => {
   const highest = getHighestTransformation(transformations);
 
   return (
@@ -18,16 +19,24 @@ const SummarySection = ({ transformations, onNext }: SummarySectionProps) => {
         <h3 className="text-xl font-serif font-bold text-gallery-800 mb-4">Resumen del Análisis</h3>
         <p className="text-gallery-600 mb-4">Mayor similitud composicional obtenida:</p>
         <div className="flex justify-center items-center space-x-4">
-          <span className="text-lg font-medium text-gallery-700">{highest?.name}</span>
+          {!isLoading && (
+            <span className="text-lg font-medium text-gallery-700">
+              {highest?.name}
+            </span>
+          )}
           <Badge className="bg-academic-600 text-white text-lg px-3 py-1">
-            {formatSimilarity(getHighestSimilarity(transformations))}
+            {isLoading ? "- %" : formatSimilarity(getHighestSimilarity(transformations))}
           </Badge>
         </div>
       </Card>
 
-      <Button onClick={onNext} size="lg" className="bg-gallery-700 hover:bg-gallery-800 text-white px-6 py-3 rounded-full shadow-lg hover:scale-105">
-        <RefreshCw className="mr-2 h-5 w-5" />
-        Siguiente Par de Pinturas
+      <Button
+        onClick={onNext}
+        size="lg"
+        disabled={isLoading}
+        className="bg-gallery-700 hover:bg-gallery-800 text-white px-6 py-3 rounded-full shadow-lg hover:scale-105">
+        <RefreshCw className={`mr-2 h-5 w-5 ${isLoading ? 'animate-spin' : ''}`} />
+        {isLoading ? "Cargando..." : "Siguiente Par de Pinturas"}
       </Button>
     </div>
   );
