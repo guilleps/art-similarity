@@ -42,6 +42,7 @@ class GetSimilarityResultUseCase:
             }
 
         return {
+            "comparison_id": str(comparison_id),
             "imagen_1": image_dict[1],
             "imagen_2": image_dict[2],
             "similitud": similarity_block
