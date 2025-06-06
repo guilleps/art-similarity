@@ -16,4 +16,6 @@ export default interface PaintingData {
     imagen_1: PaintingImage;
     imagen_2: PaintingImage;
     similitud: PaintingSimilarity;
+    total?: number;
+    current_index?: number;
 }

@@ -20,15 +20,23 @@ const SimilarityViewer = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await fetchSimilarityData(data?.comparison_id);
-        setData(result);
+        // Verifica si ya existe data precargada
+        const stored = sessionStorage.getItem("initialSimilarityData");
+        if (stored) {
+          setData(JSON.parse(stored));
+          sessionStorage.removeItem("initialSimilarityData"); // para que siguientes pares sí se carguen
+        } else {
+          const result = await fetchSimilarityData(data?.comparison_id);
+          setData(result);
+        }
+  
         setShowTransformations(true);
         setTimeout(() => setShowResults(true), 1000);
       } catch (err) {
         console.error("Error al cargar datos:", err);
       }
     };
-
+  
     fetchData();
   }, []);
 
@@ -77,11 +85,14 @@ const SimilarityViewer = () => {
     }
   };
 
-  if (!currentPair) return null;
+  if (!currentPair) return null
 
   return (
     <div className="max-w-7xl mx-auto">
-      <Header currentPairIndex={currentPairIndex + 1} paintingPairs={paintingPairs.length} />
+      <Header
+        currentPairIndex={(data?.current_index ?? 0) + 1}
+        paintingPairs={data?.total ?? 0}
+      />
 
       {/* Main Images */}
       <div className={`grid md:grid-cols-2 gap-12 mb-12 transition-all duration-1000 ${showTransformations ? 'opacity-100' : 'opacity-0'}`}>

@@ -8,8 +8,8 @@ export const fetchSimilarityData = async (currentId?: string) => {
     : `/get-session/`;
 
   const sessionRes = await axios.get(`${API_BASE}${url}`);
-  const { comparison_id } = await sessionRes.data;
+  const { comparison_id, total, current_index } = sessionRes.data;
   
   const dataRes = await axios.get(`${API_BASE}/get-similarity/${comparison_id}/`);
-  return dataRes.data;
+  return { ...dataRes.data, total, current_index };
 };
