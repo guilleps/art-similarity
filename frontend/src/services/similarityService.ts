@@ -1,12 +1,15 @@
 import axios from "axios";
-import PaintingData from "@/types/painting";
 
 const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000/api";
 
-export async function fetchSimilarityData(): Promise<PaintingData> {
-  const random = await axios.get(`${API_BASE}/random-session/`);
-  const comparisonId = random.data.comparison_id;
+export const fetchSimilarityData = async (currentId?: string) => {
+  const url = currentId
+    ? `/get-session/?current_id=${currentId}`
+    : `/get-session/`;
 
-  const response = await axios.get(`${API_BASE}/get-similarity/${comparisonId}/`);
-  return response.data;
-}
+  const sessionRes = await axios.get(`${API_BASE}${url}`);
+  const { comparison_id } = await sessionRes.data;
+  
+  const dataRes = await axios.get(`${API_BASE}/get-similarity/${comparison_id}/`);
+  return dataRes.data;
+};
