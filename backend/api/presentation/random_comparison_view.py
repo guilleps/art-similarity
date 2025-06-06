@@ -21,4 +21,8 @@ class GetComparisonSessionAPI(APIView):
             next_index = 0
 
         next_id = sessions[next_index]
-        return Response({"comparison_id": str(next_id)}, status=status.HTTP_200_OK)
+        return Response({
+            "comparison_id": str(next_id),
+            "total": len(sessions),
+            "current_index": next_index
+        }, status=status.HTTP_200_OK)
