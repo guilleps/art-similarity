@@ -1,12 +1,25 @@
 import { Button } from '@/components/ui/button';
+import { fetchSimilarityData } from '@/services/similarityService';
 import { Play } from 'lucide-react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
-    const handleStart = () => {
-        navigate('/results');
+    const handleStart = async () => {
+        setLoading(true);
+
+        try {
+            const data = await fetchSimilarityData();
+            sessionStorage.setItem("initialSimilarityData", JSON.stringify(data));
+            navigate("/results");
+        } catch (e) {
+            console.error("Error al iniciar", e);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -19,9 +32,22 @@ const HomePage = () => {
                 <p className="text-xl md:text-2xl text-gallery-600 mb-12 leading-relaxed max-w-3xl mx-auto">
                     Resultados de la comparación de transformaciones aplicadas según características visuales de bajo nivel
                 </p>
-                <Button onClick={handleStart} size="lg" className="bg-academic-600 hover:bg-academic-700 text-white px-8 py-4 text-lg font-medium rounded-full shadow-lg hover:scale-105">
-                    <Play className="mr-2 h-5 w-5" />
-                    Comenzar
+                <Button
+                    onClick={handleStart}
+                    size="lg"
+                    className="bg-academic-600 hover:bg-academic-700 text-white px-8 py-4 text-lg font-medium rounded-full shadow-lg hover:scale-105"
+                >
+                    {loading ? (
+                        <>
+                            <span className="loader animate-spin mr-2 h-5 w-5 border-t-2 border-white border-solid rounded-full" />
+                            Cargando...
+                        </>
+                    ) : (
+                        <>
+                            <Play className="mr-2 h-5 w-5" />
+                            Comenzar
+                        </>
+                    )}
                 </Button>
             </div>
         </div>
