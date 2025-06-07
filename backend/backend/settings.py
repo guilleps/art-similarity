@@ -36,7 +36,27 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'corsheaders',
+    'drf_spectacular',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Visual Painting API',
+    'DESCRIPTION': 'Sistema de análisis visual que utiliza características de bajo nivel y representaciones vectoriales para comparar la similitud compositiva en pinturas impresionistas.',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,  # Para evitar que el esquema aparezca en la documentación.
+    'CONTACT': {
+        'name': 'Visual Painting',
+        'url': 'https://visual-painting.vercel.app',
+    },
+    'LICENSE': {
+        'name': 'MIT',
+        'url': 'https://opensource.org/licenses/MIT',
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
