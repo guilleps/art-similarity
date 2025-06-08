@@ -51,7 +51,7 @@ class SimpleHandler(BaseHTTPRequestHandler):
         self.wfile.write(json.dumps({"embedding_url": secure_url}).encode())
 
 def run(server_class=HTTPServer, handler_class=SimpleHandler, port=8002):
-    server_address = ('', port)
+    server_address = ('0.0.0.0', port)
     httpd = server_class(server_address, handler_class)
     print(f"Servicio CNN corriendo en puerto {port}...")
     httpd.serve_forever()
