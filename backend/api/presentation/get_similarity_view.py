@@ -1,33 +1,27 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-
+from drf_spectacular.utils import extend_schema, OpenApiResponse, OpenApiParameter
+from drf_spectacular.types import OpenApiTypes
 from api.application import GetSimilarityResultUseCase
 
+@extend_schema(
+    summary="Get the similarity results of a specific pair of images.",
+    parameters=[
+        OpenApiParameter(
+            name='comparison_id', 
+            type=str, 
+            location=OpenApiParameter.PATH, 
+            description='The unique ID of the comparison session.',
+            required='comparison_id'
+        ),
+    ],
+    responses={
+        200: OpenApiResponse(description="Similarity results of the two images are returned, including comparison details."),
+        404: OpenApiResponse(description="The `comparison_id` was not found, or the session does not exist."),
+    }
+)
 class GetSimilarityResultAPI(APIView):
-    """
-    Obtener los resultados de similitud de un par específico de imagenes.
-    
-    **Parámetros en la URL:**
-    - `comparison_id` (UUID): ID de la sesión de comparación (requerido).
-
-    **Respuestas:**
-    - 200: Devuelve los resultados de similitud entre las imágenes comparadas.
-    - 404: Si no se encuentra la sesión de comparación con el `comparison_id`.
-    
-    **Ejemplo de uso:**
-    - Endpoint: `/api/get-similarity/{comparison_id}/`
-    - Método: `GET`
-    - Respuesta de ejemplo: 
-      ```json
-      {
-        "comparison_id": "abcd-1234-xyz",
-        "imagen_1": { "original_image": "image_url", "contrast": "contrast_image_url" },
-        "imagen_2": { "original_image": "image_url", "contrast": "contrast_image_url" },
-        "similitud": { "contrast": { "files": ["image_1_url", "image_2_url"], "similarity": 0.95 } }
-      }
-      ```
-    """
     def get(self, request, comparison_id, *args, **kwargs):
         try:
             use_case = GetSimilarityResultUseCase()
