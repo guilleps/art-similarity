@@ -4,11 +4,10 @@ import cloudinary.uploader
 from api.infrastructure.exceptions import CloudinaryUploadError
 
 class CloudStorageService:
-    def upload_images(self, local_path: str, filenames: list[str]) -> list[str]:
+    def upload_images(self, images) -> list[str]:
         urls = []
-        for file in filenames:
-            full_path = os.path.join(local_path, file)
-            result = self.upload_image_to_cloudinary(full_path)
+        for image in images:
+            result = self.upload_image_to_cloudinary(image)
             urls.append(result["secure_url"])
         return urls
     

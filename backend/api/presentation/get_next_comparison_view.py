@@ -1,31 +1,26 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from drf_spectacular.utils import extend_schema, OpenApiResponse, OpenApiParameter
+from drf_spectacular.types import OpenApiTypes
 from api.domain.models import ImageComparisonSession
 
+@extend_schema(
+    summary="Get the next image comparison session.",
+    parameters=[
+        OpenApiParameter(
+            name='current_id',
+            type=str,
+            location=OpenApiParameter.QUERY,
+            description='Optional current session ID to determine the next session (if provided).'
+        )
+    ],
+    responses={
+        200: OpenApiResponse(description="Returns the next session's `comparison_id`, the total number of sessions, and the current index."),
+        404: OpenApiResponse(description="No comparison sessions found."),
+    }
+)
 class GetComparisonSessionAPI(APIView):
-    """
-    Obtener la siguiente sesión de comparación de imágenes.
-    
-    **Parámetros opcionales en la URL:**
-    - `current_id` (string): El ID de la sesión actual para determinar cuál es la siguiente (opcional).
-
-    **Respuestas:**
-    - 200: Devuelve el ID de la siguiente sesión, el total de sesiones y el índice actual.
-    - 404: Si no hay sesiones registradas.
-
-    **Ejemplo de uso:**
-    - Endpoint: `/api/get-session/`
-    - Método: `GET`
-    - Respuesta de ejemplo:
-      ```json
-      {
-        "comparison_id": "xyz-1234-abc",
-        "total": 10,
-        "current_index": 3
-      }
-      ```
-    """
     def get(self, request, *args, **kwargs):
         # Lista de IDs ordenada por fecha de creación
         sessions = [str(s) for s in ImageComparisonSession.objects.order_by('created_at').values_list('id', flat=True)]
