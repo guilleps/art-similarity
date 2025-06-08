@@ -25,7 +25,7 @@ async def transform_from_urls(request: Request):
                 tmp_file.write(chunk)
             temp_path = tmp_file.name
 
-        transformed_urls = save_transformed_images(temp_path, "./outputs")
+        transformed_urls = save_transformed_images(temp_path, "/tmp/outputs")
         transformed_urls["original_image"] = url  # incluir la original
         results[label] = transformed_urls
 
