@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -62,35 +61,7 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				},
-				academic: {
-					50: '#fefcf7',
-					100: '#fdf8ef',
-					200: '#faf0d7',
-					300: '#f5e4b7',
-					400: '#eed48d',
-					500: '#e4c063',
-					600: '#d4a843',
-					700: '#b08a34',
-					800: '#8f6f30',
-					900: '#775c2c'
-				},
-				gallery: {
-					50: '#f8fafc',
-					100: '#f1f5f9',
-					200: '#e2e8f0',
-					300: '#cbd5e1',
-					400: '#94a3b8',
-					500: '#64748b',
-					600: '#475569',
-					700: '#334155',
-					800: '#1e293b',
-					900: '#0f172a'
 				}
-			},
-			fontFamily: {
-				serif: ['Playfair Display', 'Georgia', 'serif'],
-				sans: ['Inter', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -113,56 +84,11 @@ export default {
 					to: {
 						height: '0'
 					}
-				},
-				'fade-in': {
-					'0%': {
-						opacity: '0',
-						transform: 'translateY(20px)'
-					},
-					'100%': {
-						opacity: '1',
-						transform: 'translateY(0)'
-					}
-				},
-				'fade-in-up': {
-					'0%': {
-						opacity: '0',
-						transform: 'translateY(30px)'
-					},
-					'100%': {
-						opacity: '1',
-						transform: 'translateY(0)'
-					}
-				},
-				'scale-in': {
-					'0%': {
-						opacity: '0',
-						transform: 'scale(0.95)'
-					},
-					'100%': {
-						opacity: '1',
-						transform: 'scale(1)'
-					}
-				},
-				'highlight': {
-					'0%': {
-						boxShadow: '0 0 0 0px rgba(228, 192, 99, 0.4)'
-					},
-					'50%': {
-						boxShadow: '0 0 0 10px rgba(228, 192, 99, 0.2)'
-					},
-					'100%': {
-						boxShadow: '0 0 0 0px rgba(228, 192, 99, 0.1)'
-					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.6s ease-out',
-				'fade-in-up': 'fade-in-up 0.8s ease-out',
-				'scale-in': 'scale-in 0.5s ease-out',
-				'highlight': 'highlight 2s ease-in-out infinite'
+				'accordion-up': 'accordion-up 0.2s ease-out'
 			}
 		}
 	},
