@@ -14,11 +14,14 @@ from drf_spectacular.utils import extend_schema, OpenApiResponse
 class GetAllSimilarityResultsAPI(APIView):
     def get(self, request, *args, **kwargs):
         try:
-            paginator = PageNumberPagination()
-            paginator.page_size = int(request.query_params.get("limit", 10))
-
             use_case = GetAllSimilarityResultsUseCase()
             full_data = use_case.execute()
+
+            if request.query_params.get("all") == "true":
+                return Response(full_data)
+
+            paginator = PageNumberPagination()
+            paginator.page_size = int(request.query_params.get("limit", 10))
             result_page = paginator.paginate_queryset(full_data, request)
             return paginator.get_paginated_response(result_page)
         except Exception as e:
