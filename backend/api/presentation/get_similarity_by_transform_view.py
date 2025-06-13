@@ -6,7 +6,30 @@ from api.application import GetAllSimilarityResultsUseCase
 
 @extend_schema(
     summary="Obtener resultados por tipo de transformación",
-    parameters=[OpenApiParameter(name="transform", required=True, type=str)],
+    parameters=[
+        OpenApiParameter(
+            name="transform",
+            required=True,
+            type=str,
+            description=(
+                "Tipo de transformación aplicada a la imagen. Valores posibles:\n\n"
+                "- `color_heat_map`: Mapa de calor de color (TMCC)\n"
+                "- `tone`: Tono (TT)\n"
+                "- `saturation`: Saturación (TS)\n"
+                "- `brightness`: Brillo (TB)\n"
+                "- `texture`: Textura (TX)\n"
+                "- `contrast`: Contraste (TC)"
+            ),
+            enum=[
+                "color_heat_map",
+                "tone",
+                "saturation",
+                "brightness",
+                "texture",
+                "contrast"
+            ]
+        )
+    ],
     responses={200: ...}
 )
 class GetSimilarityByTransformAPI(APIView):
