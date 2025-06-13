@@ -21,6 +21,8 @@ const SimilarityViewer = ({ comparisonId }: Props) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await getSimilaritiesById(comparisonId);
+      console.log(result);
+      
       setData(result);
     };
     fetchData();
