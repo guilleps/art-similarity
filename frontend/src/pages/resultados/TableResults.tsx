@@ -121,17 +121,7 @@ export const TableResults = () => {
                     </table>
                 </div>
             </div>
-
-            <Dialog.Root open={modalOpen} onOpenChange={setModalOpen}>
-                <Dialog.Portal>
-                    <Dialog.Overlay className="fixed inset-0 bg-black/50 z-40" />
-                    <Dialog.Content
-                        className="fixed z-50 top-1/2 left-1/2 max-w-5xl w-full h-[80vh] overflow-y-auto bg-white rounded-xl shadow-lg transform -translate-x-1/2 -translate-y-1/2"
-                    >
-                        {selectedComparisonId && <SimilarityViewer comparisonId={selectedComparisonId} />}
-                    </Dialog.Content>
-                </Dialog.Portal>
-            </Dialog.Root>
+            {selectedComparisonId && <SimilarityViewer comparisonId={selectedComparisonId} />}
 
         </div>
     )
