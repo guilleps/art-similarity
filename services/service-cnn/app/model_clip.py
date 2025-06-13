@@ -2,7 +2,6 @@ import torch
 from PIL import Image
 from transformers import CLIPModel, CLIPProcessor
 import logging
-from app.logger_config import setup_logging
 
 logger = logging.getLogger(__name__)
 

@@ -1,34 +1,33 @@
-# app/main.py
 import os
-from http.server import BaseHTTPRequestHandler, HTTPServer
+import uuid
 import json
+from fastapi import FastAPI, UploadFile, File, HTTPException, Request
+from fastapi.responses import JSONResponse
+from app.logger_config import setup_logging
 from app.model_clip import generate_embedding
 from app.cloudinary_config import upload_file_to_cloudinary
-from io import BytesIO
-from PIL import Image
-import uuid
 import logging
-from app.logger_config import setup_logging
 
+setup_logging()
 logger = logging.getLogger(__name__)
 
-class SimpleHandler(BaseHTTPRequestHandler):
-    def do_POST(self):
-        if self.path != "/embed":
-            self.send_error(404, "Endpoint no encontrado")
-            logger.warning("Intento a endpoint no definido: %s", self.path)
-            return
+app = FastAPI()
 
+@app.post("/embed")
+async def embed(request: Request):
+    logger.info(f"Content-Type recibido: {request.headers.get('content-type')}")
+    try:
         logger.info("Recibiendo imagen para generar embedding...")
-
-        content_length = int(self.headers['Content-Length'])
-        file_data = self.rfile.read(content_length)
+        
+        # image_bytes = await file.read()
+        image_bytes = await request.body()
 
         # Guardar temporal
         os.makedirs("/tmp", exist_ok=True)
         temp_image_path = "/tmp/uploaded_image.jpg"
         with open(temp_image_path, "wb") as f:
-            f.write(file_data)
+            f.write(image_bytes)
+        logger.info("Imagen guardada temporalmente.")
 
         # Generar embedding
         embedding = generate_embedding(temp_image_path)
@@ -43,19 +42,10 @@ class SimpleHandler(BaseHTTPRequestHandler):
         # Subir JSON a Cloudinary
         secure_url = upload_file_to_cloudinary(json_path, f"embedding_{embedding_id}.json")
         logger.info("Embedding subido a Cloudinary: %s", secure_url)
-        
-        # Responder con URL del embedding
-        self.send_response(200)
-        self.send_header('Content-type', 'application/json')
-        self.end_headers()
-        self.wfile.write(json.dumps({"embedding_url": secure_url}).encode())
 
-def run(server_class=HTTPServer, handler_class=SimpleHandler, port=8002):
-    server_address = ('0.0.0.0', port)
-    httpd = server_class(server_address, handler_class)
-    print(f"Servicio CNN corriendo en puerto {port}...")
-    httpd.serve_forever()
+        return JSONResponse(status_code=200, content={"embedding_url": secure_url})
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8002))  # usa el puerto 8002 por defecto si PORT no está definida
-    run(port=port)
+    except Exception as e:
+        logger.exception("Error al procesar imagen:")
+        raise HTTPException(status_code=500, detail=str(e))
+    
