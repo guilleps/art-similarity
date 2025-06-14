@@ -8,15 +8,17 @@ import { Image } from "./Image";
 
 interface Props {
   comparisonId: string;
+  onLoaded?: () => void;
 }
 
-const SimilarityViewer = ({ comparisonId }: Props) => {
+const SimilarityViewer = ({ comparisonId, onLoaded }: Props) => {
   const [data, setData] = useState<PaintingData | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await getSimilaritiesById(comparisonId);
       setData(result);
+      onLoaded?.(); // Notifica que cargó
     };
     fetchData();
   }, [comparisonId]);

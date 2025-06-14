@@ -19,8 +19,9 @@ export const TableResults = () => {
     const handleRowClick = (comparison_id: string, rowPair: number) => {
         setSelectedRow(rowPair);
         setSelectedComparisonId(comparison_id);
+        setModalLoading(true); // reinicia loading
         setModalOpen(true);
-    };
+      };
 
     useEffect(() => {
         const getSimilarities = async () => {
@@ -118,7 +119,20 @@ export const TableResults = () => {
                 <Dialog.Portal>
                     <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40" />
                     <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[90vh] w-full max-w-6xl overflow-auto rounded-lg bg-white p-6 shadow-lg z-50">
-                        {selectedComparisonId && <SimilarityViewer comparisonId={selectedComparisonId} />}
+                        {modalLoading && (
+                            <div className="flex justify-center items-center min-h-[300px]">
+                                <span className="text-xl text-gray-600 animate-pulse">Cargando...</span>
+                            </div>
+                        )}
+
+                        {selectedComparisonId && (
+                            <div className={modalLoading ? "hidden" : ""}>
+                                <SimilarityViewer
+                                    comparisonId={selectedComparisonId}
+                                    onLoaded={() => setModalLoading(false)}
+                                />
+                            </div>
+                        )}
                     </Dialog.Content>
                 </Dialog.Portal>
             </Dialog.Root>
