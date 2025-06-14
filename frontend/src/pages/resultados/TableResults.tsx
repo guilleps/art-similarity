@@ -11,21 +11,13 @@ export const TableResults = () => {
     const [totalItems, setTotalItems] = useState<number>(0)
     const [selectedComparisonId, setSelectedComparisonId] = useState<string | null>(null);
     const [modalOpen, setModalOpen] = useState(false);
+    const [modalLoading, setModalLoading] = useState(true);
 
     const itemsPerPage = 10;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
 
     const handleRowClick = (comparison_id: string, rowPair: number) => {
-        setSelectedRow(selectedRow === rowPair ? null : rowPair);
-        // Scroll to comparison visualization
-        if (selectedRow !== rowPair) {
-            setTimeout(() => {
-                const comparisonView = document.querySelector('.comparison-view');
-                if (comparisonView) {
-                    comparisonView.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }, 100);
-        }
+        setSelectedRow(rowPair);
         setSelectedComparisonId(comparison_id);
         setModalOpen(true);
     };
@@ -90,7 +82,7 @@ export const TableResults = () => {
                 <div className="overflow-x-auto">
                     <table className="w-full border-collapse bg-white rounded-lg shadow mx-auto">
                         <thead>
-                            <tr className="bg-gray-50">
+                            <tr className="hover:bg-gray-100 cursor-pointer">
                                 <th className="border border-gray-200 px-4 py-2 text-left">N° Par</th>
                                 <th className="border border-gray-200 px-4 py-2 text-left">TMCC</th>
                                 <th className="border border-gray-200 px-4 py-2 text-left">TT</th>
@@ -121,7 +113,15 @@ export const TableResults = () => {
                     </table>
                 </div>
             </div>
-            {selectedComparisonId && <SimilarityViewer comparisonId={selectedComparisonId} />}
+
+            <Dialog.Root open={modalOpen} onOpenChange={setModalOpen}>
+                <Dialog.Portal>
+                    <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40" />
+                    <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[90vh] w-full max-w-6xl overflow-auto rounded-lg bg-white p-6 shadow-lg z-50">
+                        {selectedComparisonId && <SimilarityViewer comparisonId={selectedComparisonId} />}
+                    </Dialog.Content>
+                </Dialog.Portal>
+            </Dialog.Root>
 
         </div>
     )
