@@ -21,7 +21,7 @@ export const TableResults = () => {
         setSelectedComparisonId(comparison_id);
         setModalLoading(true); // reinicia loading
         setModalOpen(true);
-      };
+    };
 
     useEffect(() => {
         const getSimilarities = async () => {
@@ -118,7 +118,15 @@ export const TableResults = () => {
             <Dialog.Root open={modalOpen} onOpenChange={setModalOpen}>
                 <Dialog.Portal>
                     <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40" />
-                    <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[90vh] w-full max-w-6xl overflow-auto rounded-lg bg-white p-6 shadow-lg z-50">
+                    <Dialog.Content
+                        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[90vh] w-full max-w-6xl overflow-auto rounded-lg bg-white p-6 shadow-lg z-50"
+                    >
+                        <Dialog.Title className="sr-only">Detalles del par comparado</Dialog.Title>
+
+                        <Dialog.Description className="sr-only">
+                            Visualización de transformaciones y resultados de similitud para el par seleccionado.
+                        </Dialog.Description>
+
                         {modalLoading && (
                             <div className="flex justify-center items-center min-h-[300px]">
                                 <span className="text-xl text-gray-600 animate-pulse">Cargando...</span>

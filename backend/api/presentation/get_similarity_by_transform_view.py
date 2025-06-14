@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from drf_spectacular.utils import extend_schema, OpenApiParameter
-from api.application import GetAllSimilarityResultsUseCase
+from api.application import GetAllSimilarityResultsRawUseCase
 
 @extend_schema(
     summary="Obtener resultados por tipo de transformación",
@@ -38,7 +38,7 @@ class GetSimilarityByTransformAPI(APIView):
         if not transform_type:
             return Response({"error": "Debe proporcionar el parámetro 'transform'"}, status=400)
 
-        use_case = GetAllSimilarityResultsUseCase()
+        use_case = GetAllSimilarityResultsRawUseCase()
         all_results = use_case.execute()
 
         filtered = [
