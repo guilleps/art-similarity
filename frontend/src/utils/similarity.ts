@@ -1,5 +1,5 @@
-export function formatSimilarity(similarity: number): string {
-    return (similarity * 100).toFixed(1) + '%';
+export const formatSimilarity = (value: number): string => {
+    return `${(value * 100).toFixed(1)}%`;
 }
 
 export function getHighestSimilarity(transformations: { similarity: number }[]): number {
