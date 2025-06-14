@@ -1,3 +1,4 @@
 from .upload_transformed_images_usecase import UploadTransformedImagesUseCase
 from .get_similarity_result_usecase import GetSimilarityResultUseCase
-from .get_all_similarity_results_usecase import GetAllSimilarityResultsUseCase
+from .get_similarity_results_pag_usecase import GetSimilarityResultsPagUseCase
+from .get_all_similarity_results_raw_usecase import GetAllSimilarityResultsRawUseCase

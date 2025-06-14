@@ -1,8 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.pagination import PageNumberPagination
-from api.application.get_all_similarity_results_usecase import GetAllSimilarityResultsUseCase
+from api.domain.models import ImageComparisonSession
+from api.application.get_similarity_results_pag_usecase import GetSimilarityResultsPagUseCase
 from drf_spectacular.utils import extend_schema, OpenApiResponse
 
 @extend_schema(
@@ -11,18 +11,21 @@ from drf_spectacular.utils import extend_schema, OpenApiResponse
         200: OpenApiResponse(description="Returns a list of all comparison sessions with their similarity metrics."),
     }
 )
-class GetAllSimilarityResultsAPI(APIView):
+class GetSimilarityResultsPagAPI(APIView):
     def get(self, request, *args, **kwargs):
         try:
-            use_case = GetAllSimilarityResultsUseCase()
-            full_data = use_case.execute()
+            page = int(request.query_params.get("page", 1))
+            limit = int(request.query_params.get("limit", 10))
+            offset = (page - 1) * limit
 
-            if request.query_params.get("all") == "true":
-                return Response(full_data)
+            use_case = GetSimilarityResultsPagUseCase()
+            paginated_data = use_case.execute(offset=offset, limit=limit)
+            total = ImageComparisonSession.objects.count()
 
-            paginator = PageNumberPagination()
-            paginator.page_size = int(request.query_params.get("limit", 10))
-            result_page = paginator.paginate_queryset(full_data, request)
-            return paginator.get_paginated_response(result_page)
+            return Response({
+                "count": total,
+                "results": paginated_data
+            }, status=status.HTTP_200_OK)
+        
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

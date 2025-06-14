@@ -6,12 +6,11 @@ export const getAllSimilarities = async (page = 1, limit = 10) => {
     const response = await axios.get(`${API_BASE}/get-all-similarities/`, {
         params: { page, limit }
     });
-    console.log(response.data);
     return response;
 };
 
 export const getAllSimilaritiesRaw = async () => {
-    const response = await axios.get(`${API_BASE}/get-all-similarities/`, {
+    const response = await axios.get(`${API_BASE}/get-all-similarities/raw/`, {
         params: { all: true }
     });
     return response;
@@ -26,6 +25,5 @@ export const getSimilaritiesByTransform = async (transform: string) => {
 
 export const getSimilaritiesById = async (comparison_id: string) => {
     const response = await axios.get(`${API_BASE}/get-similarity/${comparison_id}/`);
-    console.log(response.data);
     return response.data;
 };
