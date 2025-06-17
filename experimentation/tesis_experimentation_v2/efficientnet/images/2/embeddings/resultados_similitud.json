@@ -1,0 +1,44 @@
+{
+    "heat_color_map": {
+        "files": [
+            "antoine-blanchard_boulevard-de-la-madeleine-9_color_map_embedding.json",
+            "armando-montaner-valdueza_portrait-of-spanish-woman_color_map_embedding.json"
+        ],
+        "similarity": 0.3465
+    },
+    "contrast": {
+        "files": [
+            "antoine-blanchard_boulevard-de-la-madeleine-9_contrast_embedding.json",
+            "armando-montaner-valdueza_portrait-of-spanish-woman_contrast_embedding.json"
+        ],
+        "similarity": 0.232
+    },
+    "hsv_hue": {
+        "files": [
+            "antoine-blanchard_boulevard-de-la-madeleine-9_hsv_hue_embedding.json",
+            "armando-montaner-valdueza_portrait-of-spanish-woman_hsv_hue_embedding.json"
+        ],
+        "similarity": 0.59
+    },
+    "hsv_saturation": {
+        "files": [
+            "antoine-blanchard_boulevard-de-la-madeleine-9_hsv_saturation_embedding.json",
+            "armando-montaner-valdueza_portrait-of-spanish-woman_hsv_saturation_embedding.json"
+        ],
+        "similarity": 0.3894
+    },
+    "hsv_value": {
+        "files": [
+            "antoine-blanchard_boulevard-de-la-madeleine-9_hsv_value_embedding.json",
+            "armando-montaner-valdueza_portrait-of-spanish-woman_hsv_value_embedding.json"
+        ],
+        "similarity": 0.2806
+    },
+    "texture": {
+        "files": [
+            "antoine-blanchard_boulevard-de-la-madeleine-9_texture_embedding.json",
+            "armando-montaner-valdueza_portrait-of-spanish-woman_texture_embedding.json"
+        ],
+        "similarity": 0.4882
+    }
+}
