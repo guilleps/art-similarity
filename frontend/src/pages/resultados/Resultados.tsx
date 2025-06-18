@@ -1,6 +1,5 @@
 import { Navbar } from "../../components/Navbar";
 import { GeneralResult } from "./GeneralResult";
-import SimilarityViewer from "./par/SimilarityViewer";
 import { TableResults } from "./TableResults";
 import { TransformResults } from "./TransformResults";
 

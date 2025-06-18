@@ -3,7 +3,6 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import PaintingData from "@/types/painting";
 import { getSimilaritiesById } from "@/services/similarity.service";
-import { formatSimilarity } from "@/utils/similarity";
 import { Image } from "./Image";
 
 interface Props {
@@ -50,102 +49,9 @@ const SimilarityViewer = ({ comparisonId, onLoaded }: Props) => {
     ];
   }, [data]);
 
-  // const paintingPairs = [
-  //   {
-  //     "id": 1,
-  //     "leftPainting": {
-  //       "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop"
-  //     },
-  //     "rightPainting": {
-  //       "image": "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=400&fit=crop"
-  //     },
-  //     "transformations": [
-  //       {
-  //         "name": "Mapa de Calor",
-  //         "similarity": 0.92,
-  //         "leftImage": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop&hue=30",
-  //         "rightImage": "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=200&h=200&fit=crop&hue=30"
-  //       },
-  //       {
-  //         "name": "Tono",
-  //         "similarity": 0.87,
-  //         "leftImage": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop&hue=60",
-  //         "rightImage": "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=200&h=200&fit=crop&hue=60"
-  //       },
-  //       {
-  //         "name": "Saturación",
-  //         "similarity": 0.95,
-  //         "leftImage": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop&saturation=1.3",
-  //         "rightImage": "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=200&h=200&fit=crop&saturation=1.3"
-  //       },
-  //       {
-  //         "name": "Brillo",
-  //         "similarity": 0.78,
-  //         "leftImage": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop&brightness=1.3",
-  //         "rightImage": "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=200&h=200&fit=crop&brightness=1.3"
-  //       },
-  //       {
-  //         "name": "Contraste",
-  //         "similarity": 0.89,
-  //         "leftImage": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop&contrast=1.4",
-  //         "rightImage": "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=200&h=200&fit=crop&contrast=1.4"
-  //       },
-  //       {
-  //         "name": "Textura",
-  //         "similarity": 0.83,
-  //         "leftImage": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop&blur=1",
-  //         "rightImage": "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=200&h=200&fit=crop&blur=1"
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     "id": 2,
-  //     "leftPainting": {
-  //       "image": "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=400&h=400&fit=crop"
-  //     },
-  //     "rightPainting": {
-  //       "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop&hue=180"
-  //     },
-  //     "transformations": [
-  //       {
-  //         "name": "Mapa de Calor",
-  //         "similarity": 0.88,
-  //         "leftImage": "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=200&h=200&fit=crop&hue=30",
-  //         "rightImage": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop&hue=180&hue=30"
-  //       },
-  //       {
-  //         "name": "Tono",
-  //         "similarity": 0.94,
-  //         "leftImage": "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=200&h=200&fit=crop&hue=60",
-  //         "rightImage": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop&hue=180&hue=60"
-  //       },
-  //       {
-  //         "name": "Saturación",
-  //         "similarity": 0.86,
-  //         "leftImage": "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=200&h=200&fit=crop&saturation=1.3",
-  //         "rightImage": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop&hue=180&saturation=1.3"
-  //       },
-  //       {
-  //         "name": "Brillo",
-  //         "similarity": 0.79,
-  //         "leftImage": "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=200&h=200&fit=crop&brightness=1.3",
-  //         "rightImage": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop&hue=180&brightness=1.3"
-  //       },
-  //       {
-  //         "name": "Contraste",
-  //         "similarity": 0.91,
-  //         "leftImage": "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=200&h=200&fit=crop&contrast=1.4",
-  //         "rightImage": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop&hue=180&contrast=1.4"
-  //       },
-  //       {
-  //         "name": "Textura",
-  //         "similarity": 0.97,
-  //         "leftImage": "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=200&h=200&fit=crop&blur=1",
-  //         "rightImage": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop&hue=180&blur=1"
-  //       }
-  //     ]
-  //   }
-  // ]
+  const formatSimilarity = (value: number): string => {
+    return `${(value * 100).toFixed(1)}%`;
+  }
 
   const pair = paintingPairs[0];
 

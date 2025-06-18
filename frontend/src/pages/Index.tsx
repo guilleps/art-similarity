@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { Inicio } from "./inicio/Inicio";
 
 export const Index = () => {
-  const [currentInterface, setCurrentInterface] = useState<'inicio' | 'contexto' | 'resultados'>('inicio');
-
   // Move all useState hooks to the top level
   const [selectedTerm, setSelectedTerm] = useState<'caracteristicas' | 'transformaciones' | 'representaciones'>('caracteristicas');
 
@@ -47,7 +45,6 @@ export const Index = () => {
 
   return (
     <Inicio
-      viewsResultButton={() => setCurrentInterface('resultados')}
       basicTermOne={() => setSelectedTerm('caracteristicas')}
       basicTermTwo={() => setSelectedTerm('transformaciones')}
       basicTermThree={() => setSelectedTerm('representaciones')}

@@ -1,6 +1,6 @@
 import { getAllSimilaritiesRaw } from "@/services/similarity.service";
 import * as echarts from "echarts";
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const labelMap: Record<string, string> = {
     color_heat_map: "Mapa de calor",
@@ -11,23 +11,36 @@ const labelMap: Record<string, string> = {
     contrast: "Contraste"
 };
 
+export class SimilarityRaw {
+    color_heat_map_transformation: number | null;
+    tone_transformation: number | null;
+    saturation_transformation: number | null;
+    brightness_transformation: number | null;
+    texture_transformation: number | null;
+    contrast_transformation: number | null;
+}
+
 export const GeneralResult = () => {
     const chartRef = useRef<HTMLDivElement>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const chartInstance = { current: null as echarts.ECharts | null };
+        const chartDom = chartRef.current;
 
         const loadChart = async () => {
             try {
-                const response = await getAllSimilaritiesRaw(); 
-                const rawData = response.data;
+                setIsLoading(true);
+                const response = await getAllSimilaritiesRaw();
+                const rawData: SimilarityRaw[] = response.data;
+                console.log('pares', rawData);
 
-                // Convertimos a formato tabular para ECharts
+
                 const results: (string | number)[][] = [
                     ['par', 'color_heat_map', 'tone', 'saturation', 'brightness', 'texture', 'contrast']
                 ];
 
-                rawData.forEach((item: any, index: number) => {
+                rawData.forEach((item: SimilarityRaw, index: number) => {
                     results.push([
                         (index + 1).toString(),
                         item.color_heat_map_transformation ?? null,
@@ -39,36 +52,23 @@ export const GeneralResult = () => {
                     ]);
                 });
 
-                if (echarts.getInstanceByDom(chartRef.current!)) {
-                    echarts.dispose(chartRef.current!);
+                if (!chartDom) return;
+
+                if (echarts.getInstanceByDom(chartDom)) {
+                    echarts.dispose(chartDom);
                 }
 
-                const chart = echarts.init(chartRef.current!);
+                const chart = echarts.init(chartDom);
                 chartInstance.current = chart;
 
-                const fieldNames = [
-                    'color_heat_map',
-                    'tone',
-                    'saturation',
-                    'brightness',
-                    'texture',
-                    'contrast'
-                ];
-
+                const fieldNames = Object.keys(labelMap);
                 const seriesList: echarts.SeriesOption[] = fieldNames.map((name) => ({
                     type: 'line',
                     name: labelMap[name],
                     showSymbol: false,
-                    encode: {
-                        x: 'par',
-                        y: name
-                    },
-                    emphasis: {
-                        focus: 'series'
-                    },
-                    labelLayout: {
-                        moveOverlap: 'shiftY'
-                    },
+                    encode: { x: 'par', y: name },
+                    emphasis: { focus: 'series' },
+                    labelLayout: { moveOverlap: 'shiftY' },
                     lineStyle: { width: 3 }
                 }));
 
@@ -94,42 +94,42 @@ export const GeneralResult = () => {
                         top: 0,
                         left: 'center'
                     },
-                    dataset: {
-                        source: results
-                    },
-                    xAxis: {
-                        type: 'category',
-                        name: 'Pares'
-                    },
-                    yAxis: {
-                        type: 'value',
-                        name: 'Similitud',
-                        min: 0,
-                        max: 1
-                    },
+                    dataset: { source: results },
+                    xAxis: { type: 'category', name: 'Pares' },
+                    yAxis: { type: 'value', name: 'Similitud', min: 0, max: 1 },
                     series: seriesList
                 });
-
-                return () => chart.dispose();
             } catch (error) {
                 console.error('Error al cargar los datos:', error);
-                throw Error('Error al cargar los datos')
+            } finally {
+                setIsLoading(false);
             }
         };
 
         loadChart();
+
         return () => {
-            if (chartInstance.current) {
-                chartInstance.current.dispose();
+            if (chartDom && echarts.getInstanceByDom(chartDom)) {
+                echarts.dispose(chartDom);
             }
         };
     }, []);
 
-    return <div className="min-h-screen flex flex-col justify-center px-6 py-8 scroll-view items-center">
-        <div className="text-center max-w-7xl mx-auto space-y-6">
-            <h1 className="text-3xl font-bold text-blue-600">Resultados</h1>
-            <h2 className="text-xl font-bold">Gráfico Total de Transformaciones</h2>
-        </div>
-        <div ref={chartRef} className="w-full max-w-6xl h-[28rem] bg-white pt-4" />
-    </div>
+    return (
+        <div className="min-h-screen flex flex-col justify-center px-6 py-8 items-center">
+            <div className="text-center max-w-7xl mx-auto space-y-6">
+                <h1 className="text-3xl font-bold text-blue-600">Resultados</h1>
+                <h2 className="text-xl font-bold">Gráfico Total de Transformaciones</h2>
+            </div>
+
+            <div className="relative w-full max-w-6xl h-[28rem] bg-white pt-4">
+                {isLoading && (
+                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-white bg-opacity-80">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                    </div>
+                )}
+                <div ref={chartRef} className="w-full h-full" />
+            </div>
+        </div >
+    );
 };
