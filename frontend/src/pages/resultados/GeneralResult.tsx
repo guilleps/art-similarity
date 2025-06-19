@@ -23,6 +23,7 @@ export class SimilarityRaw {
 export const GeneralResult = () => {
     const chartRef = useRef<HTMLDivElement>(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [hasData, setHasData] = useState(true);
 
     useEffect(() => {
         const chartInstance = { current: null as echarts.ECharts | null };
@@ -35,6 +36,12 @@ export const GeneralResult = () => {
                 const rawData: SimilarityRaw[] = response.data;
                 console.log('pares', rawData);
 
+                if (!Array.isArray(rawData) || rawData.length === 0) {
+                    setHasData(false);
+                    return;
+                }
+
+                setHasData(true);
 
                 const results: (string | number)[][] = [
                     ['par', 'color_heat_map', 'tone', 'saturation', 'brightness', 'texture', 'contrast']
@@ -101,6 +108,7 @@ export const GeneralResult = () => {
                 });
             } catch (error) {
                 console.error('Error al cargar los datos:', error);
+                setHasData(false);
             } finally {
                 setIsLoading(false);
             }
@@ -128,6 +136,13 @@ export const GeneralResult = () => {
                         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
                     </div>
                 )}
+
+                {!isLoading && !hasData && (
+                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-white bg-opacity-90">
+                        <p className="text-gray-600 text-lg">No hay datos disponibles para mostrar.</p>
+                    </div>
+                )}
+
                 <div ref={chartRef} className="w-full h-full" />
             </div>
         </div >
