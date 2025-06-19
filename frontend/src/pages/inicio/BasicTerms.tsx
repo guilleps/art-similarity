@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const termContent = {
   caracteristicas: {
     title: "Características de bajo nivel",
@@ -13,51 +15,50 @@ const termContent = {
   }
 };
 
-export const BasicTerms = ({
-  selectedTerm,
-  onSelectTermOne,
-  onSelectTermTwo,
-  onSelectTermThree,
-}) => (
-  <div className="min-h-screen flex flex-col items-center justify-center px-6 space-y-8 scroll-view">
-    <div className="max-w-4xl mx-auto text-center space-y-6">
-      <h2 className="text-2xl font-bold">Términos Básicos</h2>
+export const BasicTerms = () => {
+  const [selectedTerm, setSelectedTerm] = useState<'caracteristicas' | 'transformaciones' | 'representaciones'>('caracteristicas');
 
-      <div className="flex justify-center space-x-8">
-        <button
-          className={`pb-2 border-b-2 transition-all duration-500 ease-in-out ${selectedTerm === 'caracteristicas'
-            ? 'text-blue-600 border-blue-600 font-medium'
-            : 'text-gray-600 border-transparent hover:text-gray-800'
-            }`}
-          onClick={onSelectTermOne}
-        >
-          Características de bajo nivel
-        </button>
-        <button
-          className={`pb-2 border-b-2 transition-all duration-500 ease-in-out ${selectedTerm === 'transformaciones'
-            ? 'text-blue-600 border-blue-600 font-medium'
-            : 'text-gray-600 border-transparent hover:text-gray-800'
-            }`}
-          onClick={onSelectTermTwo}
-        >
-          Transformaciones visuales
-        </button>
-        <button
-          className={`pb-2 border-b-2 transition-all duration-500 ease-in-out ${selectedTerm === 'representaciones'
-            ? 'text-blue-600 border-blue-600 font-medium'
-            : 'text-gray-600 border-transparent hover:text-gray-800'
-            }`}
-          onClick={onSelectTermThree}
-        >
-          Representaciones vectoriales
-        </button>
-      </div>
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 space-y-8 scroll-view">
+      <div className="max-w-4xl mx-auto text-center space-y-6">
+        <h2 className="text-2xl font-bold">Términos Básicos</h2>
 
-      <div className="bg-gray-50 p-6 rounded-lg">
-        <p className="text-gray-700 leading-relaxed text-justify">
-          {termContent[selectedTerm].content}
-        </p>
+        <div className="flex justify-center space-x-8">
+          <button
+            className={`pb-2 border-b-2 transition-all duration-500 ease-in-out ${selectedTerm === 'caracteristicas'
+              ? 'text-blue-600 border-blue-600 font-medium'
+              : 'text-gray-600 border-transparent hover:text-gray-800'
+              }`}
+            onClick={() => setSelectedTerm('caracteristicas')}
+          >
+            Características de bajo nivel
+          </button>
+          <button
+            className={`pb-2 border-b-2 transition-all duration-500 ease-in-out ${selectedTerm === 'transformaciones'
+              ? 'text-blue-600 border-blue-600 font-medium'
+              : 'text-gray-600 border-transparent hover:text-gray-800'
+              }`}
+            onClick={() => setSelectedTerm('transformaciones')}
+          >
+            Transformaciones visuales
+          </button>
+          <button
+            className={`pb-2 border-b-2 transition-all duration-500 ease-in-out ${selectedTerm === 'representaciones'
+              ? 'text-blue-600 border-blue-600 font-medium'
+              : 'text-gray-600 border-transparent hover:text-gray-800'
+              }`}
+            onClick={() => setSelectedTerm('representaciones')}
+          >
+            Representaciones vectoriales
+          </button>
+        </div>
+
+        <div className="bg-gray-50 p-6 rounded-lg">
+          <p className="text-gray-700 leading-relaxed text-justify">
+            {termContent[selectedTerm].content}
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};

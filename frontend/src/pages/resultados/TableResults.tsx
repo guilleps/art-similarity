@@ -58,60 +58,62 @@ export const TableResults = () => {
                     <h2 className="text-xl font-bold">Matriz de Resultados por Par similar</h2>
                 </div>
 
-                <div className="flex items-center justify-center space-x-4">
-                    <button
-                        onClick={() => setCurrentPage(Math.max(0, currentPage - 1))}
-                        disabled={currentPage === 0}
-                        className="p-2 rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100"
-                    >
-                        <ChevronLeft className="h-4 w-4" />
-                    </button>
+                <div>
+                    <div className="flex items-center justify-center space-x-4">
+                        <button
+                            onClick={() => setCurrentPage(Math.max(0, currentPage - 1))}
+                            disabled={currentPage === 0}
+                            className="p-2 rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100"
+                        >
+                            <ChevronLeft className="h-4 w-4" />
+                        </button>
 
-                    <span className="text-sm text-gray-600">
-                        {currentPage * itemsPerPage + 1} - {Math.min((currentPage + 1) * itemsPerPage, totalItems)} › {totalItems}
-                    </span>
+                        <span className="text-sm text-gray-600">
+                            {currentPage * itemsPerPage + 1} - {Math.min((currentPage + 1) * itemsPerPage, totalItems)} › {totalItems}
+                        </span>
 
-                    <button
-                        onClick={() => setCurrentPage(Math.min(totalPages - 1, currentPage + 1))}
-                        disabled={currentPage === totalPages - 1}
-                        className="p-2 rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100"
-                    >
-                        <ChevronRight className="h-4 w-4" />
-                    </button>
-                </div>
+                        <button
+                            onClick={() => setCurrentPage(Math.min(totalPages - 1, currentPage + 1))}
+                            disabled={currentPage === totalPages - 1}
+                            className="p-2 rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100"
+                        >
+                            <ChevronRight className="h-4 w-4" />
+                        </button>
+                    </div>
 
-                <div className="overflow-x-auto">
-                    <table className="w-full border-collapse bg-white rounded-lg shadow mx-auto">
-                        <thead>
-                            <tr className="hover:bg-gray-100 cursor-pointer">
-                                <th className="border border-gray-200 px-4 py-2 text-left">N° Par</th>
-                                <th className="border border-gray-200 px-4 py-2 text-left">TMCC</th>
-                                <th className="border border-gray-200 px-4 py-2 text-left">TT</th>
-                                <th className="border border-gray-200 px-4 py-2 text-left">TS</th>
-                                <th className="border border-gray-200 px-4 py-2 text-left">TB</th>
-                                <th className="border border-gray-200 px-4 py-2 text-left">TX</th>
-                                <th className="border border-gray-200 px-4 py-2 text-left">TC</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {transformations.map((row) => (
-                                <tr
-                                    key={row.pair}
-                                    className={`hover:bg-gray-50 cursor-pointer ${selectedRow === row.pair ? 'bg-blue-50' : ''
-                                        }`}
-                                    onClick={() => handleRowClick(row.comparison_id, row.pair)}
-                                >
-                                    <td className="border border-gray-200 px-4 py-2">{row.pair}</td>
-                                    <td className="border border-gray-200 px-4 py-2">{row.tmcc}</td>
-                                    <td className="border border-gray-200 px-4 py-2">{row.tt}</td>
-                                    <td className="border border-gray-200 px-4 py-2">{row.ts}</td>
-                                    <td className="border border-gray-200 px-4 py-2">{row.tb}</td>
-                                    <td className="border border-gray-200 px-4 py-2">{row.tx}</td>
-                                    <td className="border border-gray-200 px-4 py-2">{row.tc}</td>
+                    <div className="overflow-x-auto">
+                        <table className="w-full border-collapse bg-white rounded-lg shadow mx-auto">
+                            <thead>
+                                <tr className="hover:bg-gray-100 cursor-pointer">
+                                    <th className="border border-gray-200 px-4 py-2 text-left">N° Par</th>
+                                    <th className="border border-gray-200 px-4 py-2 text-left">TMCC</th>
+                                    <th className="border border-gray-200 px-4 py-2 text-left">TT</th>
+                                    <th className="border border-gray-200 px-4 py-2 text-left">TS</th>
+                                    <th className="border border-gray-200 px-4 py-2 text-left">TB</th>
+                                    <th className="border border-gray-200 px-4 py-2 text-left">TX</th>
+                                    <th className="border border-gray-200 px-4 py-2 text-left">TC</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {transformations.map((row) => (
+                                    <tr
+                                        key={row.pair}
+                                        className={`hover:bg-gray-50 cursor-pointer ${selectedRow === row.pair ? 'bg-blue-50' : ''
+                                            }`}
+                                        onClick={() => handleRowClick(row.comparison_id, row.pair)}
+                                    >
+                                        <td className="border border-gray-200 px-4 py-2">{row.pair}</td>
+                                        <td className="border border-gray-200 px-4 py-2">{row.tmcc}</td>
+                                        <td className="border border-gray-200 px-4 py-2">{row.tt}</td>
+                                        <td className="border border-gray-200 px-4 py-2">{row.ts}</td>
+                                        <td className="border border-gray-200 px-4 py-2">{row.tb}</td>
+                                        <td className="border border-gray-200 px-4 py-2">{row.tx}</td>
+                                        <td className="border border-gray-200 px-4 py-2">{row.tc}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -129,7 +131,7 @@ export const TableResults = () => {
 
                         {modalLoading && (
                             <div className="flex justify-center items-center min-h-[300px]">
-                                <span className="text-xl text-gray-600 animate-pulse">Cargando...</span>
+                                <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600"></div>
                             </div>
                         )}
 
