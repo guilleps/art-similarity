@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator
 from .comparison_session import ImageComparisonSession
 
 class TransformType(models.TextChoices):
@@ -12,7 +13,9 @@ class TransformType(models.TextChoices):
 class SimilarityMetricResult(models.Model):
     comparison = models.ForeignKey(ImageComparisonSession, on_delete=models.CASCADE, related_name="similarities")
     transform_type = models.CharField(max_length=20, choices=TransformType.choices)
-    similarity_score = models.FloatField()
+    similarity_score = models.FloatField(
+        validators=[MinValueValidator(0.0)]
+    )
     file_1 = models.CharField(max_length=255)
     file_2 = models.CharField(max_length=255)
 

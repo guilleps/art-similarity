@@ -2,9 +2,11 @@ absl-py==2.2.2
 asgiref==3.8.1
 astunparse==1.6.3
 attrs==25.3.0
+-e git+https://github.com/guilleps/vizel-art-similarity.git@d01c18616c8879400339bf029546cc59fbabc986#egg=backend&subdirectory=backend\backend
 certifi==2025.1.31
 charset-normalizer==3.4.1
 cloudinary==1.44.0
+colorama==0.4.6
 coreapi==2.3.3
 coreschema==0.0.4
 dj-database-url==2.3.0
@@ -19,6 +21,7 @@ grpcio==1.71.0
 gunicorn==23.0.0
 idna==3.10
 inflection==0.5.1
+iniconfig==2.1.0
 itypes==1.2.0
 Jinja2==3.1.6
 joblib==1.5.1
@@ -36,10 +39,13 @@ optree==0.15.0
 packaging==24.2
 pillow==11.2.1
 pinecone-plugin-interface==0.0.7
+pluggy==1.6.0
 protobuf==5.29.4
 protoc-gen-openapiv2==0.0.1
 psycopg2==2.9.10
 Pygments==2.19.1
+pytest==8.4.0
+pytest-django==4.11.1
 python-dateutil==2.9.0.post0
 python-dotenv==1.1.0
 pytz==2025.2
