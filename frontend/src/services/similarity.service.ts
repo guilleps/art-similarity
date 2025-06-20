@@ -1,3 +1,4 @@
+import { ExportedSimilarityData } from "@/dto/similarity-export.dto";
 import { SimilarityRaw } from "@/pages/resultados/GeneralResult";
 import axios, { AxiosResponse } from "axios";
 
@@ -25,3 +26,7 @@ export const getSimilaritiesById = async (comparison_id: string) => {
     const response = await axios.get(`${API_BASE}/get-similarity/${comparison_id}/`);
     return response.data;
 };
+
+export const getExportedSimilarityData = async (): Promise<AxiosResponse<ExportedSimilarityData>> => {
+    return axios.get(`${API_BASE}/export-similarity-results/`);
+}

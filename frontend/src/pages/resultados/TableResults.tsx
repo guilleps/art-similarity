@@ -1,4 +1,4 @@
-import { getAllSimilarities } from "@/services/similarity.service";
+import { getAllSimilarities, getExportedSimilarityData } from "@/services/similarity.service";
 import { ChevronLeft, ChevronRight, FileDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import SimilarityViewer from "./par/SimilarityViewer";
@@ -50,6 +50,29 @@ export const TableResults = () => {
         getSimilarities();
     }, [currentPage]);
 
+    const exportData = async () => {
+        try {
+            const response = await getExportedSimilarityData();
+            const data = response.data;
+
+            console.log(data.par["1"].heat_color_map?.similarity);
+
+            const url = URL.createObjectURL(
+                new Blob([JSON.stringify(data, null, 2)], {
+                    type: "application/json"
+                }) as Blob
+            );
+
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "data.json";
+            a.click();
+
+            URL.revokeObjectURL(url);
+        } catch (error) {
+            console.error("Error al exportar datos:", error);
+        }
+    }
 
     return (
 
@@ -90,13 +113,11 @@ export const TableResults = () => {
 
                         {/* Botón de exportación */}
                         <Button
-                            asChild
+                            onClick={exportData}
                             className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded shadow"
                         >
-                            <a href="/data/resultados_similitud.json" download="data.json">
-                                <FileDown className="h-4 w-4" />
-                                Exportar
-                            </a>
+                            <FileDown className="h-4 w-4" />
+                            Exportar
                         </Button>
                     </div>
 

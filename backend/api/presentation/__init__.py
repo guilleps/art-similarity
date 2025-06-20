@@ -3,3 +3,4 @@ from .get_similarity_view import GetSimilarityResultAPI
 from .get_all_similarity_view import GetSimilarityResultsPagAPI
 from .get_all_similarity_raw_view import GetAllSimilarityResultsRawAPI
 from .get_similarity_by_transform_view import GetSimilarityByTransformAPI
+from .export_similarity_results_view import ExportSimilarityResultsAPI
