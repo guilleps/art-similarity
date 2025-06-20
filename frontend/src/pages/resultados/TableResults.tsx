@@ -90,11 +90,13 @@ export const TableResults = () => {
 
                         {/* Botón de exportación */}
                         <Button
-                            onClick={() => {/* lógica de exportar */ }}
-                            className="inline-flex items-center px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded shadow"
+                            asChild
+                            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded shadow"
                         >
-                            <FileDown className="h-4 w-4" />
-                            Exportar
+                            <a href="/data/resultados_similitud.json" download="data.json">
+                                <FileDown className="h-4 w-4" />
+                                Exportar
+                            </a>
                         </Button>
                     </div>
 
