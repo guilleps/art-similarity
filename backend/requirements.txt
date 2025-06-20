@@ -2,7 +2,6 @@ absl-py==2.2.2
 asgiref==3.8.1
 astunparse==1.6.3
 attrs==25.3.0
--e git+https://github.com/guilleps/vizel-art-similarity.git@d01c18616c8879400339bf029546cc59fbabc986#egg=backend&subdirectory=backend\backend
 certifi==2025.1.31
 charset-normalizer==3.4.1
 cloudinary==1.44.0
@@ -46,6 +45,7 @@ psycopg2==2.9.10
 Pygments==2.19.1
 pytest==8.4.0
 pytest-django==4.11.1
+pytest-mock==3.14.1
 python-dateutil==2.9.0.post0
 python-dotenv==1.1.0
 pytz==2025.2
