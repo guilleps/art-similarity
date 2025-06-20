@@ -1,8 +1,9 @@
 import { getAllSimilarities } from "@/services/similarity.service";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, FileDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import SimilarityViewer from "./par/SimilarityViewer";
 import * as Dialog from "@radix-ui/react-dialog";
+import { Button } from "@/components/ui/button";
 
 export const TableResults = () => {
     const [selectedRow, setSelectedRow] = useState<number | null>(null);
@@ -59,39 +60,55 @@ export const TableResults = () => {
                 </div>
 
                 <div>
-                    <div className="flex items-center justify-center space-x-4">
-                        <button
-                            onClick={() => setCurrentPage(Math.max(0, currentPage - 1))}
-                            disabled={currentPage === 0}
-                            className="p-2 rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100"
-                        >
-                            <ChevronLeft className="h-4 w-4" />
-                        </button>
+                    <div className="flex items-center justify-between mt-6 pb-8">
+                        {/* Paginación */}
+                        <div className="flex items-center space-x-2">
+                            <Button
+                                onClick={() => setCurrentPage(Math.max(0, currentPage - 1))}
+                                disabled={currentPage === 0}
+                                variant="outline"
+                                className="inline-flex items-center px-3 py-1.5 text-sm font-medium"
+                            >
+                                <ChevronLeft className="h-4 w-4 mr-1" />
+                                Anterior
+                            </Button>
 
-                        <span className="text-sm text-gray-600">
-                            {currentPage * itemsPerPage + 1} - {Math.min((currentPage + 1) * itemsPerPage, totalItems)} › {totalItems}
-                        </span>
+                            <span className="text-sm text-gray-700">
+                                {currentPage * itemsPerPage + 1} - {Math.min((currentPage + 1) * itemsPerPage, totalItems)} de {totalItems}
+                            </span>
 
-                        <button
-                            onClick={() => setCurrentPage(Math.min(totalPages - 1, currentPage + 1))}
-                            disabled={currentPage === totalPages - 1}
-                            className="p-2 rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100"
+                            <Button
+                                onClick={() => setCurrentPage(Math.min(totalPages - 1, currentPage + 1))}
+                                disabled={currentPage === totalPages - 1}
+                                variant="outline"
+                                className="inline-flex items-center px-3 py-1.5 text-sm font-medium"
+                            >
+                                Siguiente
+                                <ChevronRight className="h-4 w-4 ml-1" />
+                            </Button>
+                        </div>
+
+                        {/* Botón de exportación */}
+                        <Button
+                            onClick={() => {/* lógica de exportar */ }}
+                            className="inline-flex items-center px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded shadow"
                         >
-                            <ChevronRight className="h-4 w-4" />
-                        </button>
+                            <FileDown className="h-4 w-4" />
+                            Exportar
+                        </Button>
                     </div>
 
                     <div className="overflow-x-auto">
-                        <table className="w-full border-collapse bg-white rounded-lg shadow mx-auto">
+                        <table className="w-full border-collapse te bg-white rounded-lg shadow mx-auto">
                             <thead>
                                 <tr className="hover:bg-gray-100 cursor-pointer">
-                                    <th className="border border-gray-200 px-4 py-2 text-left">N° Par</th>
-                                    <th className="border border-gray-200 px-4 py-2 text-left">TMCC</th>
-                                    <th className="border border-gray-200 px-4 py-2 text-left">TT</th>
-                                    <th className="border border-gray-200 px-4 py-2 text-left">TS</th>
-                                    <th className="border border-gray-200 px-4 py-2 text-left">TB</th>
-                                    <th className="border border-gray-200 px-4 py-2 text-left">TX</th>
-                                    <th className="border border-gray-200 px-4 py-2 text-left">TC</th>
+                                    <th className="border border-gray-200 px-4 py-2 text-center">N° Par</th>
+                                    <th className="border border-gray-200 px-4 py-2 text-center">TMCC</th>
+                                    <th className="border border-gray-200 px-4 py-2 text-center">TT</th>
+                                    <th className="border border-gray-200 px-4 py-2 text-center">TS</th>
+                                    <th className="border border-gray-200 px-4 py-2 text-center">TB</th>
+                                    <th className="border border-gray-200 px-4 py-2 text-center">TX</th>
+                                    <th className="border border-gray-200 px-4 py-2 text-center">TC</th>
                                 </tr>
                             </thead>
                             <tbody>
