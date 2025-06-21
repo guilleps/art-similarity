@@ -61,14 +61,3 @@ def compare_all_embeddings(image1_folder, image2_folder, output_json_path):
         json.dump(results, f, indent=4)
 
     logger.info(f"\nComparaciones guardadas en: {output_json_path}")
-
-# Ejecutar comparación
-# def run_comparisons():
-#     image1_folder = r"C:\workspace\tesis_project\experimentation\tesis_experimentation_v2\images\5\embeddings\albert-julius-olsson_a-song-of-the-sea"
-#     image2_folder = r"C:\workspace\tesis_project\experimentation\tesis_experimentation_v2\images\5\embeddings\albert-julius-olsson_storm-cloud"
-#     output_json_path = r"C:\workspace\tesis_project\experimentation\tesis_experimentation_v2\images\5\embeddings\resultados_similitud.json"
-
-#     compare_all_embeddings(image1_folder, image2_folder, output_json_path)
-
-# if __name__ == "__main__":
-#     run_comparisons()
