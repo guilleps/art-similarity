@@ -1,3 +1,8 @@
+"""
+Validacion de integridad de los modelos de dominio
+Modelos testeados: ImageComparisonSession, SimilarityMetricResult, TransformedImageEmbedding
+"""
+
 import pytest
 from django.core.exceptions import ValidationError
 from django.db.models import DateTimeField
@@ -6,6 +11,7 @@ from api.domain.models.similarity_result import SimilarityMetricResult, Transfor
 from api.domain.models.transformed_image_embedding import TransformedImageEmbedding, TransformType as EmbeddingTransformType
 
 @pytest.mark.django_db
+# Verificación de que el modelo ImageComparisonSession se crea correctamente (contenga UUID y campo created_at)
 def test_image_comparison_session_str():
     session = ImageComparisonSession.objects.create()
 
@@ -16,6 +22,7 @@ def test_image_comparison_session_str():
     assert field.auto_now_add is True
 
 @pytest.mark.django_db
+# Garantizar que se cree un unico resultado de métrica de similitud por sesión y tipo de transformación
 def test_similarity_unique_together():
     session = ImageComparisonSession.objects.create()
     SimilarityMetricResult.objects.create(
@@ -35,6 +42,7 @@ def test_similarity_unique_together():
         )
 
 @pytest.mark.django_db
+# Asegurar que al no indicar un tipo de transformación, se asigne el tipo por defecto
 def test_transformed_image_default_transform():
     session = ImageComparisonSession.objects.create()
     emb = TransformedImageEmbedding.objects.create(
@@ -48,6 +56,7 @@ def test_transformed_image_default_transform():
     assert str(emb).startswith(f"{session.id} - Img1 - {EmbeddingTransformType.ORIGINAL}")
 
 @pytest.mark.django_db
+# Lanzar un error al querer asignar un tipo de transformación inválido
 def test_similarity_transform_type_invalid():
     session = ImageComparisonSession.objects.create()
     with pytest.raises(ValidationError):
@@ -61,6 +70,7 @@ def test_similarity_transform_type_invalid():
         sim.full_clean()
 
 @pytest.mark.django_db
+# Verificar que el puntaje de similitud no pueda ser negativo
 def test_similarity_score_negative():
     session = ImageComparisonSession.objects.create()
     with pytest.raises(ValidationError):

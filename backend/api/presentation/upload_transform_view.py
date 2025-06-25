@@ -68,6 +68,8 @@ class UploadTransformedImagesAPI(APIView):
             use_case = UploadTransformedImagesUseCase()
             comparison_id = use_case.execute(image_1, image_2)
         except Exception as e:
+            import traceback
+            traceback.print_exc()
             return Response({"error": str(e)}, status=500)
 
         return Response({"comparison_id": str(comparison_id)}, status=201)

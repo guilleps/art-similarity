@@ -37,8 +37,8 @@ def test_execute_empty_data(mocker):
     res = uc.execute('algún-id')
     assert res == {
         'comparison_id': 'algún-id',
-        'imagen_1': {},
-        'imagen_2': {},
+        'image_1': {},
+        'image_2': {},
         'similitud': {}
     }
 
@@ -87,8 +87,8 @@ def test_execute_populated_data_corrected(mocker):
     res = uc.execute('test-id')
 
     assert res['comparison_id'] == 'test-id'
-    assert res['imagen_1']['original_image'] == "url1_emb"
-    assert res['imagen_2']['color']['image_transformed'] == "url2_img"
+    assert res['image_1']['original_image'] == "url1_emb"
+    assert res['image_2']['color']['image_transformed'] == "url2_img"
     assert res['similitud']['color']['similarity'] == round(0.333333, 4)
     assert res['similitud']['color']['files'][0] == "url2_img"
 

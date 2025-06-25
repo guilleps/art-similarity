@@ -15,7 +15,7 @@ class EmbeddingService:
 
     def process_and_save_embeddings(self, session, transformed_data: dict) -> dict:
         lookup = {1: {}, 2: {}}
-        for index, key in enumerate(["imagen_1", "imagen_2"], start=1):
+        for index, key in enumerate(["image_1", "image_2"], start=1):
             for transform_type, image_url in transformed_data[key].items():
                 if transform_type == "original_image":
                     continue
