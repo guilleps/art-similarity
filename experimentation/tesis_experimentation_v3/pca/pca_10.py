@@ -22,12 +22,16 @@ for filename in os.listdir(INPUT_DIR):
 
 X = np.array(embeddings)
 
-# Normalizar (media 0, varianza 1)
+# normalizacion media - 0 | varianza - 1
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-# Aplicar PCA global con 10 componentes
-pca = PCA(n_components=21)
+# calculamos PCA sin aplicación y obtenemos la varianza explicada acumulada
+pca = PCA().fit(X_scaled)
+explained_variance = np.cumsum(pca.explained_variance_ratio_)
+
+# aplicamos N componentes - transforma el embedding
+pca = PCA(n_components=X)
 X_pca = pca.fit_transform(X_scaled)
 
 # Guardar nuevos embeddings reducidos

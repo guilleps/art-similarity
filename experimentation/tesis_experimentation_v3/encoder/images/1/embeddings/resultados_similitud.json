@@ -1,0 +1,44 @@
+{
+    "heat_color_map": {
+        "files": [
+            "vasily-polenov_venice-1896-1_color_map_embedding.json",
+            "vasily-polenov_venice-1896_color_map_embedding.json"
+        ],
+        "similarity": 0.9592
+    },
+    "contrast": {
+        "files": [
+            "vasily-polenov_venice-1896-1_contrast_embedding.json",
+            "vasily-polenov_venice-1896_contrast_embedding.json"
+        ],
+        "similarity": 0.9227
+    },
+    "hsv_hue": {
+        "files": [
+            "vasily-polenov_venice-1896-1_hsv_hue_embedding.json",
+            "vasily-polenov_venice-1896_hsv_hue_embedding.json"
+        ],
+        "similarity": 0.8238
+    },
+    "hsv_saturation": {
+        "files": [
+            "vasily-polenov_venice-1896-1_hsv_saturation_embedding.json",
+            "vasily-polenov_venice-1896_hsv_saturation_embedding.json"
+        ],
+        "similarity": 0.926
+    },
+    "hsv_value": {
+        "files": [
+            "vasily-polenov_venice-1896-1_hsv_value_embedding.json",
+            "vasily-polenov_venice-1896_hsv_value_embedding.json"
+        ],
+        "similarity": 0.9556
+    },
+    "texture": {
+        "files": [
+            "vasily-polenov_venice-1896-1_texture_embedding.json",
+            "vasily-polenov_venice-1896_texture_embedding.json"
+        ],
+        "similarity": 0.9538
+    }
+}

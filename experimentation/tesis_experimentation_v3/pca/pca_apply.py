@@ -28,7 +28,6 @@ X = np.array(embeddings)
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-# Paso 3: Aplicar PCA y graficar varianza explicada
 pca = PCA().fit(X_scaled)
 explained_variance = np.cumsum(pca.explained_variance_ratio_)
 
