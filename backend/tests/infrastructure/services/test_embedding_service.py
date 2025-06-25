@@ -19,8 +19,8 @@ def test_process_and_save_embeddings_success(mocker):
     session = ImageComparisonSession.objects.create()
 
     transformed = {
-        "imagen_1": {"contrast": "url_c1"},
-        "imagen_2": {"texture": "url_t2", "original_image": "url_o2"}
+        "image_1": {"contrast": "url_c1"},
+        "image_2": {"texture": "url_t2", "original_image": "url_o2"}
     }
 
     svc = EmbeddingService()
@@ -45,7 +45,7 @@ def test_process_and_save_embeddings_failure(mocker):
     inst.post_image_and_get_json.side_effect = Exception("CNN unreachable")
 
     session = ImageComparisonSession.objects.create()
-    transformed = {"imagen_1": {"contrast": "url_c1"}, "imagen_2": {}}
+    transformed = {"image_1": {"contrast": "url_c1"}, "image_2": {}}
 
     svc = EmbeddingService()
     with pytest.raises(EmbeddingModelError):

@@ -12,8 +12,8 @@ def test_get_similarity_result_success(mocker, api_client):
     # Datos simulados que retorna el caso de uso
     fake_payload = {
         "comparison_id": "my-id",
-        "imagen_1": {"original_image": "url1"},
-        "imagen_2": {"original_image": "url2"},
+        "image_1": {"original_image": "url1"},
+        "image_2": {"original_image": "url2"},
         "similitud": {"contrast": {"files": ["url1", "url2"], "similarity": 0.5678}}
     }
     mocker.patch(
