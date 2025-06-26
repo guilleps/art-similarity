@@ -7,6 +7,7 @@ from app.logger_config import setup_logging
 from app.model_clip import generate_embedding
 from app.cloudinary_config import upload_file_to_cloudinary
 import logging
+from onnxruntime import InferenceSession
 
 setup_logging()
 logger = logging.getLogger(__name__)
