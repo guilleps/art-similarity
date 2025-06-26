@@ -15,23 +15,21 @@ app = FastAPI()
 
 @app.post("/embed")
 async def embed(request: Request):
-    logger.info(f"Content-Type recibido: {request.headers.get('content-type')}")
+    logger.info(f"Content-Type recibido: { request.headers.get('content-type') }")
     try:
         logger.info("Recibiendo imagen para generar embedding...")
-        
-        # image_bytes = await file.read()
+
         image_bytes = await request.body()
 
         # Guardar temporal
         os.makedirs("/tmp", exist_ok=True)
         temp_image_path = "/tmp/uploaded_image.jpg"
         with open(temp_image_path, "wb") as f:
+            # f.write(await file.read())
             f.write(image_bytes)
-        logger.info("Imagen guardada temporalmente.")
 
         # Generar embedding
         embedding = generate_embedding(temp_image_path)
-        logger.info("Embedding generado con éxito.")
 
         # Guardar embedding en JSON
         embedding_id = str(uuid.uuid4())

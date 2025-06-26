@@ -16,7 +16,7 @@ def generate_embedding(image_path: str):
         inputs = processor(images=image, return_tensors="pt").to(device)
         with torch.no_grad():
             outputs = model.get_image_features(**inputs)
-        logger.info("Embedding generado.")
+        logger.info("Embedding generado con éxito.")
         return outputs[0].cpu().numpy().tolist()
     except Exception as e:
         logger.exception("Error al generar el embedding:")

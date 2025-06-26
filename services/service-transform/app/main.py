@@ -15,7 +15,7 @@ async def transform_from_urls(request: Request):
 
     results = {}
 
-    for idx, (label, url) in enumerate([("imagen_1", image_1_url), ("imagen_2", image_2_url)], start=1):
+    for idx, (label, url) in enumerate([("image_1", image_1_url), ("image_2", image_2_url)], start=1):
         response = requests.get(url, stream=True)
         if response.status_code != 200:
             return JSONResponse(status_code=400, content={"error": f"Error al descargar imagen {label}"})
