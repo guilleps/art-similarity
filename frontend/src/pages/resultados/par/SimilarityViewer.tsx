@@ -23,7 +23,7 @@ const SimilarityViewer = ({ comparisonId, onLoaded }: Props) => {
   }, [comparisonId]);
 
   const paintingPairs = useMemo(() => {
-    if (!data?.similitud || !data?.imagen_1 || !data?.imagen_2) return [];
+    if (!data?.similitud || !data?.image_1 || !data?.image_2) return [];
 
     const transformations = Object.keys(data.similitud).map((key) => ({
       name: {
@@ -35,15 +35,15 @@ const SimilarityViewer = ({ comparisonId, onLoaded }: Props) => {
         hsv_value: "Brillo",
       }[key] || key,
       similarity: data.similitud[key].similarity,
-      leftImage: data.imagen_1[key].image_transformed,
-      rightImage: data.imagen_2[key].image_transformed,
+      leftImage: data.image_1[key].image_transformed,
+      rightImage: data.image_2[key].image_transformed,
     }));
 
     return [
       {
         id: 1,
-        leftPainting: { image: data.imagen_1.original_image },
-        rightPainting: { image: data.imagen_2.original_image },
+        leftPainting: { image: data.image_1.original_image },
+        rightPainting: { image: data.image_2.original_image },
         transformations,
       },
     ];
