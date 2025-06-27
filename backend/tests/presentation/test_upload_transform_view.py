@@ -15,15 +15,17 @@ def secret_key_env(monkeypatch):
     import api.presentation.upload_transform_view as view_mod
     importlib.reload(view_mod)
 
+# simula archivo subido
 def make_image_file(name='img.jpg', content=b'data'):
+    # crea una objeto, simula un binario tipo MIME (como imagen)
     return SimpleUploadedFile(name=name, content=content, content_type='image/jpeg')
 
 def test_upload_transform_success(mocker, api_client):
-    img1 = make_image_file('a.jpg')
-    img2 = make_image_file('b.jpg')
+    img1 = make_image_file('a.jpg') # simula y crea una imagen 'a'
+    img2 = make_image_file('b.jpg') # simula y crea una imagen 'b'
     mocker.patch(
         'api.presentation.upload_transform_view.UploadTransformedImagesUseCase.execute',
-        return_value="session-xyz"
+        return_value="dd6d697c-fdf5-496b-a268-0706b1a9eb65"
     )
     url = reverse('upload_transform')
     response = api_client.post(
@@ -33,10 +35,11 @@ def test_upload_transform_success(mocker, api_client):
         HTTP_X_SECRET_KEY='topsecret'
     )
     assert response.status_code == 201
-    assert response.json() == {"comparison_id": "session-xyz"}
+    assert response.json() == {"comparison_id": "dd6d697c-fdf5-496b-a268-0706b1a9eb65"}
 
 def test_upload_transform_missing_secret(api_client):
-    img1 = make_image_file('a.jpg'); img2 = make_image_file('b.jpg')
+    img1 = make_image_file('a.jpg') # simula y crea una imagen 'a'
+    img2 = make_image_file('b.jpg') # simula y crea una imagen 'b'
     url = reverse('upload_transform')
     response = api_client.post(
         url,
@@ -58,7 +61,8 @@ def test_upload_transform_missing_file(api_client):
     assert 'must be included' in response.json()['error']
 
 def test_upload_transform_usecase_error(mocker, api_client):
-    img1 = make_image_file(); img2 = make_image_file()
+    img1 = make_image_file()
+    img2 = make_image_file()
     mocker.patch(
         'api.presentation.upload_transform_view.UploadTransformedImagesUseCase.execute',
         side_effect=Exception("ups")

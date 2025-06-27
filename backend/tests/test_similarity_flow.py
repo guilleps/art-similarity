@@ -114,8 +114,6 @@ def test_similarity_flow(mocker, api_client):
         format='multipart',
         HTTP_X_SECRET_KEY='topsecret'
     )
-    print("RESPONSE:", response.status_code)
-    print("BODY:", response.content.decode()) 
     
     assert response.status_code == 201
     session_id = response.json()['comparison_id']

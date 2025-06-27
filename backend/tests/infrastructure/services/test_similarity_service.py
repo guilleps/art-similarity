@@ -21,7 +21,7 @@ def test_compute_and_save_creates_records(mocker):
 
     service = SimilarityService()
     fake_session = ImageComparisonSession.objects.create()
-    embeddings = {1: {'foo': 'url1'}, 2: {'foo': 'url2'}}
+    embeddings = {1: {'foo': 'url1'}, 2: {'foo': 'url2'}} # transformación simulada 'foo'
 
     service.compute_and_save(fake_session, embeddings)
 
@@ -33,25 +33,36 @@ def test_compute_and_save_creates_records(mocker):
     assert saved.file_1 == 'url1'
     assert saved.file_2 == 'url2'
 
+# garantizar que al subir la imagen no se rompa si hay enalces faltantes==None, y no guarde resultados de similitud inválidos
 @pytest.mark.django_db
-def test_compute_and_save_multiple_transforms(mocker):
+@pytest.mark.parametrize("embeddings, expected_count", [
+    (
+        {1: {'a': None}, 2: {'a': 'https://res.cloudinary.com/dnydakj9z/image/upload/v1749831160/hvy6qmma5kul9tkiz4bs.jpg'}},  # file_1 es None
+        0
+    ),
+    (
+        {1: {'a': 'https://res.cloudinary.com/dnydakj9z/image/upload/v1749831160/dot1wmhgjgktl68nboap.jpg'}, 2: {'a': None}},  # file_2 es None
+        0
+    ),
+    (
+        {1: {}, 2: {}},  # no hay claves en absoluto
+        0
+    ),
+])
+def test_compute_and_save_skips_missing_urls(mocker, embeddings, expected_count):
     mocker.patch(
         'api.infrastructure.services.similarity_service.ExternalRequestService.fetch_json',
-        side_effect=[ [1,1], [0,1], [2,2], [1,0] ]
+        return_value=[1, 2, 3]
     )
     mocker.patch(
         'api.infrastructure.services.similarity_service.cosine_similarity',
-        side_effect=[ [[0.7]], [[0.3]] ]
+        return_value=[[0.999]]
     )
 
     service = SimilarityService()
-    fake_session = ImageComparisonSession.objects.create()
-    embeddings = {
-        1: {'a': 'urlA1', 'b': 'urlB1'},
-        2: {'a': 'urlA2', 'b': 'urlB2'}
-    }
+    session = ImageComparisonSession.objects.create()
 
-    service.compute_and_save(fake_session, embeddings)
-    results = {r.transform_type: r.similarity_score for r in SimilarityMetricResult.objects.filter(comparison=fake_session)}
-    assert pytest.approx(results['a'], rel=1e-6) == 0.7
-    assert pytest.approx(results['b'], rel=1e-6) == 0.3
+    # sin lanzar excepción
+    service.compute_and_save(session, embeddings)
+
+    assert SimilarityMetricResult.objects.filter(comparison=session).count() == expected_count
