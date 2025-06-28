@@ -48,13 +48,13 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Visual Painting API',
+    'TITLE': 'ArtShift API',
     'DESCRIPTION': 'Sistema de análisis visual que utiliza características de bajo nivel y representaciones vectoriales para comparar la similitud compositiva en pinturas impresionistas.',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,  # Para evitar que el esquema aparezca en la documentación.
     'CONTACT': {
-        'name': 'Visual Painting',
-        'url': 'https://visual-painting.vercel.app',
+        'name': 'ArtShift',
+        'url': 'https://artshift.vercel.app',
     },
     'LICENSE': {
         'name': 'MIT',
