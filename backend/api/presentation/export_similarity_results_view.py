@@ -5,8 +5,8 @@ from api.application.export_similarity_results_usecase import ExportSimilarityRe
 from drf_spectacular.utils import extend_schema, OpenApiResponse
 
 @extend_schema(
-    summary="Exportar todos los resultados de similitud como JSON estructurado",
-    responses={200: OpenApiResponse(description="JSON estructurado con resultados de similitud por par")}
+    summary="Export all similarity results as structured JSON",
+    responses={200: OpenApiResponse(description="Structured JSON with pairwise similarity results")}
 )
 class ExportSimilarityResultsAPI(APIView):
     def get(self, request, *args, **kwargs):

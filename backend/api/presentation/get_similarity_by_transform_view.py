@@ -5,14 +5,14 @@ from drf_spectacular.utils import extend_schema, OpenApiParameter
 from api.application import GetAllSimilarityResultsRawUseCase
 
 @extend_schema(
-    summary="Obtener resultados por tipo de transformación",
+    summary="Obtain results by type of transformation",
     parameters=[
         OpenApiParameter(
             name="transform",
             required=True,
             type=str,
             description=(
-                "Tipo de transformación aplicada a la imagen. Valores posibles:\n\n"
+                "Type of transformation applied to the image. Possible values:\n\n"
                 "- `color_heat_map`: Mapa de calor de color (TMCC)\n"
                 "- `tone`: Tono (TT)\n"
                 "- `saturation`: Saturación (TS)\n"
@@ -36,7 +36,7 @@ class GetSimilarityByTransformAPI(APIView):
     def get(self, request, *args, **kwargs):
         transform_type = request.query_params.get("transform")
         if not transform_type:
-            return Response({"error": "Debe proporcionar el parámetro 'transform'"}, status=400)
+            return Response({"error": "You must provide the ‘transform’ parameter"}, status=400)
 
         use_case = GetAllSimilarityResultsRawUseCase()
         all_results = use_case.execute()
