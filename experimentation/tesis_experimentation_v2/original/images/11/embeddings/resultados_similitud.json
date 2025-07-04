@@ -1,0 +1,44 @@
+{
+    "heat_color_map": {
+        "files": [
+            "laszlo-mednyanszky_burring-brook_color_map_embedding.json",
+            "paul-gauguin_tree-in-the-farm-yard-1874-1_color_map_embedding.json"
+        ],
+        "similarity": 0.8687
+    },
+    "contrast": {
+        "files": [
+            "laszlo-mednyanszky_burring-brook_contrast_embedding.json",
+            "paul-gauguin_tree-in-the-farm-yard-1874-1_contrast_embedding.json"
+        ],
+        "similarity": 0.7644
+    },
+    "hsv_hue": {
+        "files": [
+            "laszlo-mednyanszky_burring-brook_hsv_hue_embedding.json",
+            "paul-gauguin_tree-in-the-farm-yard-1874-1_hsv_hue_embedding.json"
+        ],
+        "similarity": 0.836
+    },
+    "hsv_saturation": {
+        "files": [
+            "laszlo-mednyanszky_burring-brook_hsv_saturation_embedding.json",
+            "paul-gauguin_tree-in-the-farm-yard-1874-1_hsv_saturation_embedding.json"
+        ],
+        "similarity": 0.8654
+    },
+    "hsv_value": {
+        "files": [
+            "laszlo-mednyanszky_burring-brook_hsv_value_embedding.json",
+            "paul-gauguin_tree-in-the-farm-yard-1874-1_hsv_value_embedding.json"
+        ],
+        "similarity": 0.8616
+    },
+    "texture": {
+        "files": [
+            "laszlo-mednyanszky_burring-brook_texture_embedding.json",
+            "paul-gauguin_tree-in-the-farm-yard-1874-1_texture_embedding.json"
+        ],
+        "similarity": 0.8489
+    }
+}
