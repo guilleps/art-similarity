@@ -84,5 +84,26 @@ def main():
     plt.tight_layout()
     plt.show()
 
+    def get_class_name(filename: str) -> str:
+        return filename.split("_")[0]  # Ajusta si usas otro formato
+
+    # Al final del main()
+    correct_retrieved = 0
+    correct_similarities = []
+
+    query_class = get_class_name(query_img.stem)
+
+    for name, sim in top_n[:3]:
+        retrieved_class = get_class_name(name)
+        if retrieved_class == query_class:
+            correct_retrieved += 1
+            correct_similarities.append(sim)
+
+    precision_top3 = correct_retrieved / 3
+    mean_cosine_similarity = np.mean(correct_similarities) if correct_similarities else 0.0
+
+    print(f"\nIndicador OE1-2 - Precisión Top-3: {precision_top3 * 100:.2f}%")
+    print(f"Indicador OE2-1 - Similitud promedio (coseno): {mean_cosine_similarity:.4f}")
+
 if __name__ == "__main__":
     main()
