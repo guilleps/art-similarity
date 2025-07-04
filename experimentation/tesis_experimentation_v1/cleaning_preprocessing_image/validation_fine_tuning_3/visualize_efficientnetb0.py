@@ -69,3 +69,25 @@ if "p@5" in df_grouped.columns and df_grouped["p@5"].notna().any():
     plt.close()
 
 print("✅ Gráficos generados por fase correctamente.")
+
+# Filtrar solo Fase 3
+df_fase3 = df_grouped[df_grouped["phase"] == 3]
+
+# Eliminar filas con NaN en las métricas clave
+df_fase3_valid = df_fase3.dropna(subset=["val_loss", "val_accuracy", "p@5"])
+
+# Verifica si quedó alguna fila válida
+if not df_fase3_valid.empty:
+    # Tomar la última época válida
+    fila_final = df_fase3_valid[df_fase3_valid["epoch"] == df_fase3_valid["epoch"].max()]
+    
+    val_loss_final = fila_final["val_loss"].values[0]
+    val_accuracy_final = fila_final["val_accuracy"].values[0]
+    p_at_5_final = fila_final["p@5"].values[0]
+
+    print("\n--- MÉTRICAS EXTRAÍDAS PARA INDICADORES ---")
+    print(f"Val Loss (Fase 3): {val_loss_final:.4f}")
+    print(f"Val Accuracy (Fase 3): {val_accuracy_final:.4f}")
+    print(f"P@5 (Fase 3): {p_at_5_final:.4f}")
+else:
+    print("⚠️ No se encontraron datos válidos para Fase 3 con métricas completas.")

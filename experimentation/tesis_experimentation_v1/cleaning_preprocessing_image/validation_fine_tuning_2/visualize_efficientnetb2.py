@@ -69,3 +69,22 @@ if "p@5" in df_grouped.columns and df_grouped["p@5"].notna().any():
     plt.close()
 
 print("✅ Gráficos generados por fase correctamente.")
+
+# EXTRAER VALORES FINALES PARA INDICADORES
+
+# Filtrar solo Fase 3
+df_fase3 = df_grouped[df_grouped["phase"] == 3]
+# Última época
+ultima_epoca = df_fase3["epoch"].max()
+fila_final = df_fase3[df_fase3["epoch"] == ultima_epoca]
+
+# Obtener métricas clave
+val_loss_final = fila_final["val_loss"].values[0]
+val_accuracy_final = fila_final["val_accuracy"].values[0]
+p_at_5_final = fila_final["p@5"].values[0] if "p@5" in fila_final.columns else None
+
+print("\n--- MÉTRICAS EXTRAÍDAS PARA INDICADORES ---")
+print(f"Val Loss (Fase 3, Época {ultima_epoca}): {val_loss_final:.4f}")
+print(f"Val Accuracy (Fase 3, Época {ultima_epoca}): {val_accuracy_final:.4f}")
+if p_at_5_final is not None:
+    print(f"P@5 (Fase 3, Época {ultima_epoca}): {p_at_5_final:.4f}")
