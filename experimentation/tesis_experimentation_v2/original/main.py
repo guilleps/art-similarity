@@ -9,8 +9,8 @@ logger = logging.getLogger(__name__)
 
 def main():
     # Define las rutas base que usas en tus scripts
-    embeddings_base_folder = r"C:\workspace\tesis_project\experimentation\tesis_experimentation_v2\images\5\embeddings"
-    input_images_folder = r"C:\workspace\tesis_project\experimentation\tesis_experimentation_v2\images\5"
+    embeddings_base_folder = r"C:\workspace\tesis_project\experimentation\tesis_experimentation_v2\original\images\12\embeddings"
+    input_images_folder = r"C:\workspace\tesis_project\experimentation\tesis_experimentation_v2\original\images\12"
     
     # Ejecucion de pipeline de transformaciones y extracción de embeddings
     logger.info("Inicio del pipeline...")
@@ -21,8 +21,8 @@ def main():
     run_pipeline(input_images_folder, transformed_dir, embeddings_dir)
     
     # Comparación y generación del JSON con resultados
-    image1_folder = os.path.join(embeddings_base_folder, "albert-julius-olsson_a-song-of-the-sea")
-    image2_folder = os.path.join(embeddings_base_folder, "albert-julius-olsson_storm-cloud")
+    image1_folder = os.path.join(embeddings_base_folder, "benito-quinquela-martin_barcos-a-pleno-sol-1960")
+    image2_folder = os.path.join(embeddings_base_folder, "nicolae-grigorescu_the-spring-detail")
     output_json_path = os.path.join(embeddings_base_folder, "resultados_similitud.json")
     
     logger.info("Analizando y obteniendo comparación de similitudes...")
