@@ -7,6 +7,8 @@ Este proyecto tiene como objetivo evaluar arquitecturas CNN (ResNet50, Efficient
 ```
 └── 📁experimentation
     └── 📁data
+        └── 📁train
+        └── 📁test
     └── 📁output_data
     └── 📁similarity_calculation
         └── 📁logs
@@ -19,16 +21,46 @@ Este proyecto tiene como objetivo evaluar arquitecturas CNN (ResNet50, Efficient
     └── requirements.txt
 ```
 
+## 🎨 Dataset ArtBench-10 para Experimentación de Similitud Artística
+
+Origen: Repositorio oficial de [Liao Peiyuan](https://github.com/liaopeiyuan/artbench)
+
+Contenido:
+
+- 60,000 imágenes de obras de arte (5,000 train + 1,000 test por estilo)
+
+- 10 estilos artísticos balanceados:
+
+    - Expresionismo abstracto
+
+    - Art Nouveau
+
+    - Barroco
+
+    - Cubismo
+
+    - Renacimiento
+
+    - Impresionismo
+
+    - Realismo
+
+    - Romanticismo
+
+    - Surrealismo
+
+    - Ukiyo-e
 
 ## 🚀 Cómo ejecutar los experimentos
 
 ### 1. Generar embeddings
+
 ```bash
 python architectures_cnn_efficientnetb7.py
 python architectures_cnn_resnet50.py
 ```
 
-Esto extraerá embeddings de las imágenes en ./data/train usando las arquitecturas CNN seleccionadas. Los resultados se almacenan en ./output_data/arq_<model> y se registran automáticamente en W&B.
+Esto extraerá embeddings de las imágenes en ./data/train usando las arquitecturas CNN seleccionadas. Los resultados se almacenan en ./output*data/arq*<model> y se registran automáticamente en W&B.
 
 ### 2. Calcular similitud entre obras
 
@@ -50,7 +82,7 @@ python similarity_calculation/ssim_metric.py
 Este proyecto utiliza **Python 3.12**. Puedes verificar la versión instalada ejecutando:
 
 ```bash
-    python3 --version    
+    python3 --version
     python --version
 ```
 
@@ -59,26 +91,29 @@ Este proyecto utiliza **Python 3.12**. Puedes verificar la versión instalada ej
 ## Instalación de Dependencias
 
 1. Crea un entorno virtual para aislar las dependencias del proyecto:
-    ```bash
-    python -m venv venv
-    ```
+
+   ```bash
+   python -m venv venv
+   ```
 
 2. Activa el entorno virtual:
-    - En **Linux/MacOS**:
-      ```bash
-      source venv/bin/activate
-      ```
-    - En **Windows**:
-      ```bash
-      .\venv\Scripts\activate
-      ```
+
+   - En **Linux/MacOS**:
+     ```bash
+     source venv/bin/activate
+     ```
+   - En **Windows**:
+     ```bash
+     .\venv\Scripts\activate
+     ```
 
 3. Instala las dependencias desde el archivo `requirements.txt`:
-    ```bash
-    pip install -r requirements.txt
-    ```
+
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 4. Verifica que las dependencias se hayan instalado correctamente:
-    ```bash
-    pip list
-    ```
+   ```bash
+   pip list
+   ```
