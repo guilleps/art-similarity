@@ -1,4 +1,4 @@
-# Vizel Art Similarity
+# Art Similarity
 
 ## Resumen
 Este proyecto esta diseñando para el análisis y comparación de obras de arte impresionistas bajo las caracteristicas de bajo nivel que posee la obra. Este experimento hace de algoritmos de similitud y metricas de comparación.
@@ -9,7 +9,7 @@ Este proyecto esta diseñando para el análisis y comparación de obras de arte 
 - **Visualización interactiva**: Explore los resultados mediante visualizaciones dinámicas.
 
 ## Workflow
-![Big Picture Vizel App Web](./resources/bigpicture_v2.png)
+![Big Picture App Web](./resources/bigpicture_v2.png)
 
 The workflow of the application includes:
 1. **Ingesta de datos**: Cargar y preprocesar imágenes de obras de arte.

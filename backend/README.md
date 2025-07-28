@@ -9,7 +9,7 @@ Asegúrese de tener instalado lo siguiente en su sistema:
 ### Instalacion
 1. Clone the repository:
     ```bash
-    git clone https://github.com/guilleps/vizel-art-similarity.git
+    git clone https://github.com/guilleps/art-similarity.git
     cd tesis_project/backend
     ```
 
