@@ -1,0 +1,28 @@
+## compiled output
+dist
+build
+
+## dependencies
+/node_modules
+/public
+
+## IDEs and editors
+/.idea
+.project
+.angular
+.classpath
+*.launch
+.settings/
+*.sublime-workspace
+.vscode/*
+.DS_Store
+
+# auto-generated files
+package-lock.json
+yarn.lock
+
+# configuration files without formatting
+*.log
+*.map
+*.ico
+*.svg
