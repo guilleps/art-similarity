@@ -1,0 +1,44 @@
+{
+    "heat_color_map": {
+        "files": [
+            "ernest-lawson_the-flatiron-building-new-york-1905-0_color_map_embedding.json",
+            "ernest-lawson_the-flatiron-building-new-york-1905_color_map_embedding.json"
+        ],
+        "similarity": 0.7276
+    },
+    "contrast": {
+        "files": [
+            "ernest-lawson_the-flatiron-building-new-york-1905-0_contrast_embedding.json",
+            "ernest-lawson_the-flatiron-building-new-york-1905_contrast_embedding.json"
+        ],
+        "similarity": 0.7461
+    },
+    "hsv_hue": {
+        "files": [
+            "ernest-lawson_the-flatiron-building-new-york-1905-0_hsv_hue_embedding.json",
+            "ernest-lawson_the-flatiron-building-new-york-1905_hsv_hue_embedding.json"
+        ],
+        "similarity": 0.5939
+    },
+    "hsv_saturation": {
+        "files": [
+            "ernest-lawson_the-flatiron-building-new-york-1905-0_hsv_saturation_embedding.json",
+            "ernest-lawson_the-flatiron-building-new-york-1905_hsv_saturation_embedding.json"
+        ],
+        "similarity": 0.5541
+    },
+    "hsv_value": {
+        "files": [
+            "ernest-lawson_the-flatiron-building-new-york-1905-0_hsv_value_embedding.json",
+            "ernest-lawson_the-flatiron-building-new-york-1905_hsv_value_embedding.json"
+        ],
+        "similarity": 0.8597
+    },
+    "texture": {
+        "files": [
+            "ernest-lawson_the-flatiron-building-new-york-1905-0_texture_embedding.json",
+            "ernest-lawson_the-flatiron-building-new-york-1905_texture_embedding.json"
+        ],
+        "similarity": 0.7641
+    }
+}
