@@ -25,20 +25,27 @@ const SimilarityViewer = ({ comparisonId, onLoaded }: Props) => {
 	const paintingPairs = useMemo(() => {
 		if (!data?.similitud || !data?.image_1 || !data?.image_2) return [];
 
-		const transformations = Object.keys(data.similitud).map(key => ({
-			name:
-				{
-					contrast: 'Contraste',
-					texture: 'Textura',
-					heat_color_map: 'Mapa de Calor',
-					hsv_hue: 'Tono',
-					hsv_saturation: 'Saturación',
-					hsv_value: 'Brillo',
-				}[key] || key,
-			similarity: data.similitud[key].similarity,
-			leftImage: data.image_1[key].image_transformed,
-			rightImage: data.image_2[key].image_transformed,
-		}));
+		// claves normalizadas por el servicio mock
+		const labelByKey: Record<string, string> = {
+			contrast: 'Contraste',
+			texture: 'Textura',
+			color_heat_map: 'Mapa de Calor',
+			tone: 'Tono',
+			saturation: 'Saturación',
+			brightness: 'Brillo',
+		};
+
+		const transformations = Object.keys(data.similitud).map((key) => {
+			const left = (data.image_1.transformations as any)?.[key]?.image_transformed ?? data.image_1.original_image;
+			const right = (data.image_2.transformations as any)?.[key]?.image_transformed ?? data.image_2.original_image;
+
+			return {
+				name: labelByKey[key] ?? key,
+				similarity: data.similitud[key].similarity,
+				leftImage: left,
+				rightImage: right,
+			};
+		});
 
 		return [
 			{
