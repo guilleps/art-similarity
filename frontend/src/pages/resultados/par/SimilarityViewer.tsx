@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import PaintingData from '@/types/painting';
 import { getSimilaritiesById } from '@/services/similarity.service';
 import { Image } from './Image';
+import { Award, AwardIcon } from 'lucide-react';
 
 interface Props {
 	comparisonId: string;
@@ -96,10 +97,16 @@ const SimilarityViewer = ({ comparisonId, onLoaded }: Props) => {
 								<p className="text-sm font-medium text-gallery-700 mb-2 text-center">
 									{transformation.name}
 								</p>
-								<div className="flex justify-center group transition-transform duration-300 group-hover:scale-105">
-									<Badge variant={isMax ? 'default' : 'secondary'}>
-										{formatSimilarity(transformation.similarity)}
-									</Badge>
+								<div className="flex items-center justify-center group transition-transform duration-300 group-hover:scale-105 gap-1">
+									{isMax ? (
+										<>
+											<Award className="w-4 h-4" />
+											<Badge variant="default">{transformation.similarity}</Badge>
+											{/* <Badge variant="default">{formatSimilarity(transformation.similarity)}</Badge> */}
+										</>
+									) : (
+										<Badge variant="secondary">{transformation.similarity}</Badge>
+									)}
 								</div>
 							</Card>
 						);
