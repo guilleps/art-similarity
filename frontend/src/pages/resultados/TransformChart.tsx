@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
-import { getSimilaritiesByTransform } from '@/services/similarity.service';
 
 const colors: Record<string, string> = {
 	color_heat_map: '#4e79a7',
@@ -11,7 +10,7 @@ const colors: Record<string, string> = {
 	contrast: '#edc949',
 };
 
-export const TransformChart = ({ transform }: { transform: string }) => {
+export const TransformChart = ({ transform, data }: { transform: string; data: unknown }) => {
 	const chartRef = useRef<HTMLDivElement>(null);
 	const [isLoading, setIsLoading] = useState(true);
 	const [hasData, setHasData] = useState(true);
@@ -22,7 +21,6 @@ export const TransformChart = ({ transform }: { transform: string }) => {
 		const renderChart = async () => {
 			try {
 				setIsLoading(true);
-				const data = await getSimilaritiesByTransform(transform);
 
 				if (!Array.isArray(data) || data.length === 0) {
 					setHasData(false);
@@ -67,10 +65,9 @@ export const TransformChart = ({ transform }: { transform: string }) => {
 				echarts.dispose(chartDom);
 			}
 		};
-	}, [transform]);
+	}, [data, transform]);
 
 	return (
-		// <div ref={chartRef} className="w-full h-60 bg-white rounded shadow" />
 		<div className="relative w-full h-60 bg-white rounded shadow">
 			{isLoading && (
 				<div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-80 z-10">

@@ -20,7 +20,7 @@ const SimilarityViewer = ({ comparisonId, onLoaded }: Props) => {
 			onLoaded?.(); // Notifica que cargó
 		};
 		fetchData();
-	}, [comparisonId]);
+	}, [comparisonId, onLoaded]);
 
 	const paintingPairs = useMemo(() => {
 		if (!data?.similitud || !data?.image_1 || !data?.image_2) return [];
@@ -58,6 +58,9 @@ const SimilarityViewer = ({ comparisonId, onLoaded }: Props) => {
 
 	if (!pair) return null;
 
+	// Calcular la mayor similitud para resaltar ese Card
+	const maxSimilarity = Math.max(...pair.transformations.map(t => t.similarity ?? 0));
+
 	return (
 		<div className="max-w-7xl mx-auto">
 			{/* Main Images */}
@@ -70,10 +73,13 @@ const SimilarityViewer = ({ comparisonId, onLoaded }: Props) => {
 			<div className="overflow-hidden transition-all duration-700 ease-in-out opacity-100 max-h-[1000px]">
 				<div className="grid grid-cols-2 md:grid-cols-3 gap-6">
 					{pair.transformations.map((transformation, index) => {
+						const isMax = transformation.similarity === maxSimilarity;
 						return (
 							<Card
 								key={index}
-								className="p-4 transition-all duration-500 animate-highlight border-academic-500 border-2 bg-academic-50"
+								className={`p-4 transition-all duration-500 animate-highlight bg-academic-50 ${
+									isMax ? 'border-4 border-yellow-500' : 'border-2 border-academic-500'
+								}`}
 							>
 								<div className="grid grid-cols-2 gap-2 mb-3">
 									<img
@@ -90,8 +96,10 @@ const SimilarityViewer = ({ comparisonId, onLoaded }: Props) => {
 								<p className="text-sm font-medium text-gallery-700 mb-2 text-center">
 									{transformation.name}
 								</p>
-								<div className="flex justify-center">
-									<Badge variant="secondary">{formatSimilarity(transformation.similarity)}</Badge>
+								<div className="flex justify-center group transition-transform duration-300 group-hover:scale-105">
+									<Badge variant={isMax ? 'default' : 'secondary'}>
+										{formatSimilarity(transformation.similarity)}
+									</Badge>
 								</div>
 							</Card>
 						);
