@@ -4,7 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import PaintingData from '@/types/painting';
 import { getSimilaritiesById } from '@/services/similarity.service';
 import { Image } from './Image';
-import { Award, AwardIcon } from 'lucide-react';
+import { Award } from 'lucide-react';
 
 interface Props {
 	comparisonId: string;

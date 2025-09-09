@@ -1,6 +1,7 @@
 import { getAllSimilaritiesRaw } from '@/services/similarity.service';
 import * as echarts from 'echarts';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 const labelMap: Record<string, string> = {
 	color_heat_map: 'Mapa de calor',
@@ -22,106 +23,88 @@ export class SimilarityRaw {
 
 export const GeneralResult = () => {
 	const chartRef = useRef<HTMLDivElement>(null);
-	const [isLoading, setIsLoading] = useState(true);
-	const [hasData, setHasData] = useState(true);
+	const {
+		data: rawData,
+		isLoading,
+		isError,
+	} = useQuery<SimilarityRaw[]>({
+		queryKey: ['similaritiesRaw'],
+		queryFn: async () => (await getAllSimilaritiesRaw()).data,
+		staleTime: 5 * 60 * 1000,
+		refetchOnMount: false,
+		refetchOnWindowFocus: false,
+	});
 
 	useEffect(() => {
-		const chartInstance = { current: null as echarts.ECharts | null };
 		const chartDom = chartRef.current;
+		if (!chartDom) return;
 
-		const loadChart = async () => {
-			try {
-				setIsLoading(true);
-				const response = await getAllSimilaritiesRaw();
-				const rawData: SimilarityRaw[] = response.data;
-				// console.log('pares', rawData);
+		if (!rawData || !rawData.length) return;
 
-				if (!Array.isArray(rawData) || rawData.length === 0) {
-					setHasData(false);
-					return;
-				}
+		const results: (string | number)[][] = [
+			['par', 'color_heat_map', 'tone', 'saturation', 'brightness', 'texture', 'contrast'],
+		];
 
-				setHasData(true);
+		rawData.forEach((item: SimilarityRaw, index: number) => {
+			results.push([
+				(index + 1).toString(),
+				item.color_heat_map_transformation ?? null,
+				item.tone_transformation ?? null,
+				item.saturation_transformation ?? null,
+				item.brightness_transformation ?? null,
+				item.texture_transformation ?? null,
+				item.contrast_transformation ?? null,
+			]);
+		});
 
-				const results: (string | number)[][] = [
-					['par', 'color_heat_map', 'tone', 'saturation', 'brightness', 'texture', 'contrast'],
-				];
+		if (echarts.getInstanceByDom(chartDom)) {
+			echarts.dispose(chartDom);
+		}
 
-				rawData.forEach((item: SimilarityRaw, index: number) => {
-					results.push([
-						(index + 1).toString(),
-						item.color_heat_map_transformation ?? null,
-						item.tone_transformation ?? null,
-						item.saturation_transformation ?? null,
-						item.brightness_transformation ?? null,
-						item.texture_transformation ?? null,
-						item.contrast_transformation ?? null,
-					]);
-				});
+		const chart = echarts.init(chartDom);
 
-				if (!chartDom) return;
+		const fieldNames = Object.keys(labelMap);
+		const seriesList: echarts.SeriesOption[] = fieldNames.map(name => ({
+			type: 'line',
+			name: labelMap[name],
+			showSymbol: false,
+			encode: { x: 'par', y: name },
+			emphasis: { focus: 'series' },
+			labelLayout: { moveOverlap: 'shiftY' },
+			lineStyle: { width: 3 },
+		}));
 
-				if (echarts.getInstanceByDom(chartDom)) {
-					echarts.dispose(chartDom);
-				}
+		chart.setOption({
+			color: ['#4e79a7', '#f28e2b', '#e15759', '#76b7b2', '#59a14f', '#edc949'],
+			animationDuration: 1500,
+			animationEasing: 'cubicInOut',
+			tooltip: {
+				trigger: 'axis',
+				backgroundColor: '#fff',
+				borderColor: '#ccc',
+				textStyle: { color: '#000' },
+				formatter: params => {
+					let tooltip = `Par ${params[0].axisValue}<br/>`;
+					for (let i = 0; i < params.length; i++) {
+						tooltip += `${params[i].marker} ${params[i].seriesName}: <b>${params[i].value[1]}</b><br/>`;
+					}
+					return tooltip;
+				},
+			},
+			legend: { orient: 'horizontal', top: 0, left: 'center' },
+			dataset: { source: results },
+			xAxis: { type: 'category', name: 'Pares' },
+			yAxis: { type: 'value', name: 'Similitud', min: 0, max: 1 },
+			series: seriesList,
+		});
 
-				const chart = echarts.init(chartDom);
-				chartInstance.current = chart;
-
-				const fieldNames = Object.keys(labelMap);
-				const seriesList: echarts.SeriesOption[] = fieldNames.map(name => ({
-					type: 'line',
-					name: labelMap[name],
-					showSymbol: false,
-					encode: { x: 'par', y: name },
-					emphasis: { focus: 'series' },
-					labelLayout: { moveOverlap: 'shiftY' },
-					lineStyle: { width: 3 },
-				}));
-
-				chart.setOption({
-					color: ['#4e79a7', '#f28e2b', '#e15759', '#76b7b2', '#59a14f', '#edc949'],
-					animationDuration: 1500,
-					animationEasing: 'cubicInOut',
-					tooltip: {
-						trigger: 'axis',
-						backgroundColor: '#fff',
-						borderColor: '#ccc',
-						textStyle: { color: '#000' },
-						formatter: params => {
-							let tooltip = `Par ${params[0].axisValue}<br/>`;
-							for (let i = 0; i < params.length; i++) {
-								tooltip += `${params[i].marker} ${params[i].seriesName}: <b>${params[i].value[1]}</b><br/>`;
-							}
-							return tooltip;
-						},
-					},
-					legend: {
-						orient: 'horizontal',
-						top: 0,
-						left: 'center',
-					},
-					dataset: { source: results },
-					xAxis: { type: 'category', name: 'Pares' },
-					yAxis: { type: 'value', name: 'Similitud', min: 0, max: 1 },
-					series: seriesList,
-				});
-			} catch (error) {
-				console.error('Error al cargar los datos:', error);
-				setHasData(false);
-			} finally {
-				setIsLoading(false);
-			}
-		};
-
-		loadChart();
-
+		const onResize = () => chart.resize();
+		window.addEventListener('resize', onResize);
 		return () => {
-			if (chartDom && echarts.getInstanceByDom(chartDom)) {
-				echarts.dispose(chartDom);
-			}
+			window.removeEventListener('resize', onResize);
+			if (echarts.getInstanceByDom(chartDom)) echarts.dispose(chartDom);
 		};
-	}, []);
+	}, [rawData]);
 
 	return (
 		<div className="min-h-screen flex flex-col justify-center px-6 py-8 items-center">
@@ -137,7 +120,7 @@ export const GeneralResult = () => {
 					</div>
 				)}
 
-				{!isLoading && !hasData && (
+				{!isLoading && (isError || !rawData || rawData.length === 0) && (
 					<div className="absolute inset-0 z-10 flex items-center justify-center bg-white bg-opacity-90">
 						<p className="text-gray-600 text-lg">No hay datos disponibles para mostrar.</p>
 					</div>

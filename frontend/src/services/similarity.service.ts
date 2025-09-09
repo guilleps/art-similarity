@@ -14,7 +14,7 @@ import {
 } from './mocks/getSimilaritiesByTransform.mock';
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
-const ENVIRONMENT = (import.meta.env.VITE_ENVIRONMENT || 'development').toLowerCase();
+const ENVIRONMENT = import.meta.env.VITE_ENVIRONMENT;
 
 export const getAllSimilarities = async (page = 1, limit = 10) => {
 	if (ENVIRONMENT === 'development') return getAllSimilaritiesMocks();
