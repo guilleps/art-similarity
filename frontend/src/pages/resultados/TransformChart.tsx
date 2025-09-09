@@ -2,6 +2,8 @@ import { useEffect, useRef, useMemo } from 'react';
 import * as echarts from 'echarts';
 import { getSimilaritiesByTransform } from '@/services/similarity.service';
 import { useQuery } from '@tanstack/react-query';
+import { Card } from '@/components/ui/card';
+import { TrendingUp, TrendingDown, Gauge } from 'lucide-react';
 
 const colors: Record<string, string> = {
 	color_heat_map: '#4e79a7',
@@ -72,7 +74,7 @@ export const TransformChart = ({ transform }: { transform: string }) => {
 	}, [data, transform]);
 
 	return (
-		<div className="relative w-full h-80 md:h-96 lg:h-[32rem] bg-white rounded shadow">
+		<div className="relative w-full h-80 md:h-96 lg:h-[32rem] bg-white rounded">
 			{isLoading && (
 				<div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-80 z-10">
 					<div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600"></div>
@@ -87,19 +89,30 @@ export const TransformChart = ({ transform }: { transform: string }) => {
 				<div className="flex-1">
 					<div ref={chartRef} className="w-full h-full" />
 				</div>
-				<aside className="w-52 md:w-60 lg:w-64 shrink-0">
+				<aside className="w-52 md:w-60 lg:w-80 shrink-0">
 					{stats ? (
 						<>
 							<div className="w-full h-full flex flex-col items-center justify-center gap-4">
-								<span className="font-medium w-full border rounded-sm border-slate-600 p-3">
-									Min: {stats.min.toFixed(4)}
-								</span>
-								<span className="font-medium w-full border rounded-sm border-slate-600 p-3">
-									Max: {stats.max.toFixed(4)}
-								</span>
-								<span className="font-medium w-full border rounded-sm border-slate-600 p-3">
-									Avg: {stats.avg.toFixed(4)}
-								</span>
+								<Card className="py-3 px-8 bg-gradient-card border-border/50 shadow-md hover:shadow-lg transition-all duration-300 animate-slide-up group hover:scale-105">
+									<div className="font-bold flex flex-row items-center justify-center">
+										<TrendingUp className="h-6 w-6 mr-2 text-green-400 rounded-lg bg-green-400/10" />
+										Max: {stats.max.toFixed(4)}
+									</div>
+								</Card>
+
+								<Card className="py-3 px-8 bg-gradient-card border-border/50 shadow-md hover:shadow-lg transition-all duration-300 animate-slide-up group hover:scale-105">
+									<div className="font-bold flex flex-row items-center justify-center">
+										<Gauge className="h-6 w-6 mr-2 text-red-400 rounded-lg bg-red-400/10" />
+										Avg: {stats.avg.toFixed(4)}
+									</div>
+								</Card>
+
+								<Card className="py-3 px-8 bg-gradient-card border-border/50 shadow-md hover:shadow-lg transition-all duration-300 animate-slide-up group hover:scale-105">
+									<div className="font-bold flex flex-row items-center justify-center">
+										<TrendingDown className="h-6 w-6 mr-2 text-orange-400 rounded-lg bg-orange-400/10" />
+										Min: {stats.min.toFixed(4)}
+									</div>
+								</Card>
 							</div>
 						</>
 					) : (
