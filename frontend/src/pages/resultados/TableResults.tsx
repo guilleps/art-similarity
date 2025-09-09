@@ -53,11 +53,12 @@ export const TableResults = () => {
 	const exportData = async () => {
 		try {
 			const response = await getExportedSimilarityData();
+			const data = response.data;
 
-			// console.log(response.par['1'].heat_color_map?.similarity);
+			console.log(data.par['1'].heat_color_map?.similarity);
 
 			const url = URL.createObjectURL(
-				new Blob([JSON.stringify(response, null, 2)], {
+				new Blob([JSON.stringify(data, null, 2)], {
 					type: 'application/json',
 				}) as Blob,
 			);

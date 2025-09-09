@@ -32,7 +32,8 @@ export const GeneralResult = () => {
 		const loadChart = async () => {
 			try {
 				setIsLoading(true);
-				const rawData: SimilarityRaw[] = await getAllSimilaritiesRaw();
+				const response = await getAllSimilaritiesRaw();
+				const rawData: SimilarityRaw[] = response.data;
 				// console.log('pares', rawData);
 
 				if (!Array.isArray(rawData) || rawData.length === 0) {
