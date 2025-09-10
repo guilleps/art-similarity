@@ -89,7 +89,7 @@ export const TransformChart = ({ transform }: { transform: string }) => {
 				<div className="flex-1">
 					<div ref={chartRef} className="w-full h-full" />
 				</div>
-				<aside className="w-52 md:w-60 lg:w-80 shrink-0">
+				<aside className="w-25 md:w-46 lg:w-36 shrink-0">
 					{stats ? (
 						<>
 							<div className="w-full h-full flex flex-col items-center justify-center gap-4">
