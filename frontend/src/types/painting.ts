@@ -16,6 +16,16 @@ export default interface PaintingData {
 	image_1: PaintingImage;
 	image_2: PaintingImage;
 	similitud: PaintingSimilarity;
+	analysis?: {
+		best_transformation: {
+			type: string;
+			similarity: number;
+			label: string;
+			image_1_url: string;
+			image_2_url: string;
+		};
+		explanation: string;
+	};
 	total?: number;
 	current_index?: number;
 }

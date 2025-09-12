@@ -1,10 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import PaintingData from '@/types/painting';
 import { getSimilaritiesById } from '@/services/similarity.service';
 import { Image } from './Image';
-import { Award } from 'lucide-react';
 import { TypeAnimation } from 'react-type-animation';
 import { CardViewer } from './CardViewer';
 
@@ -43,19 +40,18 @@ const SimilarityViewer = ({ comparisonId, onLoaded }: Props) => {
 			rightImage: data.image_2[key].image_transformed,
 		}));
 
+		const analysis = data.analysis;
+
 		return [
 			{
 				id: 1,
 				leftPainting: { image: data.image_1.original_image },
 				rightPainting: { image: data.image_2.original_image },
 				transformations,
+				analysis,
 			},
 		];
 	}, [data]);
-
-	const formatSimilarity = (value: number): string => {
-		return `${(value * 100).toFixed(1)}%`;
-	};
 
 	const pair = paintingPairs[0];
 
@@ -96,10 +92,7 @@ const SimilarityViewer = ({ comparisonId, onLoaded }: Props) => {
 				<aside className="w-25 md:w-46 lg:w-80 shrink-0 bg-white">
 					<div className="h-full w-full">
 						<TypeAnimation
-							sequence={[
-								'Las dos imágenes presentan una correspondencia alta. Al aplicar seis transformaciones, la similitud por Textura alcanzó 0.9591, el valor más alto, lo que sugiere que los patrones de pinceladas, relieves y microestructuras son muy afines entre ambas obras. Tono (0.9294) y Mapa de Calor (0.9226) también son elevados, indicando una distribución de luminancia/energía y relaciones tonales globales muy consistentes. La Saturación (0.9107) mantiene buena coherencia cromática, mientras que Contraste (0.8903) y Brillo (0.8937) son ligeramente menores, lo que apunta a variaciones de iluminación o exposición que no afectan de manera sustantiva la similitud percibida. En conjunto, la evidencia favorece una similitud alta, con Textura como el factor más decisivo.',
-								1000,
-							]}
+							sequence={[pair.analysis.explanation, 1500]}
 							wrapper="span"
 							speed={50}
 							style={{ fontWeight: 'bold' }}

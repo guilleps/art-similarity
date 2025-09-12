@@ -1,5 +1,5 @@
 import { ExportedSimilarityData } from '@/dto/similarity-export.dto';
-import { SimilarityRaw } from '@/pages/resultados/GeneralResult';
+import { SimilarityRaw } from '@/types/similarity';
 import axios, { AxiosResponse } from 'axios';
 import { getAllSimilaritiesMocks } from './mocks/getAllSimilarities.mock';
 import { getAllSimilaritiesRawMocks } from './mocks/getAllSimilaritiesRaw.mock';

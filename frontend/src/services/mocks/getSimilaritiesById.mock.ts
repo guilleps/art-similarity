@@ -103,6 +103,20 @@ export const getSimilaritiesByIdMock = (comparison_id: string) => {
 				similarity: 0.9226,
 			},
 		},
+		analysis: {
+			comparison_id,
+			best_transformation: {
+				type: 'texture',
+				similarity: 0.9086,
+				label: 'similar',
+				image_1_url:
+					'https://res.cloudinary.com/dnydakj9z/image/upload/v1756823393/ok0uujcibv7thouyanv7.jpg',
+				image_2_url:
+					'https://res.cloudinary.com/dnydakj9z/image/upload/v1756823397/n1gzujw71yn3h8ts0a6t.jpg',
+			},
+			explanation:
+				"La transformación de textura presenta la mayor similitud (0.9086), lo que indica que preserva mejor los rasgos compartidos entre las imágenes. Se clasifica como 'similar' según los umbrales establecidos.",
+		},
 	};
 };
 
