@@ -7,7 +7,7 @@ BATCH_SIZE = 64
 
 model = EfficientNetB2(
     include_top=False, 
-    weights=None,
+    weights='imagenet',
     input_shape=(IMG_SIZE, IMG_SIZE, 3)
 )
 
