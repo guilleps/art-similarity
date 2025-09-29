@@ -25,7 +25,7 @@ def save_transform(img_path, out_dir):
 
     contrast = apply_contrast_enhancement(image)
     cv2.imwrite(
-        os.path.join(out_dir, f"{base_name}_constrast.jpg"), contrast
+        os.path.join(out_dir, f"{base_name}_contrast.jpg"), contrast
     )  # guarda img_contrast
 
     texture = apply_texture_direction(image)
