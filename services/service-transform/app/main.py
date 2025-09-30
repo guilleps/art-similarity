@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 import os
 import requests
 import tempfile
-from app.transformation_core import save_transformed_images
+from transformation_core import save_transformed_images
 
 app = FastAPI()
 

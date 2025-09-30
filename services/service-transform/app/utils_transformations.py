@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 import logging
-from app.logger_config import setup_logging
+from logger_config import setup_logging
 
 setup_logging()
 logger = logging.getLogger(__name__)

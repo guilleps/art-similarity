@@ -1,6 +1,6 @@
 import os
 import cv2
-from app.utils_transformations import (
+from utils_transformations import (
     apply_contrast_enhancement,
     apply_texture_direction,
     apply_color_distribution_map,
@@ -8,7 +8,7 @@ from app.utils_transformations import (
 )
 from matplotlib import pyplot as plt
 from uuid import uuid4
-from app.cloudinary_config import upload_image
+from cloudinary_config import upload_image
 
 def save_transformed_images(image_path: str, output_dir: str) -> str:
     image = cv2.imread(image_path)
