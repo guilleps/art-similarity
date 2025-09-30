@@ -8,7 +8,7 @@ class GetSimilarityResultsPagUseCase:
         sessions = (
             ImageComparisonSession.objects
             .prefetch_related('similarities', 'transformedimageembedding_set')
-            .order_by('-created_at')[offset:offset + limit]
+            .order_by('created_at')[offset:offset + limit]
         )
 
         for session in sessions:
