@@ -1,0 +1,1844 @@
+{
+  "par": {
+    "1": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756801166/iawitjvipbh26bext535.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756801167/vor7tomop2bwfphjgntc.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756801169/gnhanreuibi6yovezmjs.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756801173/kj5qeqksywtynlroaziw.jpg"
+        },
+        "similarity": 0.9544
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756801171/nvcb3oo9tcfjjr9qir7q.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756801175/zvrleriibil32kaerbqk.jpg"
+        },
+        "similarity": 0.8514
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756801170/eezpfppiijwzmvsgkjnu.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756801174/qm9v0m8nz5n07adfuiwb.jpg"
+        },
+        "similarity": 0.9003
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756801169/td6tw4orwsippfpjlp5m.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756801173/whreo7cnzu06zcny1q40.jpg"
+        },
+        "similarity": 0.913
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756801168/vtlgnhojezmtmukm6lwn.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756801172/yfvunuypfkvzglbdfumz.jpg"
+        },
+        "similarity": 0.8937
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756801171/msv4abcb9dnxasuxhfsx.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756801175/f6pdrzcp20fpmn1vlbn7.jpg"
+        },
+        "similarity": 0.8789
+      }
+    },
+    "2": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756822934/wstb7g2qmeel7arxu20n.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756822935/rcutn5fqpz5yiou2h8re.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756822938/gqsalbdt5jbupknan8g7.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756822947/gqxtc9pwc9hid5s6y0uk.jpg"
+        },
+        "similarity": 0.9298
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756822938/jhmuh2hudaoqagb9a8pw.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756822946/hf5enfmrf04dt8cn3kdx.jpg"
+        },
+        "similarity": 0.9245
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756822942/vkkdfyjaf53dhzavp4ad.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756822949/apcytf40qpi3h6lmc61g.jpg"
+        },
+        "similarity": 0.9117
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756822943/o3ocf29ck4lca5be7yhn.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756822950/mgrbxb6eoueirpztqc0j.jpg"
+        },
+        "similarity": 0.8495
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756822944/bnjsjwgdzi9xxcnkpkmn.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756822951/h7wjyowddv9co65mjngq.jpg"
+        },
+        "similarity": 0.8992
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756822941/x4ogox3d4jpcwrltjm7e.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756822948/wr47yk3lsa16dmmmhmz7.jpg"
+        },
+        "similarity": 0.9186
+      }
+    },
+    "3": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823063/qfv324mesxxzkoqlsgga.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823064/s96nmgfcdbo6ywqeh6tl.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823068/my6ntvtdldu2wwg3s2wl.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823073/bhw8g0pbqjr9j6zbxsok.jpg"
+        },
+        "similarity": 0.887
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823067/rlxy0exnpmfi5i2o5b1v.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823073/o61zxqxlza4dokhe3d4n.jpg"
+        },
+        "similarity": 0.7609
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823069/csafpvxackri3rsgsezm.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823075/ckpzpj4ztytjhb3gxtho.jpg"
+        },
+        "similarity": 0.8566
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823070/nt3tjzzwgqmsm7kqxi26.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823076/h8i8xgfjsoebjaozuwra.jpg"
+        },
+        "similarity": 0.8539
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823071/fjtirezwqzt9nlqvyo9e.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823077/ddnuzcwiqt7pafy5yoml.jpg"
+        },
+        "similarity": 0.7925
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823068/mmeia2chvtnhukla3ulw.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823074/rejdywb8gkobqketxahs.jpg"
+        },
+        "similarity": 0.8464
+      }
+    },
+    "4": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823186/xfcm2dg3hubv6ngbqyak.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823187/ixpawclerwhv4pbtd2wm.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823192/qnwogvvaktpgo263mo6u.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823197/dqmz0l3urdii3g8qge8y.jpg"
+        },
+        "similarity": 0.9146
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823191/bituc8ukvpfxbgjjtbxp.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823196/g0ctplecawzd1uuavkbp.jpg"
+        },
+        "similarity": 0.6928
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823193/qtzmiy5mwsyyuzvkdfos.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823200/vvgvcltiunvxxaa5ykcn.jpg"
+        },
+        "similarity": 0.8546
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823194/wedgraokdjuqe39u77bi.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823201/roxvjgdihvsxghfj9b9u.jpg"
+        },
+        "similarity": 0.8358
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823195/matab9mcoaw24j2lcgt4.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823201/qqkotqzohjt8hrdjf5zv.jpg"
+        },
+        "similarity": 0.8579
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823193/nnh0mwh4atre7ga41dpa.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823199/uwdrwf37fwab0eae70jg.jpg"
+        },
+        "similarity": 0.8568
+      }
+    },
+    "5": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823279/im2llty3qnkhcjv5tbxj.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823280/ttfksvuiltdzkufd1ps6.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823282/vh3jfttpfezbwdiqonhf.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823286/lvk4fxre3oecd0jk1toi.jpg"
+        },
+        "similarity": 0.9522
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823281/foxjgc11ar0uzu20kftt.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823285/uervmdrugdk3zkaxedbe.jpg"
+        },
+        "similarity": 0.8952
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823283/o36ppnuyxmqwsapmxrow.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823287/qprccgjdqvxbrid2f9rk.jpg"
+        },
+        "similarity": 0.8988
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823284/ox94hxetrfb3jhibj475.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823288/wvsxi7pumt5xssw15g9j.jpg"
+        },
+        "similarity": 0.8999
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823284/fpsnseakbogbyghk5zzw.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823289/itm3cbzc50qdrudwavkt.jpg"
+        },
+        "similarity": 0.8785
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823282/hffy9gw5umvqnw9fkkhw.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823287/syletwchqlbavqilywot.jpg"
+        },
+        "similarity": 0.9233
+      }
+    },
+    "6": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823390/sgveewg83jlx1qbftqsp.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823391/skhgazn2q3g6juhl2cxj.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823393/ok0uujcibv7thouyanv7.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823397/n1gzujw71yn3h8ts0a6t.jpg"
+        },
+        "similarity": 0.9086
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823392/tcchrxgopghk0qbwzbod.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823397/qcdeywgowapswd6ouxwf.jpg"
+        },
+        "similarity": 0.7628
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823395/maw3rrlcpkpmxrkrhkqq.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823399/p4n4hnjqiur2kdgkt7em.jpg"
+        },
+        "similarity": 0.8789
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823395/tfv60853aaxugqnmzgdh.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823399/rclcsnmknsilwceyk3s6.jpg"
+        },
+        "similarity": 0.8132
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823396/yrw8ozbw1j5d8drbyt74.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823400/bfu6jmzimfayvqaoox9p.jpg"
+        },
+        "similarity": 0.8017
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823394/q8nixnf8k9jfswmxwu9p.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823398/gmhmn9mcholliszjjnqv.jpg"
+        },
+        "similarity": 0.8115
+      }
+    },
+    "7": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823462/fgq2y9l6wgwpe93texd7.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823462/jqjd4m8z46g5yt7nuirc.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823465/vpotdggicbwolhpxseg2.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823470/b7qx93dlqxwweey6lprs.jpg"
+        },
+        "similarity": 0.9047
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823464/ekwiawsnzm2v8nqrj2ak.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823470/irtep0ktexnjnkcc0d3b.jpg"
+        },
+        "similarity": 0.7924
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823467/frxxkrjs45uit5fxzfnp.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823472/gp7wibjjqupftqde5aff.jpg"
+        },
+        "similarity": 0.8809
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823468/cua3jst1sy0ujki11h1d.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823473/dgempuuvn0wywqu7lh2c.jpg"
+        },
+        "similarity": 0.8586
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823469/qrq38ybklccomnyh39dn.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823474/d7ljzco5zwj6tmqjtvfv.jpg"
+        },
+        "similarity": 0.8595
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823466/oss1iwz9cqfltqhoqwrm.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823471/q5khequdbybqsrkw6zby.jpg"
+        },
+        "similarity": 0.888
+      }
+    },
+    "8": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823527/eucdilsxknisxdmhx976.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823527/gltdfx0eb7lipbzkudt1.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823529/t4rw6cnnmzyeyzyvydqf.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823534/hkmzzdajkvu6sllrzgln.jpg"
+        },
+        "similarity": 0.9316
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823528/tgjekqbkqokpg9kppytv.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823533/cxibvv9ssq74zelsld6a.jpg"
+        },
+        "similarity": 0.8865
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823530/dt3nczpukz1w5jpmdv3f.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823536/hsfldbn05odipj9ffgnc.jpg"
+        },
+        "similarity": 0.9584
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823531/uqo40ahsgymbewq9lted.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823536/wxt626a3j7n9q2oihefz.jpg"
+        },
+        "similarity": 0.9659
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823532/j3bi9b74mvcpfgo19d0b.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823537/tl1vepbblf08aynxfnqw.jpg"
+        },
+        "similarity": 0.9225
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823530/ec5dcc3ffr2uimqh0wpf.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823535/vgyoaawrrxnxj1iumemi.jpg"
+        },
+        "similarity": 0.9346
+      }
+    },
+    "9": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823605/vtexkiwazvq0nrpqhlps.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823605/ucujahqejbyrkqvhddhr.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823608/pxr4i1va30rxnon2uvd2.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823614/etygurxwctdkh9x7t1n0.jpg"
+        },
+        "similarity": 0.8087
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823607/ud06wdrplav62fovmc5k.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823613/z7c5wazeognrxyaompzo.jpg"
+        },
+        "similarity": 0.7587
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823610/gwfa1ads8yryt8m7rcuc.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823616/kwm1uchhsum4souskvba.jpg"
+        },
+        "similarity": 0.8856
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823610/mbsfkwtbxx4yqpjz66vv.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823616/f0jkjuwypubqa850jkti.jpg"
+        },
+        "similarity": 0.8678
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823611/yi1ieub9cgdcv3d5icxh.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823617/c3xk1nzg1jgof9kwrcw8.jpg"
+        },
+        "similarity": 0.793
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823609/zaeuk3tms2vmevw9ddvk.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823614/v0hdmbjkzb6nglowzarw.jpg"
+        },
+        "similarity": 0.7711
+      }
+    },
+    "10": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823681/x39mnoc48ztbbery0llz.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823682/x8bg9z3jhioee1jumrv2.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823684/vdjhnizzewan2t6u5vuq.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823691/ewntdaivg5bupkwu7geu.jpg"
+        },
+        "similarity": 0.9447
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823683/glc28nakbvcohpidn8cm.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823689/k4cwbigctrl1jpegqhrf.jpg"
+        },
+        "similarity": 0.7939
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823686/quwbuvqos0mantjqhgva.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823693/gor301kh4xafyzyyn6qi.jpg"
+        },
+        "similarity": 0.928
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823687/nwebp85w8ustb40bgsmx.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823694/ucypqpf2isjk4mhwgrx0.jpg"
+        },
+        "similarity": 0.9273
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823688/b4g5btrji189kkpijibj.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823695/gc7t0wq5bpj12cpyrat9.jpg"
+        },
+        "similarity": 0.8086
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823685/vsbi8mvqerptzwdkhics.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823692/avcy9akphivt2guhpico.jpg"
+        },
+        "similarity": 0.8838
+      }
+    },
+    "11": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823777/vnlnkbt2flxj3acb73bi.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823778/bwtvyckb7johkgyowqog.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823780/ciu5swu0jqcuy9ii4d00.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823787/jyscxp6eukq6848tzasi.jpg"
+        },
+        "similarity": 0.9107
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823779/uk6a1yq3zyv9hh67oirr.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823786/uyvhkzrp2jvkfp8q5qt3.jpg"
+        },
+        "similarity": 0.8571
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823781/qjj3ev5eezji1exklynl.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823789/ixfdo4muab8ij7wvrkvx.jpg"
+        },
+        "similarity": 0.9145
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823782/ja6kv7lzwelzkpuyrcuw.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823790/fpwwzpg1yo0qbsr2hrxi.jpg"
+        },
+        "similarity": 0.8583
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823784/uzrkvyzbvdcwbhkakiun.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823791/hkdhtlvohtnyv1x9xv6v.jpg"
+        },
+        "similarity": 0.8896
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823781/vcph7fkawenlbfbkhht5.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823788/bwxy6iojqicjiaykqnig.jpg"
+        },
+        "similarity": 0.8529
+      }
+    },
+    "12": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823846/greqfh21vjfv0ik7fswv.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823847/fzfgotovnqefhacp7v4g.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823849/a7h9w6jhjg5t9lvls4ra.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823854/a1a5os7ydpcukxv9nihi.jpg"
+        },
+        "similarity": 0.8964
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823848/klhnoacruq7j7awjhokc.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823853/ahfqtzr2zmyn2nk4kzj5.jpg"
+        },
+        "similarity": 0.8307
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823851/zbr26fskrv5zods475hq.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823855/aggwxhvaxcsrcez4sowy.jpg"
+        },
+        "similarity": 0.8924
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823852/bf7epxiis6f5pbkeusbr.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823855/unj8slgysiapzpz2utgx.jpg"
+        },
+        "similarity": 0.733
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823852/os330nkblqefzr8wx3yv.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823856/z9akxkpakna1rvlhxkld.jpg"
+        },
+        "similarity": 0.8618
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823850/w7zlz0p8tytso8wddryp.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823854/nut2krx88s1voaih4a7c.jpg"
+        },
+        "similarity": 0.8519
+      }
+    },
+    "13": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823906/mwxfktnz4lwa275x52jg.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823907/kmkzjsschkkcpb8yfblp.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823909/knnvv81xkmgectlbgzm2.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823914/offkumpfwfkuead6qzf9.jpg"
+        },
+        "similarity": 0.9407
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823909/kjtnwg1hxekoygzjb4ht.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823914/jxai6qkdrd8mpfscvg5b.jpg"
+        },
+        "similarity": 0.8999
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823911/rgpefgre7uixkcvppi4v.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823916/k7s4ihqnkowaflqiu738.jpg"
+        },
+        "similarity": 0.9418
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823912/ig59nbjzepkymapahg0q.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823918/sk5vznlyhsxagxefhsfx.jpg"
+        },
+        "similarity": 0.9233
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823912/ilg4zivwabjgayks1kqj.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823918/jenjoa8c1iom2vcwjswl.jpg"
+        },
+        "similarity": 0.8854
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823910/iaoyqvlhgrbndyelcphu.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823915/gpgnbj2iiuoewvzohigg.jpg"
+        },
+        "similarity": 0.9106
+      }
+    },
+    "14": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823986/g6eanf7kgyyxtdylcia2.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823987/x3xhtyro0qcbyf0mubkn.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823989/wdbgpfawsxtsv77vomcf.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823995/vugqhxfjdhwmfwkklf0r.jpg"
+        },
+        "similarity": 0.8857
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823989/m7vkyt0c3qyx0k6ujekg.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823994/cjpmedjkby1x4ecgrlvu.jpg"
+        },
+        "similarity": 0.7464
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823991/m2t8mmlwhye61zlia6sv.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823996/zaebo4zi6gkbynj0e9gj.jpg"
+        },
+        "similarity": 0.9501
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823992/c4suelzpsqiljsontlb0.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823997/ggexrifese4on3g1uzea.jpg"
+        },
+        "similarity": 0.7701
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823993/lxscxyctm3lacesl7twr.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823998/qokkvjuupuz6ad6ue2hh.jpg"
+        },
+        "similarity": 0.7128
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823990/bqtq5ludlhflpgchrcij.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756823995/lmvzjvozgvszmoxp55ws.jpg"
+        },
+        "similarity": 0.7887
+      }
+    },
+    "15": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824046/zecr2mckgqe6ovukykbc.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824047/lk8pxelendp6i7ylo2sd.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824049/ges6qe260u0oydzasbdl.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824054/hejmbcknk0dmjcypbvcn.jpg"
+        },
+        "similarity": 0.9166
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824048/v1bqbglshvbmcu1fl4du.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824053/i851guxwqxodtw2hpas9.jpg"
+        },
+        "similarity": 0.7915
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824051/wzaziq0uoaugrbr0gcxi.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824056/gmoktcroin9fjnh7hmlc.jpg"
+        },
+        "similarity": 0.846
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824051/bfkbnd5o5kvzxzuekyzw.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824056/ky1bo5lrypmyyypo9yki.jpg"
+        },
+        "similarity": 0.7381
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824052/e7y0lluixjqhuygh2gy9.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824057/pgk02e5kggrfhtvaxtzz.jpg"
+        },
+        "similarity": 0.8259
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824050/lyjw7xs6yuq5uriljk9c.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824055/fyv1zflwenavmpywsqyo.jpg"
+        },
+        "similarity": 0.8258
+      }
+    },
+    "16": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824107/x7llwxt0ktmx7q1yqcju.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824108/w6h5tw552z258sxorawa.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824110/fldetg5jhzniwjgvkn2o.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824116/uzvg4zpsukw2m0cy9aie.jpg"
+        },
+        "similarity": 0.8631
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824109/v9qwheprffpl1dnvp6li.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824115/djblenkqxdp45zubk0gx.jpg"
+        },
+        "similarity": 0.8516
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824112/lfujkwkqjz0izcmkfvyl.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824118/ctlqrwxgpfhg8vjmzs1m.jpg"
+        },
+        "similarity": 0.8517
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824113/z7if8tto7hncvzl45eg2.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824119/svioepcjbkbkmhpcelj5.jpg"
+        },
+        "similarity": 0.9011
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824114/hphfrw07cespy2yhpiee.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824120/v09loc8kuwotjxq8u0ux.jpg"
+        },
+        "similarity": 0.8764
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824111/xop1mpxylzbszi4iv6v0.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824117/jg3vdchpyia2dvznq3ms.jpg"
+        },
+        "similarity": 0.8996
+      }
+    },
+    "17": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824181/v2ac8gv00zn6mo3wyt6d.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824182/moommnvqhpx6xuqstcyu.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824184/p48p6wgfdeonhrxklflq.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824191/yaqehhmwvvvx6sieljfe.jpg"
+        },
+        "similarity": 0.9669
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824183/ebiojxxsvnyrtciwz18b.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824190/ugmmtwhypcsxfzpbrucx.jpg"
+        },
+        "similarity": 0.7792
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824186/sgykeb9odpep7dybtuvy.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824192/gekbm20a7f8d7zzwiejn.jpg"
+        },
+        "similarity": 0.955
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824187/nwnpa9q2iacg8og8pfbo.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824192/xafwpwnrpq0vswmu2miu.jpg"
+        },
+        "similarity": 0.9298
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824188/gjnp5kilidcksnodd2rs.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824193/p95n4srwgdmouyvior4c.jpg"
+        },
+        "similarity": 0.8464
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824185/tsbwaivloinavhpdjwdj.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824191/nmg9fswf1nmqmed94rjl.jpg"
+        },
+        "similarity": 0.8886
+      }
+    },
+    "18": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824258/tyswvdsrkqdpi8v6qsre.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824259/yp3fksi5ng2wqtacdwg3.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824262/by04j11equo8cqizh8hx.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824268/jfbxdiekjdfb9ty8setp.jpg"
+        },
+        "similarity": 0.9301
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824261/wtilxlevlczzhnzkcwwq.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824267/t2zovwgxresowieglqhv.jpg"
+        },
+        "similarity": 0.9156
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824264/duntayov9hmkslb7jayw.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824270/oxwutygljwmvhujlgjn0.jpg"
+        },
+        "similarity": 0.9039
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824265/owblefuhqxpjdmwpzgve.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824271/i7cvdthyjuolyclfofsi.jpg"
+        },
+        "similarity": 0.8883
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824266/d0biklrsgujidfwy03ph.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824272/xxvgwdvmebbvfb07hezj.jpg"
+        },
+        "similarity": 0.8639
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824263/x47knppd7rqu6jp9dzfl.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824269/gi35vz2inavpqgkdbpyh.jpg"
+        },
+        "similarity": 0.8698
+      }
+    },
+    "19": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824322/hvb7yppiyvxciaeriwic.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824323/irlfbbtj8as4pknfftsq.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824327/plglxsoij5ed5v2aevzx.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824336/jju7dzmoymlgeavgqfzf.jpg"
+        },
+        "similarity": 0.8147
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824325/ds6fc5gf1obhlpagt1bs.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824334/hpfjbl7irv4dmutmkjgs.jpg"
+        },
+        "similarity": 0.8249
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824329/tyhaq14ie3xlerns5t2e.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824338/an2flv57fcquqk4lvtjl.jpg"
+        },
+        "similarity": 0.8821
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824331/wtq3qlvgryuronunadux.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824339/x1xggc4rmr7lyzni9ms7.jpg"
+        },
+        "similarity": 0.8362
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824332/uq8sloqhwbck7kr5dvfv.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824340/ca1smcpsfzcz6eyd9vb8.jpg"
+        },
+        "similarity": 0.8332
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824328/xtkfhojwvwlkb0g7sd7i.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824337/rtxtg8jrieqxhy7dxj7p.jpg"
+        },
+        "similarity": 0.883
+      }
+    },
+    "20": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824395/zp7fmx9fxyblpagyelne.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824396/wuzi1bqh7plbjqxuwzan.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824400/p04pqwilobuzd155ihjz.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824411/y2hcwcsxtsaer3yetk54.jpg"
+        },
+        "similarity": 0.8958
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824399/hzgbbos0pqn9r9pw3vp8.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824406/vhi0yvytlolxlansbofk.jpg"
+        },
+        "similarity": 0.8602
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824402/jdkexaun3szquaz3jkvs.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824420/lbnfbvde7pfs4lzopdlt.jpg"
+        },
+        "similarity": 0.8613
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824404/zpaq9rph7fmcfiplpyec.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824421/dp5oohkalrnngbbzuedh.jpg"
+        },
+        "similarity": 0.7549
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824405/xotjefw9z1h33qyk1wrq.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824422/qkj3boq0it8qvefexbkq.jpg"
+        },
+        "similarity": 0.8651
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824400/yf4ajhvtxava7x58xu2p.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824418/dxp6dioamqi4ghxskx4h.jpg"
+        },
+        "similarity": 0.8643
+      }
+    },
+    "21": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824482/llogqmlm2lrgsijpndf3.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824483/v2i4vgqe9i1jsujmcjcb.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824485/mlfmbhaowjaz6rj2ikhm.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824491/ssg5zbk9wgzgjfilil0t.jpg"
+        },
+        "similarity": 0.8732
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824485/zjtsonll6couhekbnci3.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824490/j4z1wzrahbefellsviee.jpg"
+        },
+        "similarity": 0.7106
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824487/ofdcvwjajri1zte7ygcg.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824493/e7mrfwbpje4sleza3glj.jpg"
+        },
+        "similarity": 0.7654
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824488/eayvvqoic4qgcambd1cf.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824493/mwk0watizobb6qnzdpmr.jpg"
+        },
+        "similarity": 0.8516
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824489/rfg98yktaw8npjgpl2ru.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824494/virphopetzcji9tldvvr.jpg"
+        },
+        "similarity": 0.7535
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824486/whngjs6biipsdq6q1gmj.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824492/nmlzvw7kqvuazbtb1jl4.jpg"
+        },
+        "similarity": 0.8253
+      }
+    },
+    "22": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824579/kp7irpatkriplpoluzvf.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824580/l59br3julomgfdod49qm.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824584/b0a6yk01errvb8a3wgcs.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824590/asz1dy1ejli6n4qmqqde.jpg"
+        },
+        "similarity": 0.899
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824582/bwf8ktue5bxaxai5twgl.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824589/tfbrphysriwzddd7zlix.jpg"
+        },
+        "similarity": 0.7673
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824585/ifehnb6p6gucvp582l9i.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824594/kcwtmhmbaxrejewcj9aw.jpg"
+        },
+        "similarity": 0.7966
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824586/t4z3ovmehjhfwo0p7yqs.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824595/czur13ppbcgqfhh4f0vg.jpg"
+        },
+        "similarity": 0.7355
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824587/jijpp1dh6kycp0pk66yg.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824596/aah0wo2pdfea20qzm8vm.jpg"
+        },
+        "similarity": 0.7011
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824584/qy0mkqxvfger9gl9klb4.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824591/q3fjoe3mn6wegyr4z9gl.jpg"
+        },
+        "similarity": 0.7542
+      }
+    },
+    "23": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824653/wlyejamfogo0ocemdsek.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824654/gcllrl0uiyn5x8knylpm.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824656/o7ayuvsadjdsbpdm5w55.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824662/a52rctumvr2ztexd1y9r.jpg"
+        },
+        "similarity": 0.9172
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824655/cw5ebagycirsw1zzxbgo.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824661/lurwtvnupxakwnj4mdza.jpg"
+        },
+        "similarity": 0.7674
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824658/syij2jncgiabmb30kbq1.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824663/datppsea3atbkr2hbxvs.jpg"
+        },
+        "similarity": 0.8769
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824659/efygaopvws5m09plvwfy.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824664/nrpaz8bk6soes7cxxkeu.jpg"
+        },
+        "similarity": 0.8275
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824659/aa2otdfwwp7eesnbggtz.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824665/aqmjiczvmv9aq4au8w7c.jpg"
+        },
+        "similarity": 0.8526
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824657/amn5j2iu0c99dupsutf9.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824662/jjzfje8mpdkxomnawx9g.jpg"
+        },
+        "similarity": 0.8676
+      }
+    },
+    "24": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824717/gzxajsqu020sp1gfrebp.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824718/vqdjq6ztdg8wgz8hm3xy.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824721/hlht6a5tsjblrxi40lmh.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824726/xoxqonivfsr6jogeeazx.jpg"
+        },
+        "similarity": 0.967
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824720/b9n50fl3ynjwrclwuqeg.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824725/bgsugcceqo09hecxqohm.jpg"
+        },
+        "similarity": 0.919
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824722/dvvtpjtihg5ptvalqspu.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824728/jf3mjnio5dgfjwctnnob.jpg"
+        },
+        "similarity": 0.9468
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824723/vnjrgmr9homranzc7rj3.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824728/pqcvt1ynzy8lcrpgulnk.jpg"
+        },
+        "similarity": 0.9419
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824724/oy73iajngiu2mh5t72fr.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824729/tx7jwoxcxwvzmnwxkifb.jpg"
+        },
+        "similarity": 0.9455
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824722/waxfofec6jjpibaam3jg.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824727/zuqkc32zdifbzcyepttv.jpg"
+        },
+        "similarity": 0.937
+      }
+    },
+    "25": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824790/z3oi9e5jofagdvzbvciy.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824791/gjnyoyrcenr3ctnortvc.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824794/lnk5pcxlcbtibyzqaxs6.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824800/qmlxmnkpf4afvirnyvqr.jpg"
+        },
+        "similarity": 0.9074
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824793/ntuprun4blgahvvuos72.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824799/zscpi4lodvgv8iizqxpc.jpg"
+        },
+        "similarity": 0.9022
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824796/hlrv6cj963bfucbrp2ew.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824802/oel2nzeqywqpijfdc7jq.jpg"
+        },
+        "similarity": 0.933
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824796/tld0ggntkuvvovgri9zr.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824803/fbfsadvnv4yvgvx3cpdk.jpg"
+        },
+        "similarity": 0.9244
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824797/e1jhtqysdx0qnwahtjsw.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824804/ljzen11f5anhz52qiftr.jpg"
+        },
+        "similarity": 0.8795
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824795/tlmnjwpwfk3velvyq0jp.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824801/igkpeyfas3v4umz3xamd.jpg"
+        },
+        "similarity": 0.9302
+      }
+    },
+    "26": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824866/fcanjki7dktwwmlpggpq.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824867/jehyezkj0esb74uwn7mv.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824870/jwcu8fho5ecuud6p7ckm.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824877/afkrkzfchtuz3ocagiz2.jpg"
+        },
+        "similarity": 0.9171
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824869/zxp6hlek9vepjfeptzwe.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824876/c5tqsmrpixaaypekdiic.jpg"
+        },
+        "similarity": 0.8469
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824871/gxlntcodmapojdlu2or8.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824878/zqds5ok2st5mqmkoty4x.jpg"
+        },
+        "similarity": 0.8427
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824872/x6idimrv0r6o2w5ok0wr.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824879/sgmczwhu7eqbiadbp5pr.jpg"
+        },
+        "similarity": 0.9035
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824874/dfwjv1chlidhf8n7v2jt.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824881/uxskwn2gl542vcwyddxn.jpg"
+        },
+        "similarity": 0.8619
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824870/ncwglh8otlhvzr4tvujn.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824877/hojbhevjjqthyfvsdlxz.jpg"
+        },
+        "similarity": 0.8908
+      }
+    },
+    "27": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824955/uzniif0pjzl9ax7f8wtv.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824956/bkkngllp1qefwd1mawyq.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824958/eriucf2zqpcexdp2trij.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824963/aw8wgw7en1lwykjpoiyi.jpg"
+        },
+        "similarity": 0.8845
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824957/jqiwlbl3sed4m0jrhtku.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824962/alkhvr4j3ngjqgpw5fvw.jpg"
+        },
+        "similarity": 0.8929
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824959/ruddiiq1r9dctrdogy6l.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824964/rhms2zhorshjrcbjvnwh.jpg"
+        },
+        "similarity": 0.8491
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824960/k9lf0lvr8xuevooumlmg.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824964/qlopbm8va0w9y6pdjfga.jpg"
+        },
+        "similarity": 0.8808
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824960/vquhe2q2krfwqn8vcpgb.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824965/ym6iqhjxfphql45typwa.jpg"
+        },
+        "similarity": 0.8625
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824958/nquxtat2hhjosvm0kiqs.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756824963/ahviqusgwtjivwoofiry.jpg"
+        },
+        "similarity": 0.9131
+      }
+    },
+    "28": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825036/vf2wxjkgl4j1tnlad61z.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825037/widmrek1yn9sgt7phagp.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825039/vjnlreckyxjnj2wsrzvw.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825043/imxdu1eeoefirac3zoi8.jpg"
+        },
+        "similarity": 0.7857
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825038/foboiwzajni8lnyqosuy.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825042/n1fevyb7pxl7cbknptdw.jpg"
+        },
+        "similarity": 0.74
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825040/jqlwta0qs7ju7lo1wycq.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825045/ekkmadehnmhoxelhs0o5.jpg"
+        },
+        "similarity": 0.8714
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825041/riahdtwgwp6qv6o77kqf.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825046/ilaeqsdmlbixujp4read.jpg"
+        },
+        "similarity": 0.8759
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825042/elufnx6zsty9khmnpa63.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825047/eav8fm38hynxmcfvnnyf.jpg"
+        },
+        "similarity": 0.752
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825039/xsk9ity0chkktoinprrz.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825044/hulpyuu8ryohwfo4dqn9.jpg"
+        },
+        "similarity": 0.7979
+      }
+    },
+    "29": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825085/avnarirczzqcobqcy3pk.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825086/gy7bemtdwoeaiyzimbzm.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825087/lb9gmsraofuscblsjic4.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825091/k9zdwxfznhfnzjo5hhek.jpg"
+        },
+        "similarity": 0.8913
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825087/nupgdif0a5sccwqhmj77.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825091/ktpwow96e9lgvphddynm.jpg"
+        },
+        "similarity": 0.7545
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825089/mle4hcpasfhppbug9t2r.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825094/puwpxysttykpg192yz64.jpg"
+        },
+        "similarity": 0.9275
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825089/snbyzxoq1qli3hddxkfv.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825094/nqp6ywtzer0m454mbdon.jpg"
+        },
+        "similarity": 0.8217
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825090/vdqoovu1cuqmcqt3acpk.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825095/gp870ntkkinm7jzty3hs.jpg"
+        },
+        "similarity": 0.7808
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825088/r2gflflsvmcswcbl1nab.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825093/nowvhsjwgfrjft6drq3n.jpg"
+        },
+        "similarity": 0.774
+      }
+    },
+    "30": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825146/tws02ldzfsdhze724cxd.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825147/er2osof38liiiheuqdcl.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825148/zo5wzvfmcz6o5mkyq9ph.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825152/dushclsyovzyol1aeprd.jpg"
+        },
+        "similarity": 0.8971
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825148/vwy4tysfwsuswqowxah4.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825151/w7sxekmz0qxsofik7z3p.jpg"
+        },
+        "similarity": 0.7337
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825149/ula9cejg3qflvgdjyf35.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825153/gu7nhmrc9wgtfpjjqecu.jpg"
+        },
+        "similarity": 0.8562
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825150/uf2jzogivgep6fq57rmy.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825154/imxwqvxrvbikflaahw5z.jpg"
+        },
+        "similarity": 0.8346
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825151/yiqo1bydryc28eh2gubz.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825154/sbrgvzkhllb5kfvyere0.jpg"
+        },
+        "similarity": 0.7375
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825149/hvsovtaxwki5xzgzpt24.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825152/qfbymznof7xdjlfwh8a3.jpg"
+        },
+        "similarity": 0.8043
+      }
+    },
+    "31": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825234/ornkxtccmrzjhkeraszu.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825235/ta6tuvujdevbps26pdp6.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825237/e6x1z8z3yt3h49kzubbj.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825244/qhm5z07pturdbsvufbsl.jpg"
+        },
+        "similarity": 0.7623
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825237/vtbgtilwppqulthno8hw.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825243/zl4evmtqwegonzxw05bm.jpg"
+        },
+        "similarity": 0.8093
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825239/gzj0pqmczbuuzqbqslec.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825245/ewq88m5indbujnbu869z.jpg"
+        },
+        "similarity": 0.831
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825240/bcaskdkxqbtuc52zvqtc.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825246/scqhzxsp7mtqpkpjz4rk.jpg"
+        },
+        "similarity": 0.8392
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825241/v95elsyfc6osyye5ppyb.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825247/hv6e3x9ulxgnjsv7bvbc.jpg"
+        },
+        "similarity": 0.8192
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825238/vppdphidjeuh2rbb3ojv.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825245/hjucsybas1rt83rymteu.jpg"
+        },
+        "similarity": 0.8656
+      }
+    },
+    "32": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825313/cenzx18jdlbljfgbi1lp.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825314/qyigntfkpzatlpiy3pnl.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825316/oovoufsigkcapvslw09h.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825322/k3tj61vpogp5melwowzt.jpg"
+        },
+        "similarity": 0.8537
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825316/u6zmscektmfvnuof8z0y.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825321/kmjhjsxanaqdmjuihmly.jpg"
+        },
+        "similarity": 0.826
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825318/to2sq7pitegb5wawafks.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825323/qjapym5hgtg5et7nepul.jpg"
+        },
+        "similarity": 0.8613
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825319/i1i25f0e6asryiaikjc2.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825324/d8psfbnrrfjusfbxau8k.jpg"
+        },
+        "similarity": 0.8659
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825320/ygmx5krurojrrx2mlpvz.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825325/rbxfua66n9gvhnsl1mew.jpg"
+        },
+        "similarity": 0.8569
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825317/kof8s1hbecjcpmgrcfud.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825322/xr9fywr1jss30ydlgkxg.jpg"
+        },
+        "similarity": 0.9102
+      }
+    },
+    "33": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825413/zrutthcwcsm3vf9p61x5.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825414/eadykgonphjqwm1uxcqr.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825417/n33gdsubm7nvgiraiu9x.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825424/w3gfyowvssionpwyp1uv.jpg"
+        },
+        "similarity": 0.8666
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825416/ne5favobktkinyiyvmxo.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825423/cbfqiielu2yqcwsufnbw.jpg"
+        },
+        "similarity": 0.7918
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825419/twyqj9hxoayasdlrgz41.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825426/a7b2l6vbfmzxdlpof35w.jpg"
+        },
+        "similarity": 0.8294
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825420/hxkoirffdcy07kxurr0f.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825427/aglwae8d0fsy1bfq8wzc.jpg"
+        },
+        "similarity": 0.8443
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825421/tyv6hrnlfupcwj4mawy5.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825428/nxs7hnlcbjrsm2tmrhw5.jpg"
+        },
+        "similarity": 0.7608
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825418/p95cukv91psoq3pcducz.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825425/rrm0dfmu32lnbs0fub5g.jpg"
+        },
+        "similarity": 0.7611
+      }
+    },
+    "34": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825492/buuqquceo9tmtsrvql9d.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825493/tfi2v6sf8gobpwppya9d.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825495/cfwgnccqreqjky2wv7ad.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825501/ymz523j7zoxlqcm28mxj.jpg"
+        },
+        "similarity": 0.9076
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825494/qrjrfib0ki8n6gzyrav9.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825500/ateq7sqosk5m1gff41jn.jpg"
+        },
+        "similarity": 0.8395
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825496/rvbwumoyhdjnto5w7fpe.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825502/fxtqe9uyx75pum9t3mk3.jpg"
+        },
+        "similarity": 0.8941
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825497/gnfoknb5aldjgvgbtwag.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825502/u8tqcqf1gfw9em2msq4j.jpg"
+        },
+        "similarity": 0.8565
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825498/ru0tmqmjrrooqukch3kx.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825503/rmm7tz8ychujwrnauyqb.jpg"
+        },
+        "similarity": 0.8952
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825496/xk1wukpbicu3athosfch.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825501/swswdxrwi5hcaagihmhw.jpg"
+        },
+        "similarity": 0.8972
+      }
+    },
+    "35": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825547/amh5qgsftrcmm9mbrfvx.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825548/p3yzmyad1ihwd7lj48yj.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825550/oqy9sdga4dkgt4btgclp.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825555/wdfhi7klchcaaz28x8rh.jpg"
+        },
+        "similarity": 0.9447
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825549/xzs4wzleh2qakkdcicl2.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825554/kxeugcgshzwzkz00qnek.jpg"
+        },
+        "similarity": 0.8121
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825551/dicpvgfo0ejl0bahgayl.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825556/xzsbbixz0qwyklnx1ms8.jpg"
+        },
+        "similarity": 0.8556
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825552/yutiujbhquzu3usfvulw.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825556/atcu3qyitiuoeq2rbnuu.jpg"
+        },
+        "similarity": 0.9219
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825553/hq5tkan5lnjergzvul0x.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825557/yxx7jdwbsbk3hzejcyqe.jpg"
+        },
+        "similarity": 0.848
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825550/cqglossydaafwzviq0ul.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825555/zt3legsm5abjkhtnyhbx.jpg"
+        },
+        "similarity": 0.8942
+      }
+    },
+    "36": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825609/eli3absqkq42ce70m12k.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825609/enu2vroecp9aakdvjpnx.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825611/eylz7ksetq4tberrbudw.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825616/vdlkogqzvpilbjqktz8r.jpg"
+        },
+        "similarity": 0.8
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825610/sx0rhm2q7nultb5pnfy2.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825615/ngocyhfcgxedofjg7sha.jpg"
+        },
+        "similarity": 0.8625
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825612/z5pwtwlg3svbhbvnuwpm.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825617/yy2grz9oixsiw8m688my.jpg"
+        },
+        "similarity": 0.8848
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825613/q67rsubrzmvswqp343yf.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825618/tjehl1rgmcrcuufbtzuq.jpg"
+        },
+        "similarity": 0.8815
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825614/uqydm53jipueslteu5ll.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825619/knpkmbovt5ltutzoajyn.jpg"
+        },
+        "similarity": 0.8971
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825612/aiodummk2um93otmgmlm.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825617/kmwcofhxnkfemboljtmp.jpg"
+        },
+        "similarity": 0.8876
+      }
+    },
+    "37": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825655/q7ttjvvpjjyipgp6jffi.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825656/jlmukhoap6wlusamxiuf.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825658/c1vixhl72gwjelpzgfqd.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825662/tbedwdfx71oxhtwodxm9.jpg"
+        },
+        "similarity": 0.8889
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825657/h14nd5wyotmx7hokwa26.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825661/skthdifd4ifbuv6gl86t.jpg"
+        },
+        "similarity": 0.74
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825659/yjap7p3ifpn3zfkhmfz7.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825663/wezptneyytk7lhj7df0o.jpg"
+        },
+        "similarity": 0.9471
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825659/f6dn0y2ay6vwrmh3tbo5.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825663/yawuppscrgkloilirm78.jpg"
+        },
+        "similarity": 0.8773
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825660/szwoksgcxibiopqwv2yv.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825664/y2jx3loolwfnnlx8pxmk.jpg"
+        },
+        "similarity": 0.7639
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825658/kjmkdv8qj8uyinpymi8i.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825662/vqhr4rj2ydnsfz7ncmtl.jpg"
+        },
+        "similarity": 0.8097
+      }
+    },
+    "38": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825716/j2irqeipvwawlbvvucx8.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825717/rufm2pmphrzawzmagrgy.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825719/hcpru1nrmzhvekhovrfv.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825724/q4kcpbjlxxkjyemjbqce.jpg"
+        },
+        "similarity": 0.8853
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825719/zzsyg5ya3ugn6pda7lbc.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825723/vskdtuici5g7whiznh5f.jpg"
+        },
+        "similarity": 0.7255
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825721/xbjpqwxadmbhsocc9h0n.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825725/pp3ksudkxlztei0ojf8w.jpg"
+        },
+        "similarity": 0.8503
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825722/npqhihpg7emnuanh3jpd.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825726/qglq4pg63i2pi7j5wzpn.jpg"
+        },
+        "similarity": 0.8125
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825722/wohjameywkxx1cobrpkb.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825727/ljirrwctgpx0f0z1e7hg.jpg"
+        },
+        "similarity": 0.753
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825720/ctredsneutjbydt8xfx5.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825725/jgd2ewfa33qly9rhi2l8.jpg"
+        },
+        "similarity": 0.7632
+      }
+    },
+    "39": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825783/xxymzjk6ls7lfdtt1ov5.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825784/ycpc1h0lxpamgj2cum1z.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825786/yfg8mpw9nykqah6djtyy.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825791/dxjgnlpzp1zqmwc1ttbp.jpg"
+        },
+        "similarity": 0.919
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825785/gccvf3y2esqvawmtq3c1.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825790/n0ocxaso2ie2tsgk1md1.jpg"
+        },
+        "similarity": 0.8508
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825787/ynwxnfcnluvsngzyd5lm.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825792/ejbwdngfh4ry5zurzux5.jpg"
+        },
+        "similarity": 0.8292
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825788/lbrkcaei1urlee2jn9po.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825793/ulsjpjtycvrcxtg5fveu.jpg"
+        },
+        "similarity": 0.8722
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825789/d8wzrkctn4mdkfqm9e04.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825793/xn6jq7leotsgekz54rah.jpg"
+        },
+        "similarity": 0.848
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825786/aiyoz3efloatlwoj30y9.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825791/fclccvnbedbczhh504mr.jpg"
+        },
+        "similarity": 0.8746
+      }
+    },
+    "40": {
+      "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825864/ftbfcramvyjjlfrjttnu.jpg",
+      "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825865/cxz6pr3ri9swz03dcrla.jpg",
+      "texture": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825867/dm4oocw2btixnssn9mgw.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825874/wkvb0ldtyphuwfr5udx8.jpg"
+        },
+        "similarity": 0.9591
+      },
+      "contrast": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825867/uoiez9wfm3qoa8pozb7c.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825873/ihhwnyhyxs5ow8jdzfin.jpg"
+        },
+        "similarity": 0.8903
+      },
+      "hsv_hue": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825869/t3ilbee3sonrn28ehpwk.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825875/byjxinlc9wnjcla73tc8.jpg"
+        },
+        "similarity": 0.9294
+      },
+      "hsv_saturation": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825870/qowpdzbb2xvutiwlv7dp.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825876/cu3m40gb3ugd9b8ihjdi.jpg"
+        },
+        "similarity": 0.9107
+      },
+      "hsv_value": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825872/oql95yx8pjxn2ojnylxw.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825876/ro8wxlfjtxlzfgfuetvq.jpg"
+        },
+        "similarity": 0.8937
+      },
+      "heat_color_map": {
+        "files": {
+          "image_1": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825868/vl5xvv4q91tkovvy9wv8.jpg",
+          "image_2": "https://res.cloudinary.com/dnydakj9z/image/upload/v1756825874/ohg4tqgeix5bedb1jjkf.jpg"
+        },
+        "similarity": 0.9226
+      }
+    }
+  }
+}

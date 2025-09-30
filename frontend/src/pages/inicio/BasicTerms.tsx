@@ -61,10 +61,8 @@ export const BasicTerms = () => {
 					</button>
 				</div>
 
-				<div className="bg-gray-50 p-6 rounded-lg">
-					<p className="text-gray-700 leading-relaxed text-justify">
-						{termContent[selectedTerm].content}
-					</p>
+				<div className="bg-gray-100 p-6 rounded-lg">
+					<p className="leading-relaxed text-justify">{termContent[selectedTerm].content}</p>
 				</div>
 			</div>
 		</div>

@@ -2,7 +2,7 @@ import { Brain, Lightbulb, Shield } from 'lucide-react';
 import { ValueProp } from './ValueProp';
 
 export const About = () => (
-	<div className="min-h-screen flex flex-col items-center justify-center px-6 space-y-8 scroll-view">
+	<div className="min-h-screen flex flex-col justify-center px-6 items-center">
 		<div className="py-16 px-4 rounded-lg glass-panel my-24">
 			<h2 className="text-3xl font-bold text-center mb-3">Acerca del Experimento</h2>
 			<p className="text-xl text-center text-foreground/80 max-w-3xl mx-auto mb-16">

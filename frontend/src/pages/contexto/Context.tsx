@@ -3,7 +3,7 @@ import { Navbar } from '../../components/Navbar';
 import { About } from './About';
 import { FlowSection } from './FlowSection';
 
-export const Contexto = () => {
+export const Context = () => {
 	useAutoScrollView();
 
 	return (

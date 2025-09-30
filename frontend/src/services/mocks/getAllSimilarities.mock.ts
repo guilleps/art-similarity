@@ -1,0 +1,120 @@
+import { AxiosResponse } from 'axios';
+
+export const getAllSimilaritiesMock = {
+	count: 40,
+	results: [
+		{
+			comparison_id: '3bc87ed3-6842-4dce-a50b-9dd7e9049f35',
+			created_at: '2025-09-02T15:11:05.758528Z',
+			color_heat_map_transformation: 0.9226,
+			tone_transformation: 0.9294,
+			saturation_transformation: 0.9107,
+			brightness_transformation: 0.8937,
+			texture_transformation: 0.9591,
+			contrast_transformation: 0.8903,
+		},
+		{
+			comparison_id: '9dfc5ae0-c133-4f5e-8f7b-f8d08f17884b',
+			created_at: '2025-09-02T15:09:44.858888Z',
+			color_heat_map_transformation: 0.8746,
+			tone_transformation: 0.8292,
+			saturation_transformation: 0.8722,
+			brightness_transformation: 0.848,
+			texture_transformation: 0.919,
+			contrast_transformation: 0.8508,
+		},
+		{
+			comparison_id: 'd23e17a0-7401-492a-80df-796b0635f214',
+			created_at: '2025-09-02T15:08:38.077240Z',
+			color_heat_map_transformation: 0.7632,
+			tone_transformation: 0.8503,
+			saturation_transformation: 0.8125,
+			brightness_transformation: 0.753,
+			texture_transformation: 0.8853,
+			contrast_transformation: 0.7255,
+		},
+		{
+			comparison_id: '7ef3330f-12b3-4a40-89b9-2c59088055c9',
+			created_at: '2025-09-02T15:07:36.841071Z',
+			color_heat_map_transformation: 0.8097,
+			tone_transformation: 0.9471,
+			saturation_transformation: 0.8773,
+			brightness_transformation: 0.7639,
+			texture_transformation: 0.8889,
+			contrast_transformation: 0.74,
+		},
+		{
+			comparison_id: '61625d24-9619-4ea7-b1a1-0c47112be4f7',
+			created_at: '2025-09-02T15:06:50.440815Z',
+			color_heat_map_transformation: 0.8876,
+			tone_transformation: 0.8848,
+			saturation_transformation: 0.8815,
+			brightness_transformation: 0.8971,
+			texture_transformation: 0.8,
+			contrast_transformation: 0.8625,
+		},
+		{
+			comparison_id: '75577447-307a-4ec1-98ec-4a0b30bdfb4b',
+			created_at: '2025-09-02T15:05:48.943471Z',
+			color_heat_map_transformation: 0.8942,
+			tone_transformation: 0.8556,
+			saturation_transformation: 0.9219,
+			brightness_transformation: 0.848,
+			texture_transformation: 0.9447,
+			contrast_transformation: 0.8121,
+		},
+		{
+			comparison_id: '309d2889-7aed-4007-b6a9-ec3869bce0c4',
+			created_at: '2025-09-02T15:04:54.020861Z',
+			color_heat_map_transformation: 0.8972,
+			tone_transformation: 0.8941,
+			saturation_transformation: 0.8565,
+			brightness_transformation: 0.8952,
+			texture_transformation: 0.9076,
+			contrast_transformation: 0.8395,
+		},
+		{
+			comparison_id: '81f96a90-04fe-4180-b549-14ca91f1e59a',
+			created_at: '2025-09-02T15:03:35.473768Z',
+			color_heat_map_transformation: 0.7611,
+			tone_transformation: 0.8294,
+			saturation_transformation: 0.8443,
+			brightness_transformation: 0.7608,
+			texture_transformation: 0.8666,
+			contrast_transformation: 0.7918,
+		},
+		{
+			comparison_id: 'acdcaf32-2e28-4bc7-aec1-030fcbf33b98',
+			created_at: '2025-09-02T15:01:55.500552Z',
+			color_heat_map_transformation: 0.9102,
+			tone_transformation: 0.8613,
+			saturation_transformation: 0.8659,
+			brightness_transformation: 0.8569,
+			texture_transformation: 0.8537,
+			contrast_transformation: 0.826,
+		},
+		{
+			comparison_id: '9ecb06f4-4d7f-4931-ae93-f8fb240262ef',
+			created_at: '2025-09-02T15:00:35.744248Z',
+			color_heat_map_transformation: 0.8656,
+			tone_transformation: 0.831,
+			saturation_transformation: 0.8392,
+			brightness_transformation: 0.8192,
+			texture_transformation: 0.7623,
+			contrast_transformation: 0.8093,
+		},
+	],
+};
+
+export const getAllSimilaritiesMocks = async (): Promise<
+	AxiosResponse<typeof getAllSimilaritiesMock>
+> => {
+	// Simula una respuesta de Axios con la data mockeada
+	return {
+		data: getAllSimilaritiesMock,
+		status: 200,
+		statusText: 'OK',
+		headers: {},
+		config: {},
+	} as AxiosResponse<typeof getAllSimilaritiesMock>;
+};

@@ -7,7 +7,7 @@ class GetAllSimilarityResultsRawUseCase:
         sessions = (
             ImageComparisonSession.objects
             .prefetch_related('similarities', 'transformedimageembedding_set')
-            .order_by('-created_at')  # Si quieres invertir, puedes usar created_at ASC
+            .order_by('created_at')  # Si quieres invertir, puedes usar created_at ASC
         )
 
         for session in sessions:

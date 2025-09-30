@@ -3,7 +3,7 @@ import { GeneralResult } from './GeneralResult';
 import { TableResults } from './TableResults';
 import { TransformResults } from './TransformResults';
 
-export const Resultados = () => {
+export const Results = () => {
 	return (
 		<div className="space-y-0">
 			<Navbar />

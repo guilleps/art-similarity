@@ -9,15 +9,30 @@ Asegúrese de tener instalado lo siguiente en su sistema:
 ### Instalacion
 1. Clone the repository:
     ```bash
-    git clone https://github.com/guilleps/vizel-art-similarity.git
+    git clone https://github.com/guilleps/art-similarity.git
     cd tesis_project/backend
     ```
 
-2. Crea y activdad un entorno virtual (opcional):
-    ```bash
-    py -3.10 -m venv venv
-    source venv/bin/activate  # En Windows: venv\Scripts\activate
-    ```
+2. Crea y activa un entorno virtual (opcional):
+
+    - **Windows**
+      ```bash
+      py -3.10 -m venv venv
+      .\venv\Scripts\activate
+      ```
+
+    - **Linux/macOS**
+      ```bash
+      python3.10 -m venv venv
+      source venv/bin/activate
+      ```
+
+    - **Linux (pyenv)**
+      ```bash
+      pyenv virtualenv 3.12 backend
+      pyenv local backend
+      pyenv activate backend
+      ```
 
 3. Instala dependencias necesarias:
     ```bash
