@@ -1,5 +1,5 @@
 import { getAllSimilarities, getExportedSimilarityData } from '@/services/similarity.service';
-import { ChevronLeft, ChevronRight, FileDown } from 'lucide-react';
+import { ChevronLeft, ChevronRight, FileDown, ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import SimilarityViewer from './par/SimilarityViewer';
 import * as Dialog from '@radix-ui/react-dialog';
@@ -13,6 +13,7 @@ export const TableResults = () => {
 	const [selectedComparisonId, setSelectedComparisonId] = useState<string | null>(null);
 	const [modalOpen, setModalOpen] = useState(false);
 	const [modalLoading, setModalLoading] = useState(true);
+	const [showExportDropdown, setShowExportDropdown] = useState(false);
 
 	const itemsPerPage = 10;
 	const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -50,24 +51,30 @@ export const TableResults = () => {
 		getSimilarities();
 	}, [currentPage]);
 
-	const exportData = async () => {
+	const exportData = async (format: 'json' | 'csv' = 'json') => {
 		try {
-			const response = await getExportedSimilarityData();
-			const data = response.data;
+			const response = await getExportedSimilarityData(format);
+			let blob: Blob;
 
-			console.log(data.par['1'].heat_color_map?.similarity);
-
-			const url = URL.createObjectURL(
-				new Blob([JSON.stringify(data, null, 2)], {
+			if (format === 'csv') {
+				// For CSV, the response is already a Blob
+				blob = new Blob([response.data as unknown as BlobPart], {
+					type: 'text/csv',
+				});
+			} else {
+				// For JSON, we need to stringify the data
+				blob = new Blob([JSON.stringify(response.data, null, 2)], {
 					type: 'application/json',
-				}) as Blob,
-			);
+				});
+			}
 
+			const url = URL.createObjectURL(blob);
 			const a = document.createElement('a');
 			a.href = url;
-			a.download = 'data.json';
+			a.download = `similarity_results.${format}`;
+			document.body.appendChild(a);
 			a.click();
-
+			document.body.removeChild(a);
 			URL.revokeObjectURL(url);
 		} catch (error) {
 			console.error('Error al exportar datos:', error);
@@ -112,13 +119,41 @@ export const TableResults = () => {
 						</div>
 
 						{/* Botón de exportación */}
-						<Button
-							onClick={exportData}
-							className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded shadow"
-						>
-							<FileDown className="h-4 w-4" />
-							Exportar
-						</Button>
+						<div className="relative inline-block text-left">
+							<button
+								onClick={() => setShowExportDropdown(!showExportDropdown)}
+								className="inline-flex items-center justify-between gap-2 px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded shadow"
+							>
+								<FileDown className="h-4 w-4" />
+								Exportar
+								<ChevronDown className="h-4 w-4 ml-1" />
+							</button>
+
+							{showExportDropdown && (
+								<div className="absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+									<div className="py-1">
+										<button
+											onClick={() => {
+												setShowExportDropdown(false);
+												exportData('json');
+											}}
+											className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+										>
+											JSON
+										</button>
+										<button
+											onClick={() => {
+												setShowExportDropdown(false);
+												exportData('csv');
+											}}
+											className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+										>
+											CSV
+										</button>
+									</div>
+								</div>
+							)}
+						</div>
 					</div>
 
 					<div className="overflow-x-auto">

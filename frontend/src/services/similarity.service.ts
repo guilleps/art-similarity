@@ -60,9 +60,9 @@ export const getSimilaritiesById = async (comparison_id: string) => {
 	return response.data;
 };
 
-export const getExportedSimilarityData = async (): Promise<
-	AxiosResponse<ExportedSimilarityData>
-> => {
+export const getExportedSimilarityData = async (
+	format: 'json' | 'csv' = 'json',
+): Promise<AxiosResponse<ExportedSimilarityData>> => {
 	if (ENVIRONMENT === 'development') {
 		return {
 			data: {
@@ -77,5 +77,8 @@ export const getExportedSimilarityData = async (): Promise<
 		} as AxiosResponse<ExportedSimilarityData>;
 	}
 
-	return axios.get(`${API_BASE}/export-similarity-results/`);
+	const response = await axios.get(`${API_BASE}/export-similarity-results/${format}/`, {
+		responseType: format === 'json' ? 'json' : 'blob',
+	});
+	return response;
 };
