@@ -14,17 +14,28 @@ class ExportSimilarityResultsUseCase:
         return output
 
     def exportToCSV(self, response_object):
-        writer = csv.writer(response_object)
-        writer.writerow(
-            ["pair_id", "image_1", "image_2", "transform_type", "similarity_score"]
-        )
-
+        # First pass to get all unique transform types for the header
         sessions = self._get_sessions_with_related_data()
-
+        transform_types = set()
+        
+        for session in sessions:
+            pair_data = self._process_session_data(session)
+            for key in pair_data:
+                if key not in ["image_1", "image_2"]:
+                    transform_types.add(key)
+        
+        # Sort transform types for consistent ordering
+        transform_types = sorted(transform_types)
+        
+        # Write header
+        writer = csv.writer(response_object)
+        writer.writerow(["pair_id", "image_1", "image_2"] + list(transform_types))
+        
+        # Second pass to write data
         for pair_id, session in enumerate(sessions, start=1):
             pair_data = self._process_session_data(session)
-            self._write_session_to_csv(writer, pair_id, pair_data)
-
+            self._write_session_to_csv(writer, pair_id, pair_data, transform_types)
+            
         return response_object
 
     def _get_sessions_with_related_data(self):
@@ -64,11 +75,18 @@ class ExportSimilarityResultsUseCase:
 
         return pair_data
 
-    def _write_session_to_csv(self, writer, pair_id, pair_data):
+    def _write_session_to_csv(self, writer, pair_id, pair_data, transform_types):
         image_1 = pair_data["image_1"]
         image_2 = pair_data["image_2"]
-
-        for transform_type, transform_data in pair_data.items():
-            if transform_type not in ["image_1", "image_2"]:
-                similarity = transform_data.get("similarity", "")
-                writer.writerow([pair_id, image_1, image_2, transform_type, similarity])
+        
+        # Initialize row with pair_id and image URLs
+        row = [pair_id, image_1, image_2]
+        
+        # Add similarity scores in the same order as transform_types
+        for transform_type in transform_types:
+            if transform_type in pair_data:
+                row.append(str(pair_data[transform_type].get("similarity", "")))
+            else:
+                row.append("")
+                
+        writer.writerow(row)
