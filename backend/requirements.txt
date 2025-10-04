@@ -9,6 +9,7 @@ colorama==0.4.6
 dj-database-url==2.3.0
 Django==5.2
 django-cors-headers==4.7.0
+django-extensions==4.1
 djangorestframework==3.16.0
 dotenv==0.9.9
 drf-spectacular==0.28.0
