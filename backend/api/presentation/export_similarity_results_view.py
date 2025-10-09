@@ -11,15 +11,9 @@ from drf_spectacular.utils import extend_schema, OpenApiResponse, OpenApiParamet
 
 @extend_schema(
     summary="Export all similarity results",
-    parameters=[
-        OpenApiParameter(
-            name="format",
-            type=str,
-            description="Output format (json or csv)",
-        )
-    ],
     responses={
         200: OpenApiResponse(description="Exported data in the requested format"),
+        404: OpenApiResponse(description="Format not supported"),
         500: OpenApiResponse(description="Internal server error"),
     },
 )
@@ -27,10 +21,10 @@ class ExportSimilarityResultsAPI(APIView):
     def get(self, request, *args, **kwargs):
         try:
             use_case = ExportSimilarityResultsUseCase()
-            if request.path.endswith('/csv/'):
-                format_type = 'csv'
-            elif request.path.endswith('/json/'):
-                format_type = 'json'
+            if request.path.endswith("/csv/"):
+                format_type = "csv"
+            elif request.path.endswith("/json/"):
+                format_type = "json"
 
             if format_type == "csv":
                 response = HttpResponse(
