@@ -87,8 +87,9 @@ const SimilarityViewer = ({ comparisonId, onLoaded }: Props) => {
 						</div>
 					</div>
 				</div>
-				<div className="w-[2px] bg-gray-300 self-stretch mx-4" aria-hidden="true"></div>
+				{/*<div className="w-[2px] bg-gray-300 self-stretch mx-4" aria-hidden="true"></div> */}
 				{/* Llamar al servicio LLM prompting para interpretar los valores */}
+				{/*
 				<aside className="w-25 md:w-46 lg:w-80 shrink-0 bg-white">
 					<div className="h-full w-full">
 						<TypeAnimation
@@ -100,6 +101,7 @@ const SimilarityViewer = ({ comparisonId, onLoaded }: Props) => {
 						/>
 					</div>
 				</aside>
+				*/}
 			</div>
 		</div>
 	);
