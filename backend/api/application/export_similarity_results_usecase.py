@@ -29,7 +29,7 @@ class ExportSimilarityResultsUseCase:
         
         # Write header
         writer = csv.writer(response_object)
-        writer.writerow(["pair_id", "image_1", "image_2"] + list(transform_types))
+        writer.writerow(["pair_id"] + list(transform_types))
         
         # Second pass to write data
         for pair_id, session in enumerate(sessions, start=1):
@@ -76,11 +76,8 @@ class ExportSimilarityResultsUseCase:
         return pair_data
 
     def _write_session_to_csv(self, writer, pair_id, pair_data, transform_types):
-        image_1 = pair_data["image_1"]
-        image_2 = pair_data["image_2"]
-        
-        # Initialize row with pair_id and image URLs
-        row = [pair_id, image_1, image_2]
+        # Initialize row with just pair_id
+        row = [pair_id]
         
         # Add similarity scores in the same order as transform_types
         for transform_type in transform_types:
