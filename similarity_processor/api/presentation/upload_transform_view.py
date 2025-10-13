@@ -1,12 +1,12 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from transformations.application.upload_transformed_images_usecase import (
+from api.application.upload_transformed_images_usecase import (
     UploadTransformedImagesUseCase,
 )
 import os
 from drf_spectacular.utils import extend_schema, OpenApiResponse, OpenApiParameter
-from transformations.application import UploadTransformedImagesUseCase
+from api.application import UploadTransformedImagesUseCase
 
 SECRET_KEY = os.environ.get("UPLOAD_SECRET_KEY")
 

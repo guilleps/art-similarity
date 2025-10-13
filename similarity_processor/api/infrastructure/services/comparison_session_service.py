@@ -1,4 +1,4 @@
-from transformations.domain.models import ImageComparisonSession, TransformedImageEmbedding
+from api.domain.models import ImageComparisonSession, TransformedImageEmbedding
 
 class ComparisonSessionService:
     def create_session(self, image_urls: list[str]) -> ImageComparisonSession:

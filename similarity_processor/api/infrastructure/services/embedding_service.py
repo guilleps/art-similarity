@@ -3,8 +3,8 @@ import uuid
 import json
 import logging
 
-from transformations.infrastructure.exceptions import EmbeddingModelError
-from transformations.domain.models import TransformedImageEmbedding
+from api.infrastructure.exceptions import EmbeddingModelError
+from api.domain.models import TransformedImageEmbedding
 from .cloudinary_service import CloudStorageService
 from .embedding_extractor import VGG19EmbeddingExtractor
 from .external_request_service import ExternalRequestService

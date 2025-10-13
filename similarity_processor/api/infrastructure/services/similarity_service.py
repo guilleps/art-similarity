@@ -1,7 +1,7 @@
 import logging
 from sklearn.metrics.pairwise import cosine_similarity
-from transformations.domain.models import SimilarityMetricResult
-from transformations.infrastructure.services.external_request_service import ExternalRequestService
+from api.domain.models import SimilarityMetricResult
+from api.infrastructure.services.external_request_service import ExternalRequestService
 
 logger = logging.getLogger(__name__)
 

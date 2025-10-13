@@ -1,7 +1,7 @@
 import os
 import cloudinary
 import cloudinary.uploader
-from transformations.infrastructure.exceptions import CloudinaryUploadError
+from api.infrastructure.exceptions import CloudinaryUploadError
 
 
 class CloudStorageService:

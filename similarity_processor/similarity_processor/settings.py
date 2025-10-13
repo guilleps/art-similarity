@@ -18,7 +18,7 @@ load_dotenv(BASE_DIR / ".env")
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.environ.get("DEBUG", default=0))
 
 ALLOWED_HOSTS = (
     os.getenv("DJANGO_ALLOWED_HOSTS", "localhost").split(",") if not DEBUG else ["*"]
@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "transformations",
+    "api",
     "rest_framework",
     "corsheaders",
     "drf_spectacular",
