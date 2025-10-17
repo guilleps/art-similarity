@@ -1,38 +1,43 @@
-# Art Similarity
+# Artshift
 
-## Resumen
-Este proyecto esta diseñando para el análisis y comparación de obras de arte impresionistas bajo las caracteristicas de bajo nivel que posee la obra. Este experimento hace de algoritmos de similitud y metricas de comparación.
+## Overview
+This project showcases an experimental pipeline for analyzing and comparing Impressionist-style paintings using low-level visual features and embedding-based representations.
 
-## Características
-- **Comparación artística**: Compara pinturas por similitud visual.
-- **Transformaciones**: Aplicamos transformaciones para destacar características para relevantes y afinar los resultados de la comparación.
-- **Visualización interactiva**: Explore los resultados mediante visualizaciones dinámicas.
+## Features
+- **Compositional similarity**: Measures structural and compositional resemblances between artworks.
+- **Low-level visual features**: Extracted from color transformations (color heatmap, hue, saturation, brightness) and texture descriptors (contrast, texture) to emphasize salient characteristics.
+- **Embeddings**: Dense vector representations used for efficient similarity search, clustering, and retrieval.
 
 ## Workflow
+
 ![Big Picture App Web](./resources/bigpicture_v2.png)
 
-The workflow of the application includes:
-1. **Ingesta de datos**: Cargar y preprocesar imágenes de obras de arte.
-2.  **Extracción de características**: Extraer características visuales y contextuales numericamente utilizando redes neuronales profundas.
-3. **Cálculo de similitudes**: Calcular puntuaciones de similitud entre obras de arte.
-4. **Visualización**: Presentar los resultados a través de una interfaz web interactiva.
+The application's workflow includes:
+1. **Apply transformations**: Preprocess images and compute visual transforms.
+2. **Feature extraction**: Numerically extract visual and contextual features using deep neural networks.
+3. **Similarity scoring**: Compute similarity scores and rankings between artworks.
 
 ## Directory Structure
 ```
-└── 📁tesis_project
-    └── 📁backend                # servidor de la aplicacion: contiene endpoints, lógica y configuracion
-        └── 📁api
-        └── 📁backend
-        └── 📁tests              # Pruebas unitarias y de integración.
-    └── 📁experimentation
-        └── 📁tesis_experimentation_v1  # Primera iteración de experimentos con datos.
-        └── 📁tesis_experimentation_v2  # Segunda iteración con mejoras en los algoritmos.
-        └── 📁tesis_experimentation_v3  # Iteración final con resultados optimizados.
+└── 📁.
+    └── 📁backend                # application server: endpoints, business logic, and configuration
+        └── 📁api               # backend API handlers
+        └── 📁backend           # backend core modules
+        └── 📁tests             # unit and integration tests
     └── 📁frontend
-    └── 📁resources             # Recursos estáticos como imágenes/documentos.
+        └── 📁src
+            └── 📁components
+            └── 📁pages
+            └── 📁services
+    └── 📁resources             # static assets (images, diagrams, docs)
     └── 📁services
-        └── 📁service-transform  # Servicio para aplicar transformaciones a las imágenes.
-        └── 📁service-cnn        # Servicio para extracción de características con redes neuronales.
-    └── .gitignore              # Archivos y carpetas ignorados por Git.
-    └── README.md               # Documentación principal del proyecto.
+        └── 📁service-transform # image transformation service
+        └── 📁service-cnn       # feature-extraction service using neural networks
+    └── 📁similarity_processor
+        └── 📁api
+        └── 📁similarity_processor
 ```
+
+## Data security diagram
+
+![Big Picture App Web](./resources/graphic_v2.png)

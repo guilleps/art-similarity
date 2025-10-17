@@ -1,92 +1,110 @@
-## Backend Documentacion
+## Documentation
 
-### Prerrequisitos
-Asegúrese de tener instalado lo siguiente en su sistema:
-- Python 3.10
-- pip (gestor de paquetes de Python)
-- Una herramienta de entorno virtual (opcional pero recomendable)
+This backend is implemented using a hexagonal (ports and adapters) architecture, organized into application, domain, infrastructure, and presentation layers.
 
-### Instalacion
+### Prerequisites
+Make sure the following are installed on your system:
+- Python 3.10.0
+- pip (Python package manager)
+- A virtual environment tool (recommended)
+
+### Installation
 1. Clone the repository:
     ```bash
     git clone https://github.com/guilleps/art-similarity.git
-    cd tesis_project/backend
+    cd art-similarity/backend
     ```
 
-2. Crea y activa un entorno virtual (opcional):
+2. Create and activate a virtual environment (optional but recommended):
 
-    - **Windows**
+    - Windows
       ```bash
       py -3.10 -m venv venv
       .\venv\Scripts\activate
       ```
 
-    - **Linux/macOS**
+    - Linux/macOS
       ```bash
       python3.10 -m venv venv
       source venv/bin/activate
       ```
 
-    - **Linux (pyenv)**
+    - Using pyenv
       ```bash
-      pyenv virtualenv 3.12 backend
+      pyenv install 3.10.0          # if not already installed
+      pyenv virtualenv 3.10.0 backend
       pyenv local backend
       pyenv activate backend
       ```
 
-3. Instala dependencias necesarias:
+3. Install required dependencies:
     ```bash
     pip install -r requirements.txt
     ```
 
-### Ejecuta la aplicacion
-1. Inicia el servidor:
+### Run the application
+1. Start the server:
     ```bash
     python manage.py runserver
     ```
 
-2. El servidor correrá en el puerto `http://127.0.0.1:8000` por defecto.
+2. By default the server will run at: http://127.0.0.1:8000
 
-### Estructura del proyecto
+### Project structure
 ```
-└── 📁backend
-    └── 📁api
-        └── 📁application
-        └── 📁domain
-            └── 📁models
-        └── 📁infrastructure
-            └── 📁config
-            └── 📁exceptions
-            └── 📁services
-        └── 📁presentation
-    └── 📁backend
-    └── 📁tests
-    └── .dockerignore
-    └── .env
-    └── .gitignore
-    └── conftest.py
-    └── db.sqlite3
-    └── Dockerfile
-    └── manage.py
-    └── pytest.ini
-    └── README.md
+└── backend
+    └── api
+        └── application
+        └── domain
+            └── models
+        └── infrastructure
+            └── config
+            └── exceptions
+            └── services
+        └── presentation
+        ├── __init__.py
+        ├── admin.py
+        ├── apps.py
+        ├── urls.py
+    └── backend
+        ├── __init__.py
+        ├── asgi.py
+        ├── settings.py
+        ├── setup.py
+        ├── urls.py
+        ├── wsgi.py
+    └── tests
+    ├── .dockerignore
+    ├── .env
+    ├── .gitignore
+    ├── .python-version
+    ├── conftest.py
+    ├── Dockerfile
+    ├── manage.py
+    ├── pytest.ini
+    ├── README.md
     └── requirements.txt
 ```
 
 ### API Endpoints
-La documentación de los endpoints de la API está disponible automáticamente al ejecutar el backend. Puedes acceder a ella en los siguientes enlaces:
+API documentation is generated automatically when the backend is running. Access it at:
 
-- **Swagger UI**: [http://127.0.0.1:8000/api/docs/swagger/](http://127.0.0.1:8000/api/docs/swagger/) - Interfaz interactiva para explorar y probar los endpoints.
+- Swagger UI: http://127.0.0.1:8000/api/docs/swagger/ — interactive interface to explore and test endpoints.
 
-Asegúrate de que el servidor esté corriendo para poder acceder a estas herramientas.
+Make sure the server is running to use these tools.
 
 ### Testing
-Ejectua las pruebas:
+Run the test suite with:
 ```bash
 pytest
 ```
 
-### Notas
-- Asegúrese de que la base de datos (si procede) está correctamente configurada antes de ejecutar la aplicación.
-- Actualice el archivo `.env` con las variables de entorno necesarias.
-- Y que los servicios de transformación y cnn estén en funcionamiento.
+### Notes
+- Ensure the database (if used) is properly configured before running the application.
+- Update the .env file with required environment variables.
+- Confirm that any external services (e.g., transformation service and CNN service) are running and accessible.
+- Run migrations if applicable:
+```bash
+python manage.py migrate
+```
+- For development, consider creating a .env.example with the minimal required variables.
