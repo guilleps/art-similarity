@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ArtShift Process</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f8f9fa;
+        gap: 100px;
+      }
+
+      .container {
+        display: flex;
+        align-items: center;
+      }
+
+      .main-image {
+        margin-top: 40px;
+        max-width: 70%;
+        max-height: 400px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        border-radius: 2px;
+      }
+
+      .main-image:hover {
+        transform: scale(1.02);
+      }
+
+      .thumbnails {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        transition: opacity 0.8s ease, max-height 0.8s ease;
+        border-radius: 2px;
+      }
+
+      .thumbnails.show {
+        opacity: 1;
+        max-height: 1000px;
+      }
+
+      .thumbnails img {
+        width: 100px;
+        height: auto;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      .thumbnails img:hover {
+        transform: scale(1.2);
+      }
+      .right-side .thumbnails {
+        margin-left: 60px;
+      }
+
+      .left-side .thumbnails {
+        margin-right: 60px;
+      }
+
+      .similarity-values {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-family: sans-serif;
+        font-size: 14px;
+        color: #000000;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+
+      .similarity-values span {
+        background-color: #e9ecef;
+        padding: 6px;
+        margin: 33px 0px;
+        border-radius: 6px;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+      <!-- Lado izquierdo: imagen principal + miniaturas a la derecha -->
+      <div class="container right-side">
+        <img
+          id="mainImg1"
+          class="main-image"
+          src="./images/antoine-blanchard_boulevard-de-la-madeleine-2_original.jpg"
+          alt="Imagen original 1"
+        />
+        <div id="thumbs1" class="thumbnails">
+          <img
+            src="./images/antoine-blanchard_boulevard-de-la-madeleine-2_heatmap.jpg"
+            alt="Mapa de calor de color"
+          />
+          <img
+            src="./images/antoine-blanchard_boulevard-de-la-madeleine-2_hsv_hue.jpg"
+            alt="Tono"
+          />
+          <img
+            src="./images/antoine-blanchard_boulevard-de-la-madeleine-2_hsv_saturation.jpg"
+            alt="Saturacion"
+          />
+          <img
+            src="./images/antoine-blanchard_boulevard-de-la-madeleine-2_hsv_value.jpg"
+            alt="Brillo"
+          />
+          <img
+            src="./images/antoine-blanchard_boulevard-de-la-madeleine-2_texture.jpg"
+            alt="Textura"
+          />
+          <img
+            src="./images/antoine-blanchard_boulevard-de-la-madeleine-2_contrast.jpg"
+            alt="Contraste"
+          />
+        </div>
+      </div>
+
+      <!-- Valores de similitud -->
+      <div id="similarities" class="similarity-values hidden">
+        <span>0.8605</span>
+        <span>0.7741</span>
+        <span>0.7030</span>
+        <span>0.8138</span>
+        <span>0.7802</span>
+        <span>0.7807</span>
+      </div>
+
+      <!-- Lado derecho: miniaturas a la izquierda + imagen principal -->
+      <div class="container left-side">
+        <div id="thumbs2" class="thumbnails">
+          <img
+            src="./images/antoine-blanchard_boulevard-de-la-madeleine-9_heatmap.jpg"
+            alt="Mapa de calor de color"
+          />
+          <img
+            src="./images/antoine-blanchard_boulevard-de-la-madeleine-9_hsv_hue.jpg"
+            alt="Tono"
+          />
+          <img
+            src="./images/antoine-blanchard_boulevard-de-la-madeleine-9_hsv_saturation.jpg"
+            alt="Saturacion"
+          />
+          <img
+            src="./images/antoine-blanchard_boulevard-de-la-madeleine-9_hsv_value.jpg"
+            alt="Brillo"
+          />
+          <img
+            src="./images/antoine-blanchard_boulevard-de-la-madeleine-9_texture.jpg"
+            alt="Textura"
+          />
+          <img
+            src="./images/antoine-blanchard_boulevard-de-la-madeleine-9_contrast.jpg"
+            alt="Contraste"
+          />
+        </div>
+        <img
+          id="mainImg2"
+          class="main-image"
+          src="./images/antoine-blanchard_boulevard-de-la-madeleine-9_original.jpg"
+          alt="Imagen original 2"
+        />
+      </div>
+
+    <script>
+      const mainImg1 = document.getElementById("mainImg1");
+      const mainImg2 = document.getElementById("mainImg2");
+      const thumbs1 = document.getElementById("thumbs1");
+      const thumbs2 = document.getElementById("thumbs2");
+      const similarities = document.getElementById("similarities");
+
+      function showEverything() {
+        thumbs1.classList.add("show");
+        thumbs2.classList.add("show");
+        similarities.classList.remove("hidden");
+      }
+
+      mainImg1.addEventListener("click", showEverything);
+      mainImg2.addEventListener("click", showEverything);
+    </script>
+  </body>
+</html>
