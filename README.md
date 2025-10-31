@@ -1,8 +1,10 @@
 # Experimentation
 
-Esta rama esta diseñando para la experimentación pura de soluciones dada nuestra problematica y que mediante el análisis y la comparación de las caracteristicas de bajo nivel de obras de arte impresionistas. Mediremos e implementaremos algoritmos de similitud y metricas de comparación.
+This branch is dedicated to the pure experimentation of solutions based on our research problem, through the analysis and comparison of low-level visual features in Impressionist artworks. We will implement and evaluate similarity algorithms and visual comparison metrics.
 
-## Características
-- **Comparación artística**: Compara pinturas por similitud visual.
-- **Transformaciones**: Aplicamos transformaciones para destacar características para relevantes y afinar los resultados de la comparación.
-- **Visualización interactiva**: Explore los resultados mediante visualizaciones dinámicas.
+## Features
+- **Artistic Comparison**: Compare paintings based on visual similarity.
+- **Transformations**: Apply transformations to highlight relevant features and refine comparison results.
+- **Interactive Visualization**: Explore outcomes through dynamic visualizations.
+- **Deep Learning Models**: Leverage convolutional neural networks (CNNs) and deep learning techniques to extract feature representations.
+- **Image-Based Testing**: Conduct rigorous testing using diverse sets of transformed and original images to validate visual similarity metrics.
