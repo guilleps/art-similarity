@@ -1,8 +1,2 @@
-**-scan
 
-venv/
-
-__pycache__
-img_evidence/
-
-tesis_**
+__pycache__/
