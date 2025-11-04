@@ -8,12 +8,12 @@ export const ValueProp = ({
 	description: string;
 }) => {
 	return (
-		<div className="flex flex-col items-center text-center p-6">
-			<div className="w-16 h-16 flex items-center justify-center rounded-full bg-blue-100 mb-4">
+		<div className="p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-shadow">
+			<div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
 				{icon}
 			</div>
-			<h3 className="text-xl font-bold mb-3">{title}</h3>
-			<p className="text-foreground/80">{description}</p>
+			<h3 className="text-xl font-semibold mb-3 text-center">{title}</h3>
+			<p className="text-gray-600 text-center">{description}</p>
 		</div>
 	);
 };
