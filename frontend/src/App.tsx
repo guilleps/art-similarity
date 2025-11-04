@@ -7,6 +7,8 @@ import NotFound from './pages/NotFound';
 import { Context } from './pages/contexto/Context';
 import { Results } from './pages/resultados/Results';
 import { Index } from './pages/Index';
+import { GithubBadge } from './components/GithubBadge';
+import { SostenibilityBadge } from './components/SostenibilityBadge';
 
 const queryClient = new QueryClient();
 
@@ -24,6 +26,8 @@ const App = () => (
 				</Routes>
 			</BrowserRouter>
 		</TooltipProvider>
+		<SostenibilityBadge />
+		<GithubBadge />
 	</QueryClientProvider>
 );
 
