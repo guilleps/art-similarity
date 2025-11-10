@@ -3,6 +3,11 @@ from rest_framework.response import Response
 from rest_framework import status
 from drf_spectacular.utils import extend_schema, OpenApiParameter
 from api.application import GetAllSimilarityResultsRawUseCase
+from .serializers.similarity_by_transform_serializer import (
+    SimilarityByTransformItemSerializer,
+)
+from codecarbon import EmissionsTracker
+
 
 @extend_schema(
     summary="Obtain results by type of transformation",
@@ -26,28 +31,45 @@ from api.application import GetAllSimilarityResultsRawUseCase
                 "saturation",
                 "brightness",
                 "texture",
-                "contrast"
-            ]
+                "contrast",
+            ],
         )
     ],
-    responses={200: ...}
+    responses={200: SimilarityByTransformItemSerializer(many=True)},
 )
 class GetSimilarityByTransformAPI(APIView):
     def get(self, request, *args, **kwargs):
         transform_type = request.query_params.get("transform")
         if not transform_type:
-            return Response({"error": "You must provide the ‘transform’ parameter"}, status=400)
+            return Response(
+                {"error": "You must provide the ‘transform’ parameter"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
-        use_case = GetAllSimilarityResultsRawUseCase()
-        all_results = use_case.execute()
+        tracker = EmissionsTracker(
+            project_name="ArtShift",
+            experiment_id="e0f3a9ae-b84d-4bc3-bda2-0ff6ab5842a9",
+            output_dir="./carbon_reports",
+            output_file="emissions_get_similarity_by_transform.csv",
+        )
+        tracker.start()
 
-        filtered = [
-            {
-                "par": idx + 1,
-                "value": item.get(f"{transform_type}_transformation")
-            }
-            for idx, item in enumerate(all_results)
-            if item.get(f"{transform_type}_transformation") is not None
-        ]
+        try:
+            use_case = GetAllSimilarityResultsRawUseCase()
+            all_results = use_case.execute()
 
-        return Response(filtered, status=200)
+            filtered = [
+                {"pair": idx + 1, "value": item.get(f"{transform_type}_transformation")}
+                for idx, item in enumerate(all_results)
+                if item.get(f"{transform_type}_transformation") is not None
+            ]
+
+            tracker.stop()
+
+            return Response(filtered, status=status.HTTP_200_OK)
+
+        except Exception as e:
+            tracker.stop()
+            return Response(
+                {"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )

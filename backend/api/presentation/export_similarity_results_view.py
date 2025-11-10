@@ -7,6 +7,7 @@ from api.application.export_similarity_results_usecase import (
     ExportSimilarityResultsUseCase,
 )
 from drf_spectacular.utils import extend_schema, OpenApiResponse, OpenApiParameter
+from codecarbon import EmissionsTracker
 
 
 @extend_schema(
@@ -19,16 +20,30 @@ from drf_spectacular.utils import extend_schema, OpenApiResponse, OpenApiParamet
 )
 class ExportSimilarityResultsAPI(APIView):
     def get(self, request, *args, **kwargs):
+        tracker = EmissionsTracker(
+            project_name="ArtShift",
+            experiment_id="e0f3a9ae-b84d-4bc3-bda2-0ff6ab5842a9",
+            output_dir="./carbon_reports",
+            output_file="emissions_export.csv",
+        )
+        tracker.start()
+
         try:
             use_case = ExportSimilarityResultsUseCase()
+
             if request.path.endswith("/csv/"):
                 format_type = "csv"
             elif request.path.endswith("/json/"):
                 format_type = "json"
+            else:
+                return Response(
+                    {"error": "Invalid format. Use 'json' or 'csv'"},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
 
             if format_type == "csv":
                 response = HttpResponse(
-                    content_type="text/csv; charset=utf-8", status=200
+                    content_type="text/csv; charset=utf-8", status=status.HTTP_200_OK
                 )
                 response["Content-Disposition"] = (
                     'attachment; filename="similarity_results.csv"'
@@ -41,18 +56,16 @@ class ExportSimilarityResultsAPI(APIView):
                 response = HttpResponse(
                     json.dumps(data, indent=2),
                     content_type="application/json",
-                    status=200,
+                    status=status.HTTP_200_OK,
                 )
                 response["Content-Disposition"] = (
                     'attachment; filename="similarity_results.json"'
                 )
                 return response
-            else:
-                return Response(
-                    {"error": "Invalid format. Use 'json' or 'csv'"},
-                    status=status.HTTP_400_BAD_REQUEST,
-                )
+                
+            tracker.stop()
         except Exception as e:
+            tracker.stop()
             return Response(
                 {"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
