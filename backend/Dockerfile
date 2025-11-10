@@ -22,7 +22,7 @@ RUN echo "[codecarbon]" > /root/.codecarbon.config && \
     echo "experiment_id = e0f3a9ae-b84d-4bc3-bda2-0ff6ab5842a9" >> /root/.codecarbon.config && \
     echo "api_key = ${CODECARBON_API_KEY}" >> /root/.codecarbon.config && \
     echo "save_to_api = True" >> /root/.codecarbon.config && \
-    echo "offline_mode = False" >> /root/.codecarbon.config
+    echo "offline_mode = False" >> /root/.codecarbon.config && \
     echo "output_dir = /tmp" >> /root/.codecarbon.config && \
     echo "save_to_file = False" >> /root/.codecarbon.config
 
