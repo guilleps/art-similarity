@@ -6,8 +6,7 @@ from api.application.get_similarity_results_pag_usecase import (
     GetSimilarityResultsPagUseCase,
 )
 from drf_spectacular.utils import extend_schema, OpenApiResponse
-from codecarbon import EmissionsTracker
-
+from api.infrastructure.config import create_tracker_to_emission
 
 @extend_schema(
     summary="Get all similarity sessions and their results.",
@@ -19,12 +18,7 @@ from codecarbon import EmissionsTracker
 )
 class GetSimilarityResultsPagAPI(APIView):
     def get(self, request, *args, **kwargs):
-        tracker = EmissionsTracker(
-            project_name="ArtShift",
-            experiment_id="e0f3a9ae-b84d-4bc3-bda2-0ff6ab5842a9",
-            output_dir="./carbon_reports",
-            output_file="emissions_get_all_similarity.csv",
-        )
+        tracker = create_tracker_to_emission(filename="emissions_get_all_similarity.csv")
         tracker.start()
 
         try:

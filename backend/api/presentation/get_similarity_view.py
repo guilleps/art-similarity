@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from drf_spectacular.utils import extend_schema, OpenApiResponse, OpenApiParameter
 from api.application import GetSimilarityResultUseCase
-from codecarbon import EmissionsTracker
+from api.infrastructure.config import create_tracker_to_emission
 
 
 @extend_schema(
@@ -28,12 +28,7 @@ from codecarbon import EmissionsTracker
 )
 class GetSimilarityResultAPI(APIView):
     def get(self, request, comparison_id, *args, **kwargs):
-        tracker = EmissionsTracker(
-            project_name="ArtShift",
-            experiment_id="e0f3a9ae-b84d-4bc3-bda2-0ff6ab5842a9",
-            output_dir="./carbon_reports",
-            output_file="emissions_get_similarity.csv",
-        )
+        tracker = create_tracker_to_emission(filename="emissions_get_similarity.csv")
         tracker.start()
 
         try:

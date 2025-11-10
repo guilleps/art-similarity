@@ -6,7 +6,7 @@ from api.application import GetAllSimilarityResultsRawUseCase
 from .serializers.similarity_by_transform_serializer import (
     SimilarityByTransformItemSerializer,
 )
-from codecarbon import EmissionsTracker
+from api.infrastructure.config import create_tracker_to_emission
 
 
 @extend_schema(
@@ -46,12 +46,7 @@ class GetSimilarityByTransformAPI(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        tracker = EmissionsTracker(
-            project_name="ArtShift",
-            experiment_id="e0f3a9ae-b84d-4bc3-bda2-0ff6ab5842a9",
-            output_dir="./carbon_reports",
-            output_file="emissions_get_similarity_by_transform.csv",
-        )
+        tracker = create_tracker_to_emission(filename="emissions_get_similarity_by_transform.csv")
         tracker.start()
 
         try:
