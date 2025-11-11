@@ -1,11 +1,11 @@
 import csv
 from api.domain.models import ImageComparisonSession
-from api.infrastructure.config import create_async_tracker
+from api.infrastructure.config import create_tracker_to_emission
 
 
 class ExportSimilarityResultsUseCase:
     def exportToJSON(self):
-        tracker = create_async_tracker(filename="emissions_export_json.csv")
+        tracker = create_tracker_to_emission(filename="emissions_export_json.csv")
         tracker.start()
 
         try:
@@ -42,7 +42,7 @@ class ExportSimilarityResultsUseCase:
         return response_object
 
     def _get_sessions_with_related_data(self):
-        tracker = create_async_tracker(filename="emissions_export_json.csv")
+        tracker = create_tracker_to_emission(filename="emissions_export_json.csv")
         tracker.start()
 
         try:

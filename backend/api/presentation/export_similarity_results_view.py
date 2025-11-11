@@ -1,14 +1,13 @@
 from django.http import HttpResponse
 import json
-from adrf.views import APIView
+from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from api.application.export_similarity_results_usecase import (
     ExportSimilarityResultsUseCase,
 )
 from drf_spectacular.utils import extend_schema, OpenApiResponse, OpenApiParameter
-from api.infrastructure.config.tracker_to_emission import create_async_tracker
-from asgiref.sync import sync_to_async
+from api.infrastructure.config import create_tracker_to_emission
 
 
 @extend_schema(
@@ -20,9 +19,9 @@ from asgiref.sync import sync_to_async
     },
 )
 class ExportSimilarityResultsAPI(APIView):
-    async def get(self, request, *args, **kwargs):
-        tracker = create_async_tracker(filename="emissions_export.csv")
-        await tracker.start()
+    def get(self, request, *args, **kwargs):
+        tracker = create_tracker_to_emission(filename="emissions_export.csv")
+        tracker.start()
 
         try:
             use_case = ExportSimilarityResultsUseCase()
@@ -45,12 +44,10 @@ class ExportSimilarityResultsAPI(APIView):
                     'attachment; filename="similarity_results.csv"'
                 )
 
-                await sync_to_async(use_case.exportToCSV)(response_object=response)
-                await tracker.stop_background()
-                return response
+                return use_case.exportToCSV(response_object=response)
 
             elif format_type == "json":
-                data = await sync_to_async(use_case.exportToJSON)()
+                data = use_case.exportToJSON()
                 response = HttpResponse(
                     json.dumps(data, indent=2),
                     content_type="application/json",
@@ -59,11 +56,11 @@ class ExportSimilarityResultsAPI(APIView):
                 response["Content-Disposition"] = (
                     'attachment; filename="similarity_results.json"'
                 )
-                await tracker.stop_background()
                 return response
-
+                
+            tracker.stop()
         except Exception as e:
-            await tracker.stop_background()
+            tracker.stop()
             return Response(
                 {"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )

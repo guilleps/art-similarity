@@ -1,10 +1,9 @@
-from adrf.views import APIView
+from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from drf_spectacular.utils import extend_schema, OpenApiResponse, OpenApiParameter
 from api.application import GetSimilarityResultUseCase
-from api.infrastructure.config.tracker_to_emission import create_async_tracker
-from asgiref.sync import sync_to_async
+from api.infrastructure.config import create_tracker_to_emission
 
 
 @extend_schema(
@@ -28,18 +27,18 @@ from asgiref.sync import sync_to_async
     },
 )
 class GetSimilarityResultAPI(APIView):
-    async def get(self, request, comparison_id, *args, **kwargs):
-        tracker = create_async_tracker(filename="emissions_get_similarity.csv")
-        await tracker.start()
+    def get(self, request, comparison_id, *args, **kwargs):
+        tracker = create_tracker_to_emission(filename="emissions_get_similarity.csv")
+        tracker.start()
 
         try:
             use_case = GetSimilarityResultUseCase()
-            result = await sync_to_async(use_case.execute)(comparison_id)
+            result = use_case.execute(comparison_id)
 
-            await tracker.stop_background()
+            tracker.stop()
 
             return Response(result, status=status.HTTP_200_OK)
 
         except Exception as e:
-            await tracker.stop_background()
+            tracker.stop()
             return Response({"error": str(e)}, status=status.HTTP_404_NOT_FOUND)
