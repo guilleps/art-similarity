@@ -1,12 +1,28 @@
+import { useEffect, useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from './ui/dialog';
 import { Leaf, ExternalLink, Tv, Car, Smartphone } from 'lucide-react';
+import { getCarbonData } from '@/services/carbonService';
 
 interface SustainabilityModalProps {
 	open: boolean;
 	onOpenChange: (open: boolean) => void;
 }
 
+interface CarbonData {
+	rating: string;
+}
+
 export const SustainabilityModal = ({ open, onOpenChange }: SustainabilityModalProps) => {
+	const [co2Data, setCo2Data] = useState<CarbonData | null>(null);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			const result = await getCarbonData();
+			setCo2Data(result.data);
+		};
+		fetchData();
+	}, []);
+
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
 			<DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto border-2 border-success">
@@ -88,8 +104,11 @@ export const SustainabilityModal = ({ open, onOpenChange }: SustainabilityModalP
 
 						<div className="grid grid-cols-2 gap-4 text-center">
 							<div>
-								<p className="text-5xl font-bold text-[#16a249]">A</p>
-								<p className="text-xs text-muted-foreground mt-1">Calificación</p>
+								{co2Data ? (
+									<p className="text-5xl font-bold text-[#16a249]">{co2Data.rating}</p>
+								) : (
+									<p className="text-5xl font-bold text-[#16a249]">A</p>
+								)}
 							</div>
 							<div>
 								<p className="text-2xl font-bold text-[#16a249]">0.06 g</p>

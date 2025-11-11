@@ -4,9 +4,15 @@ from .presentation.get_all_similarity_view import GetSimilarityResultsPagAPI
 from .presentation.get_all_similarity_raw_view import GetAllSimilarityResultsRawAPI
 from .presentation.get_similarity_by_transform_view import GetSimilarityByTransformAPI
 from .presentation.export_similarity_results_view import ExportSimilarityResultsAPI
+from .presentation.carbon_view import CarbonFootprintView
 
 
 urlpatterns = [
+    path(
+        "carbon/",
+        CarbonFootprintView.as_view(),
+        name="carbon_footprint",
+    ),
     path(
         "get-similarity/<uuid:comparison_id>/",
         GetSimilarityResultAPI.as_view(),
