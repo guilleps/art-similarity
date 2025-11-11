@@ -7,28 +7,36 @@ import NotFound from './pages/NotFound';
 import { Context } from './pages/contexto/Context';
 import { Results } from './pages/resultados/Results';
 import { Index } from './pages/Index';
-import { GithubBadge } from './components/GithubBadge';
-import { SostenibilityBadge } from './components/SostenibilityBadge';
+import { useState } from 'react';
+import { FloatingButtons } from './components/FloatingButtonsProps';
+import { SustainabilityModal } from './components/SustainabilityModal';
 
 const queryClient = new QueryClient();
 
-const App = () => (
-	<QueryClientProvider client={queryClient}>
-		<TooltipProvider>
-			<Toaster />
-			<Sonner />
-			<BrowserRouter>
-				<Routes>
-					<Route path="/" element={<Index />} />
-					<Route path="/contexto" element={<Context />} />
-					<Route path="/resultados" element={<Results />} />
-					<Route path="*" element={<NotFound />} />
-				</Routes>
-			</BrowserRouter>
-		</TooltipProvider>
-		<SostenibilityBadge />
-		<GithubBadge />
-	</QueryClientProvider>
-);
+const App = () => {
+	const [isSostenibilityModalOpen, setIsSostenibilityModalOpen] = useState(false);
+
+	return (
+		<QueryClientProvider client={queryClient}>
+			<TooltipProvider>
+				<Toaster />
+				<Sonner />
+				<BrowserRouter>
+					<Routes>
+						<Route path="/" element={<Index />} />
+						<Route path="/contexto" element={<Context />} />
+						<Route path="/resultados" element={<Results />} />
+						<Route path="*" element={<NotFound />} />
+					</Routes>
+				</BrowserRouter>
+			</TooltipProvider>
+			<FloatingButtons onSustainabilityClick={() => setIsSostenibilityModalOpen(true)} />
+			<SustainabilityModal
+				open={isSostenibilityModalOpen}
+				onOpenChange={setIsSostenibilityModalOpen}
+			/>
+		</QueryClientProvider>
+	);
+};
 
 export default App;
