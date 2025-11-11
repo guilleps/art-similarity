@@ -1,4 +1,4 @@
-from rest_framework.views import APIView
+from adrf.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from drf_spectacular.utils import extend_schema, OpenApiParameter
@@ -6,7 +6,7 @@ from api.application import GetAllSimilarityResultsRawUseCase
 from .serializers.similarity_by_transform_serializer import (
     SimilarityByTransformItemSerializer,
 )
-from api.infrastructure.config import create_tracker_to_emission
+from api.infrastructure.config.tracker_to_emission import create_async_tracker
 
 
 @extend_schema(
@@ -38,7 +38,7 @@ from api.infrastructure.config import create_tracker_to_emission
     responses={200: SimilarityByTransformItemSerializer(many=True)},
 )
 class GetSimilarityByTransformAPI(APIView):
-    def get(self, request, *args, **kwargs):
+    async def get(self, request, *args, **kwargs):
         transform_type = request.query_params.get("transform")
         if not transform_type:
             return Response(
@@ -46,12 +46,14 @@ class GetSimilarityByTransformAPI(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        tracker = create_tracker_to_emission(filename="emissions_get_similarity_by_transform.csv")
-        tracker.start()
+        tracker = create_async_tracker(
+            filename="emissions_get_similarity_by_transform.csv"
+        )
+        await tracker.start()
 
         try:
             use_case = GetAllSimilarityResultsRawUseCase()
-            all_results = use_case.execute()
+            all_results = await use_case.execute_async()
 
             filtered = [
                 {"pair": idx + 1, "value": item.get(f"{transform_type}_transformation")}
@@ -59,12 +61,12 @@ class GetSimilarityByTransformAPI(APIView):
                 if item.get(f"{transform_type}_transformation") is not None
             ]
 
-            tracker.stop()
+            await tracker.stop_background()
 
             return Response(filtered, status=status.HTTP_200_OK)
 
         except Exception as e:
-            tracker.stop()
+            await tracker.stop_background()
             return Response(
                 {"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )

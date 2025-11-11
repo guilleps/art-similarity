@@ -1,1 +1,1 @@
-from .tracker_to_emission import create_tracker_to_emission
+from .tracker_to_emission import create_async_tracker

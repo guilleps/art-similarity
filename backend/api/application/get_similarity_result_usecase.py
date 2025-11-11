@@ -7,12 +7,13 @@ from django.core.exceptions import ObjectDoesNotExist
 import logging
 from api.application.prompt_builder import SYSTEM_PROMPT, build_user_prompt, pick_winner
 from api.infrastructure.services.llm_client import call_llm_text_only
-from api.infrastructure.config import create_tracker_to_emission
+from api.infrastructure.config import create_async_tracker
+
 
 class GetSimilarityResultUseCase:
     def execute(self, comparison_id):
-        
-        tracker = create_tracker_to_emission(filename="emissions_usecase_get_similarity.csv")
+
+        tracker = create_async_tracker(filename="emissions_usecase_get_similarity.csv")
         tracker.start()
 
         try:
@@ -64,7 +65,7 @@ class GetSimilarityResultUseCase:
             }
 
             return base_payload
-        
+
         finally:
             tracker.stop()
 
@@ -113,4 +114,3 @@ class GetSimilarityResultUseCase:
         #     }
 
         # base_payload["analysis"] = analysis
-
