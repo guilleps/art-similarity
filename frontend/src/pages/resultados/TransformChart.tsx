@@ -14,7 +14,7 @@ const colors: Record<string, string> = {
 	contrast: '#edc949',
 };
 
-type Point = { par: number; value: number };
+type Point = { pair: number; value: number };
 
 export const TransformChart = ({ transform }: { transform: string }) => {
 	const chartRef = useRef<HTMLDivElement>(null);
@@ -51,7 +51,7 @@ export const TransformChart = ({ transform }: { transform: string }) => {
 		chart.setOption({
 			color: [colors[transform]],
 			tooltip: { trigger: 'axis' },
-			xAxis: { type: 'category', data: data.map(d => d.par.toString()) },
+			xAxis: { type: 'category', data: data.map(d => d.pair.toString()) },
 			yAxis: { type: 'value', min: 0, max: 1 },
 			series: [
 				{

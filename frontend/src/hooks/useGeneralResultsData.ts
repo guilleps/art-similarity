@@ -55,12 +55,12 @@ export function useGeneralResultsData() {
 		data.forEach((item: SimilarityRaw, index: number) => {
 			rows.push([
 				(index + 1).toString(),
-				item.color_heat_map_transformation ?? null,
-				item.tone_transformation ?? null,
-				item.saturation_transformation ?? null,
-				item.brightness_transformation ?? null,
-				item.texture_transformation ?? null,
-				item.contrast_transformation ?? null,
+				item.color_heat_map_transformation ?? 0,
+				item.tone_transformation ?? 0,
+				item.saturation_transformation ?? 0,
+				item.brightness_transformation ?? 0,
+				item.texture_transformation ?? 0,
+				item.contrast_transformation ?? 0,
 			]);
 		});
 
