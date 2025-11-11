@@ -1,13 +1,13 @@
 from api.domain.models import ImageComparisonSession
-from api.infrastructure.config import create_tracker_to_emission
+# from api.infrastructure.config import create_trackker_to_emission
 
 
 class GetSimilarityResultsPagUseCase:
     def execute(self, offset=0, limit=10):
-        tracker = create_tracker_to_emission(filename="emissions_usecase_paginated.csv")
-        tracker.start()
+        # tracker = create_tracker_to_emission(filename="emissions_usecase_paginated.csv")
+        # tracker.start()
 
-        try:
+        # try:
             results = []
 
             sessions = ImageComparisonSession.objects.prefetch_related(
@@ -70,5 +70,5 @@ class GetSimilarityResultsPagUseCase:
                 )
 
             return results
-        finally:
-            tracker.stop()
+        # finally:
+            # tracker.stop()

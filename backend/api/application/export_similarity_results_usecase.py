@@ -1,14 +1,14 @@
 import csv
 from api.domain.models import ImageComparisonSession
-from api.infrastructure.config import create_tracker_to_emission
+# from api.infrastructure.config import create_tracker_to_emission
 
 
 class ExportSimilarityResultsUseCase:
     def exportToJSON(self):
-        tracker = create_tracker_to_emission(filename="emissions_export_json.csv")
-        tracker.start()
+        # tracker = create_tracker_to_emission(filename="emissions_export_json.csv")
+        # tracker.start()
 
-        try:
+        # try:
             output = {"pair": {}}
             sessions = self._get_sessions_with_related_data()
 
@@ -17,8 +17,8 @@ class ExportSimilarityResultsUseCase:
                 output["pair"][str(idx)] = pair_data
 
             return output
-        finally:
-            tracker.stop()
+        # finally:
+        #     tracker.stop()
 
     def exportToCSV(self, response_object):
         sessions = self._get_sessions_with_related_data()
@@ -42,15 +42,15 @@ class ExportSimilarityResultsUseCase:
         return response_object
 
     def _get_sessions_with_related_data(self):
-        tracker = create_tracker_to_emission(filename="emissions_export_json.csv")
-        tracker.start()
+        # tracker = create_tracker_to_emission(filename="emissions_export_json.csv")
+        # tracker.start()
 
-        try:
+        # try:
             return ImageComparisonSession.objects.prefetch_related(
                 "similarities", "transformedimageembedding_set"
             ).order_by("created_at")
-        finally:
-            tracker.stop()
+        # finally:
+        #     tracker.stop()
 
     def _process_session_data(self, session):
         embeddings = session.transformedimageembedding_set.all()

@@ -7,7 +7,7 @@ from api.application.export_similarity_results_usecase import (
     ExportSimilarityResultsUseCase,
 )
 from drf_spectacular.utils import extend_schema, OpenApiResponse, OpenApiParameter
-from api.infrastructure.config import create_tracker_to_emission
+# from api.infrastructure.config import create_tracker_to_emission
 
 
 @extend_schema(
@@ -20,8 +20,8 @@ from api.infrastructure.config import create_tracker_to_emission
 )
 class ExportSimilarityResultsAPI(APIView):
     def get(self, request, *args, **kwargs):
-        tracker = create_tracker_to_emission(filename="emissions_export.csv")
-        tracker.start()
+        # tracker = create_tracker_to_emission(filename="emissions_export.csv")
+        # tracker.start()
 
         try:
             use_case = ExportSimilarityResultsUseCase()
@@ -58,9 +58,9 @@ class ExportSimilarityResultsAPI(APIView):
                 )
                 return response
                 
-            tracker.stop()
+            # tracker.stop()
         except Exception as e:
-            tracker.stop()
+            # tracker.stop()
             return Response(
                 {"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )

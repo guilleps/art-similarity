@@ -1,15 +1,15 @@
 from api.domain.models import ImageComparisonSession
-from api.infrastructure.config import create_tracker_to_emission
+# from api.infrastructure.config import create_tracker_to_emission
 
 
 class GetAllSimilarityResultsRawUseCase:
     def execute(self):
-        tracker = create_tracker_to_emission(
-            filename="emissions_get_all_similarity_raw_usecase.csv"
-        )
-        tracker.start()
+        # tracker = create_tracker_to_emission(
+        #     filename="emissions_get_all_similarity_raw_usecase.csv"
+        # )
+        # tracker.start()
 
-        try:
+        # try:
             results = []
 
             sessions = ImageComparisonSession.objects.prefetch_related(
@@ -57,5 +57,5 @@ class GetAllSimilarityResultsRawUseCase:
                 )
 
             return results
-        finally:
-            tracker.stop()
+        # finally:
+        #     tracker.stop()

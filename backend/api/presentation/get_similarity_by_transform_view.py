@@ -6,7 +6,7 @@ from api.application import GetAllSimilarityResultsRawUseCase
 from .serializers.similarity_by_transform_serializer import (
     SimilarityByTransformItemSerializer,
 )
-from api.infrastructure.config import create_tracker_to_emission
+# from api.infrastructure.config import create_tracker_to_emission
 
 
 @extend_schema(
@@ -46,8 +46,8 @@ class GetSimilarityByTransformAPI(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        tracker = create_tracker_to_emission(filename="emissions_get_similarity_by_transform.csv")
-        tracker.start()
+        # tracker = create_tracker_to_emission(filename="emissions_get_similarity_by_transform.csv")
+        # tracker.start()
 
         try:
             use_case = GetAllSimilarityResultsRawUseCase()
@@ -59,12 +59,12 @@ class GetSimilarityByTransformAPI(APIView):
                 if item.get(f"{transform_type}_transformation") is not None
             ]
 
-            tracker.stop()
+            # tracker.stop()
 
             return Response(filtered, status=status.HTTP_200_OK)
 
         except Exception as e:
-            tracker.stop()
+            # tracker.stop()
             return Response(
                 {"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
