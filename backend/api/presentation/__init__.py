@@ -1,4 +1,3 @@
-from .upload_transform_view import UploadTransformedImagesAPI
 from .get_similarity_view import GetSimilarityResultAPI
 from .get_all_similarity_view import GetSimilarityResultsPagAPI
 from .get_all_similarity_raw_view import GetAllSimilarityResultsRawAPI

@@ -1,5 +1,4 @@
 from django.urls import path
-from .presentation.upload_transform_view import UploadTransformedImagesAPI
 from .presentation.get_similarity_view import GetSimilarityResultAPI
 from .presentation.get_all_similarity_view import GetSimilarityResultsPagAPI
 from .presentation.get_all_similarity_raw_view import GetAllSimilarityResultsRawAPI
@@ -8,11 +7,6 @@ from .presentation.export_similarity_results_view import ExportSimilarityResults
 
 
 urlpatterns = [
-    path(
-        "internal/upload-transform/",
-        UploadTransformedImagesAPI.as_view(),
-        name="upload_transform",
-    ),
     path(
         "get-similarity/<uuid:comparison_id>/",
         GetSimilarityResultAPI.as_view(),
