@@ -1,4 +1,3 @@
-import { CarbonBadge } from '@/components/CarbonBadge';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
@@ -19,7 +18,5 @@ export const HeroSection = () => (
 				</Button>
 			</Link>
 		</div>
-
-		<CarbonBadge />
 	</div>
 );

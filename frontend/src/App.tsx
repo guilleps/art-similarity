@@ -10,6 +10,7 @@ import { Index } from './pages/Index';
 import { useState } from 'react';
 import { FloatingButtons } from './components/FloatingButtonsProps';
 import { SustainabilityModal } from './components/SustainabilityModal';
+import { CarbonBadge } from './components/CarbonBadge';
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => {
 					</Routes>
 				</BrowserRouter>
 			</TooltipProvider>
+			<CarbonBadge />
 			<FloatingButtons onSustainabilityClick={() => setIsSostenibilityModalOpen(true)} />
 			<SustainabilityModal
 				open={isSostenibilityModalOpen}

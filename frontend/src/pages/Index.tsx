@@ -14,11 +14,8 @@ export const Index = () => {
 	return (
 		<div className="space-y-0">
 			<Navbar />
-
 			<HeroSection />
-
 			<ProblemSection />
-
 			<BasicTerms />
 		</div>
 	);
