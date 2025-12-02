@@ -1,13 +1,13 @@
 import { Navbar } from '../../components/Navbar';
-import { GeneralResult } from './GeneralResult';
 import { TableResults } from './TableResults';
 import { TransformResults } from './TransformResults';
+import { BoxPlotResults } from './BoxPlotResults';
 
 export const Results = () => {
 	return (
 		<div className="space-y-0">
 			<Navbar />
-			<GeneralResult />
+			<BoxPlotResults />
 			<TransformResults />
 			<TableResults />
 		</div>

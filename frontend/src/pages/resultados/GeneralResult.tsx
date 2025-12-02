@@ -1,4 +1,3 @@
-import { CardValue } from '@/components/CardValue';
 import { useGeneralResultsData } from '@/hooks/useGeneralResultsData';
 import { GeneralResultsChart } from '@/components/GeneralResultsChart';
 
@@ -7,11 +6,6 @@ export const GeneralResult = () => {
 
 	return (
 		<div className="min-h-screen flex flex-col justify-center px-6 items-center">
-			<div className="text-center max-w-7xl mx-auto space-y-6">
-				<h1 className="text-3xl font-bold text-blue-600">Resultados</h1>
-				<h2 className="text-xl font-bold">Gráfico Total de Transformaciones</h2>
-			</div>
-
 			<div className="w-full max-w-6xl space-y-6">
 				<div className="relative w-full h-[28rem] bg-white">
 					{isLoading && (
@@ -28,27 +22,6 @@ export const GeneralResult = () => {
 
 					<GeneralResultsChart results={results} />
 				</div>
-
-				{extremes?.max && extremes?.min ? (
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-						<CardValue
-							title="Máximo"
-							value={extremes.max.value}
-							metric={extremes.max.label}
-							type="max"
-							size="sm"
-							delay={300}
-						/>
-						<CardValue
-							title="Mínimo"
-							value={extremes.min.value}
-							metric={extremes.min.label}
-							type="min"
-							size="sm"
-							delay={300}
-						/>
-					</div>
-				) : null}
 			</div>
 		</div>
 	);
