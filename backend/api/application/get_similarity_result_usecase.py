@@ -5,8 +5,6 @@ from api.domain.models import (
 )
 from django.core.exceptions import ObjectDoesNotExist
 import logging
-from api.application.prompt_builder import SYSTEM_PROMPT, build_user_prompt, pick_winner
-from api.infrastructure.services.llm_client import call_llm_text_only
 
 # from api.infrastructure.config import create_tracker_to_emission
 
@@ -62,52 +60,3 @@ class GetSimilarityResultUseCase:
         }
 
         return base_payload
-
-        # finally:
-        #     tracker.stop()
-
-        # LLM analysis with deterministic fallback
-        # logger = logging.getLogger(__name__)
-        # try:
-        #     user_prompt = build_user_prompt(base_payload)
-        #     analysis = call_llm_text_only(SYSTEM_PROMPT, user_prompt)
-        # except Exception as e:
-        #     logger.exception(
-        #         f"[LLM Analyze] fallo para comparison_id={comparison_id}: {e}"
-        #     )
-
-        #     def label_for(value: float) -> str:
-        #         if value >= 0.93:
-        #             return "muy similar"
-        #         if value >= 0.88:
-        #             return "similar"
-        #         return "diferente"
-
-        #     t, s = pick_winner(similarity_block)
-        #     ranking = sorted(
-        #         (
-        #             {
-        #                 "transform": k,
-        #                 "similarity": v["similarity"],
-        #                 "label": label_for(v["similarity"]),
-        #             }
-        #             for k, v in similarity_block.items()
-        #         ),
-        #         key=lambda x: x["similarity"],
-        #         reverse=True,
-        #     )
-
-        #     analysis = {
-        #         "comparison_id": base_payload["comparison_id"],
-        #         "winner": {
-        #             "transform": t,
-        #             "similarity": s,
-        #             "confidence": "low",
-        #             "why": "Elegido por mayor similarity (fallback)",
-        #         },
-        #         "ranking": ranking,
-        #         "thresholds": {"very_similar": 0.93, "similar": 0.88},
-        #         "notes": "Respuesta generada por heurística; reintentar con LLM.",
-        #     }
-
-        # base_payload["analysis"] = analysis
