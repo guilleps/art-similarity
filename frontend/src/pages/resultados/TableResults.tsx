@@ -82,7 +82,7 @@ export const TableResults = () => {
 	};
 
 	return (
-		<div className="min-h-screen px-4 sm:px-6 lg:px-8 pt-12 pb-24 scroll-view">
+		<div className="min-h-screen px-4 sm:px-6 lg:px-8 pt-12 pb-12 scroll-view">
 			<div className="text-center space-y-6 max-w-6xl mx-auto">
 				<div className="flex justify-center items-center space-x-4">
 					<h2 className="text-xl font-bold">Matriz de Resultados por Par similar</h2>
