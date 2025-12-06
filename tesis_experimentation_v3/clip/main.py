@@ -21,8 +21,8 @@ def main():
     run_pipeline(input_images_folder, transformed_dir, embeddings_dir)
     
     # Comparación y generación del JSON con resultados
-    image1_folder = os.path.join(embeddings_base_folder, "adam-baltatu_birch-woods")
-    image2_folder = os.path.join(embeddings_base_folder, "adam-baltatu_children-on-the-alley")
+    image1_folder = os.path.join(embeddings_base_folder, "<image_name_1>")
+    image2_folder = os.path.join(embeddings_base_folder, "<image_name_2>")
     output_json_path = os.path.join(embeddings_base_folder, "resultados_similitud.json")
     
     logger.info("Analizando y obteniendo comparación de similitudes...")
